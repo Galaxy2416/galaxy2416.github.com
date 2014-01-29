@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Galaxy2416's blog]]></title>
+  <subtitle><![CDATA[o(∩∩)o活在一次元～语不惊人死不休]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://galaxy2416.github.io/"/>
+  <updated>2014-01-29T15:56:27.546Z</updated>
+  <id>http://galaxy2416.github.io/</id>
+  
+  <author>
+    <name><![CDATA[galaxy2416]]></name>
+    <email><![CDATA[gin@mail.dlut.edu.cn]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://galaxy2416.github.io/2014/01/28/hello-world/"/>
+    <id>http://galaxy2416.github.io/2014/01/28/hello-world/</id>
+    <published>2014-01-28T06:38:38.000Z</published>
+    <updated>2014-01-29T15:56:17.000Z</updated>
+    <content type="html"><![CDATA[<p>大家都喜欢用 $E=mc^2$ 举例子，但是我不是很理解。  </p>
+<p>这个公式 $\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1$ 少年可还记得？</p>
+<p>插入方程组（注意多行公式结尾\\需要打成\\，可能是因为markdown会自动转义第一个\）：</p>
+<p>\begin{aligned}
+\dot{x} &amp; = \sigma(y-x) \\
+\dot{y} &amp; = \rho x - y - xz \\
+\dot{z} &amp; = -\beta z + xy
+\end{aligned}</p>
+<p>插入矩阵（同上）：</p>
+<p>\begin{bmatrix}
+1 &amp; 2\\
+3 &amp; 4
+\end{bmatrix}</p>
+<p>来个复杂点的（注意有的公式开头不会自动识别，用$$包围）：</p>
+<p>$$\frac{\partial u}{\partial t}
+= h^2 \left( \frac{\partial^2 u}{\partial x^2}</p>
+<ul>
+<li>\frac{\partial^2 u}{\partial y^2}</li>
+<li>\frac{\partial^2 u}{\partial z^2}\right)$$</li>
+</ul>
+<p>最后来个牛逼的吧，薛定谔方程，大学物理就记得这个了：</p>
+<p>$$ i\hbar\frac{\partial \psi}{\partial t}
+= \frac{-\hbar^2}{2m} \left(
+\frac{\partial^2}{\partial x^2}</p>
+<ul>
+<li>\frac{\partial^2}{\partial y^2}</li>
+<li>\frac{\partial^2}{\partial z^2}
+\right) \psi + V \psi.$$</li>
+</ul>
+]]></content>
+    
+    
+  </entry>
+  
+</feed>
