@@ -12,7 +12,7 @@
 body {
   background-image: url("img/danse7.jpg");
   color: #444;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "Eunjin", "Helvetica", Arial, sans-serif;
   font-size: 14px;
   text-shadow: 0 0 1px transparent;
 }
@@ -32,7 +32,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 h1 {
   font-size: 1.8em;
@@ -124,7 +124,7 @@ a:hover {
   margin-top: 10px;
 }
 #header #main-nav {
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
 }
 #header #main-nav ul {
@@ -310,7 +310,7 @@ article header .icon:before {
 }
 article header time {
   color: #777;
-  font: 0.9em "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.9em "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 5px;
   display: block;
   line-height: 1;
@@ -369,16 +369,17 @@ article .entry pre {
   font-family: Monaco, Menlo, Consolas, Courier New, monospace;
 }
 article .entry code {
-  background: #eee;
-  color: #666;
-  padding: 0 5px;
+  background: #6cf;
+  color: #4b0082;
+}
+article padding 05px {
   margin: 0 2px;
   font-size: 0.9em;
   border: 1px solid #ddd;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-article .entry pre {
+article pre {
   background: #eee;
   border: 1px solid #ddd;
   margin-top: 15px;
@@ -387,7 +388,7 @@ article .entry pre {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
-article .entry pre code {
+article pre code {
   background: none;
   padding: 0;
   margin: 0;
@@ -395,45 +396,45 @@ article .entry pre code {
   -webkit-border-radius: 0;
   border-radius: 0;
 }
-article .entry ul,
-article .entry ol,
-article .entry dl {
+article ul,
+article ol,
+article dl {
   margin-left: 20px;
 }
-article .entry ul ul,
-article .entry ol ul,
-article .entry dl ul,
-article .entry ul ol,
-article .entry ol ol,
-article .entry dl ol,
-article .entry ul dl,
-article .entry ol dl,
-article .entry dl dl {
+article ul ul,
+article ol ul,
+article dl ul,
+article ul ol,
+article ol ol,
+article dl ol,
+article ul dl,
+article ol dl,
+article dl dl {
   margin-top: 0;
 }
-article .entry h1,
-article .entry h2 {
+article h1,
+article h2 {
   font-weight: normal;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   margin-top: 20px;
 }
-article .entry h3,
-article .entry h4,
-article .entry h5,
-article .entry h6 {
+article h3,
+article h4,
+article h5,
+article h6 {
   font-weight: normal;
 }
-article .entry img,
-article .entry video {
+article img,
+article video {
   max-width: 100%;
   height: auto;
   border: none;
 }
-article .entry iframe {
+article iframe {
   border: none;
 }
-article .entry .caption {
+article .caption {
   display: block;
   margin-top: 5px;
   color: #777;
@@ -441,7 +442,7 @@ article .entry .caption {
   font-size: 0.9em;
   padding-left: 25px;
 }
-article .entry .caption:before {
+article .caption:before {
   content: '\f040';
   position: absolute;
   font: 1.3em FontAwesome;
@@ -449,16 +450,16 @@ article .entry .caption:before {
   left: 0;
   top: 3px;
 }
-article .entry .video-container {
+article .video-container {
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
 }
-article .entry .video-container iframe,
-article .entry .video-container object,
-article .entry .video-container embed {
+article .video-container iframe,
+article .video-container object,
+article .video-container embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -466,7 +467,7 @@ article .entry .video-container embed {
   height: 100%;
   margin-top: 0;
 }
-article .entry .pullquote {
+article .pullquote {
   float: right;
   border: none;
   padding: 0;
@@ -546,7 +547,7 @@ article footer .addthis iframe {
   padding: 5px 10px;
   background: #ddd;
   color: #777;
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
   margin-bottom: 50px;
 }
@@ -645,7 +646,7 @@ article footer .addthis iframe {
 }
 #sidebar .search input {
   background: #fff;
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
@@ -693,7 +694,7 @@ article footer .addthis iframe {
 #footer {
   color: #777;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.9em/1.6 "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
