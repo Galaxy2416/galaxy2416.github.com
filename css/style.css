@@ -102,11 +102,15 @@ a:hover {
   }
 }
 #header {
-  text-shadow: 0 0 15px #ff8000;
-  margin: 50px auto;
+  text-shadow: 0 0 20px #ff0;
+  padding: 10px 55px 20px 55px;
+  border: 20px solid;
+  margin: 0px 0px 20px 0px;
+  background-color: #ea6753;
+  border-color: #ea6753;
 }
 #header a {
-  color: #750075;
+  color: #fff;
 }
 #header a:hover {
   color: #258fb8;
@@ -694,7 +698,7 @@ article footer .addthis iframe {
 #footer {
   color: #777;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 1.2em/1.6 "Eunjin", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
 }
 .entry .gist {
