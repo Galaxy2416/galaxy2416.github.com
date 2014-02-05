@@ -12,7 +12,7 @@
 body {
   background-image: url("img/danse7.jpg");
   color: #444;
-  font-family: "Comic Sans MS", "Comic Sans MS", Arial, sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans MS", "Comic Sans MS", "Comic Sans MS";
   font-size: 14px;
   text-shadow: 0 0 1px transparent;
 }
