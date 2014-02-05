@@ -1,26 +1,256 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Galaxy2416's blog]]></title>
-  <subtitle><![CDATA[o(∩∩)o活在一次元～语不惊人死不休]]></subtitle>
-  <link href="/atom.xml" rel="self"/>
-  <link href="galaxy2416.github.io/"/>
-  <updated>2014-02-05T16:07:25.719Z</updated>
-  <id>galaxy2416.github.io/</id>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
   
-  <author>
-    <name><![CDATA[galaxy2416]]></name>
-    <email><![CDATA[gin@mail.dlut.edu.cn]]></email>
-  </author>
+  <title>51之linux : (一) 在linux环境下搭建51开发环境 | Galaxy2416&#39;s blog</title>
+  <meta name="author" content="galaxy2416">
   
-  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+    <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   
-  <entry>
-    <title><![CDATA[51之linux : (一) 在linux环境下搭建51开发环境]]></title>
-    <link href="galaxy2416.github.io/2014/02/05/ubuntu-51-fir/"/>
-    <id>galaxy2416.github.io/2014/02/05/ubuntu-51-fir/</id>
-    <published>2014-02-05T13:56:31.000Z</published>
-    <updated>2014-02-05T15:51:40.000Z</updated>
-    <content type="html"><![CDATA[<h3 id="-ubuntu-at89s52-s51-sdcc-usbasp-">此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。</h3>
+  
+  <meta name="description" content="galaxy2416 blog">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="51之linux : (一) 在linux环境下搭建51开发环境"/>
+  <meta property="og:site_name" content="Galaxy2416&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Galaxy2416&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1>
+  <a href="https://github.com/galaxy2416" target="_blank">
+	<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub">
+	</a><a href="/">Galaxy2416&#39;s blog</a>
+  	  <a href="/"><img src="/img/pikadrink.jpg" style = "top:0;width:100px;height:65px"></h1>
+  <h2><a href="/">o(∩∩)o活在一次元～语不惊人死不休</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>摇啊摇</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-02-05T13:56:31.000Z"><a href="/2014/02/05/ubuntu-51-fir/">2月 5 2014</a></time>
+      
+      
+  
+    <h1 class="title">51之linux : (一) 在linux环境下搭建51开发环境</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="-ubuntu-at89s52-s51-sdcc-usbasp-">此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。</h3>
 <p>系列说明：LINUX下程序开发具有一定的成熟性，但是对于跨平台的包括部分的MCU，FPGA还并未被广泛使用,本系列将针对51系列的MCU.跟大家分享下。</p>
 <p>环境如下：</p>
 <ul>
@@ -605,53 +835,164 @@ program :
 	rm -f *.rst
 </pre></td></tr></table></figure>
 
-]]></content>
-    <summary type="html"><![CDATA[<h3 id="-ubuntu-at89s52-s51-sdcc-usbasp-">此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。</h3>
-<p>系列说明：LINUX下程序开发具有一定的成熟性，但是对于跨平台的包括部分的MCU，FPGA还并未被广泛使用,本系列将针对51系列的MCU.跟大家分享下。</p>
-<p>环境如下：</p>
-<ul>
-<li>OS系统 : ubuntu 12.04</li>
-<li>编译器 : sdcc</li>
-<li>烧录软件 : avrdude</li>
-<li>烧录器件 : usbasp
-]]></summary>
-    
-      <category term="51单片机" scheme="galaxy2416.github.io/categories/51%E5%8D%95%E7%89%87%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Say Hi]]></title>
-    <link href="galaxy2416.github.io/2014/01/30/say-hi/"/>
-    <id>galaxy2416.github.io/2014/01/30/say-hi/</id>
-    <published>2014-01-29T16:56:34.000Z</published>
-    <updated>2014-01-29T18:30:59.000Z</updated>
-    <content type="html"><![CDATA[<h2 id="maxwell-s-equations-in-differential-form">Maxwell&#39;s Equations in differential form</h2>
-<p> <a id="more"></a>
-$$ \nabla\cdot{\bf D} = \rho $$
-$$ \nabla\cdot{\bf B} = 0 $$
-$$ \nabla\times{\bf E} = -\frac{\partial{\bf B}}{\partial{\bf t}}$$
-$$ \nabla\times{\bf H} = {\bf J} + \frac{\partial{\bf D}}{\partial{\bf t}} $$
-<code>code:-&gt;</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre>$$ \nabla\cdot{\bf D} = \rho $$
-$$ \nabla\cdot{\bf B} = <span class="number">0</span> $$
-$$ \nabla\times{\bf E} = -\frac{\partial{\bf B}}{\partial{\bf t}}$$
-$$ \nabla\times{\bf H} = {\bf J} + \frac{\partial{\bf D}}{\partial{\bf t}} $$
-</pre></td></tr></table></figure>
 
-<p><img src="/img/pikadrink.jpg" alt="pika~"></p>
-]]></content>
-    <summary type="html"><![CDATA[<h2 id="maxwell-s-equations-in-differential-form">Maxwell&#39;s Equations in differential form</h2>
-<p> ]]></summary>
-    
-      <category term="第一篇文章" scheme="galaxy2416.github.io/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
-    
-      <category term="生活" scheme="galaxy2416.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
+      
+    </div>
+    <footer>
+      
+        
   
-</feed>
+  <div class="categories">
+    <a href="/categories/51单片机/">51单片机</a>
+  </div>
+
+        
+        <!-- 
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+ -->
+       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"galaxy2416"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+</section>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:galaxy2416.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3> 
+  <ul class="entry">
+  
+    <li><a href="/categories/51单片机/">51单片机</a><small>1</small></li>
+  
+    <li><a href="/categories/生活/">生活</a><small>1</small></li>
+  
+  </ul>
+</div>
+<div id="btn1">显示</div>
+
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/第一篇文章/">第一篇文章</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
+<li><a href="http://Sherlockyu.github.io/" title="Zippera's Blog">Sherlockyu</a></li>
+</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+   I am Galaxy ~ I am a lazzy man who is favourite of <br> comic , history , hardware and math. Be happy~~(*^__^*)……<br> 
+  &copy; 2014 galaxy2416
+  
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+</html>
