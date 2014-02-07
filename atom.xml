@@ -4,7 +4,7 @@
   <subtitle><![CDATA[o(∩∩)o活在一次元～语不惊人死不休]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="galaxy2416.github.io/"/>
-  <updated>2014-02-07T04:19:08.025Z</updated>
+  <updated>2014-02-07T04:22:40.220Z</updated>
   <id>galaxy2416.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="galaxy2416.github.io/2014/02/07/linux-avr-2/"/>
     <id>galaxy2416.github.io/2014/02/07/linux-avr-2/</id>
     <published>2014-02-07T03:27:57.000Z</published>
-    <updated>2014-02-07T04:17:57.000Z</updated>
+    <updated>2014-02-07T04:22:31.000Z</updated>
     <content type="html"><![CDATA[<h3 id="-ubuntu-atmeg16-avr-gcc-usbasp-dragon_jtag-">此篇以Ubuntu下的atmeg16，avr-gcc + usbasp (dragon_jtag)来进行说明。</h3>
 <p><strong>由于文章迁移手头没有avr一部分图片用的以前的，看颜色也能看出来，会在后期改掉的，但效果是ok的</strong></p>
 <h4 id="-avrdude-">简述了下avrdude的使用和熔丝位的基本情况。</h4>
