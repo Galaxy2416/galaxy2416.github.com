@@ -751,7 +751,7 @@ figure.highlight {
   padding: 7px 15px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  text-shadow: 0 0 1px #fff;
+  text-shadow: 0 0 0px #fff;
   line-height: 1.6;
   overflow: auto;
   position: relative;
