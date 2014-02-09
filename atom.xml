@@ -4,7 +4,7 @@
   <subtitle><![CDATA[o(∩∩)o活在一次元～语不惊人死不休]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="galaxy2416.github.io/"/>
-  <updated>2014-02-07T15:02:24.726Z</updated>
+  <updated>2014-02-09T14:09:58.723Z</updated>
   <id>galaxy2416.github.io/</id>
   
   <author>
@@ -2247,7 +2247,7 @@ program :
     <link href="galaxy2416.github.io/2014/01/30/say-hi/"/>
     <id>galaxy2416.github.io/2014/01/30/say-hi/</id>
     <published>2014-01-29T16:56:34.000Z</published>
-    <updated>2014-01-29T18:30:59.000Z</updated>
+    <updated>2014-02-07T15:13:40.000Z</updated>
     <content type="html"><![CDATA[<h2 id="maxwell-s-equations-in-differential-form">Maxwell&#39;s Equations in differential form</h2>
 <p> <a id="more"></a>
 $$ \nabla\cdot{\bf D} = \rho $$
@@ -2272,7 +2272,7 @@ $$ \nabla\times{\bf H} = {\bf J} + \frac{\partial{\bf D}}{\partial{\bf t}} $$
     
       <category term="第一篇文章" scheme="galaxy2416.github.io/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
     
-      <category term="生活" scheme="galaxy2416.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="math" scheme="galaxy2416.github.io/categories/math/"/>
     
   </entry>
   

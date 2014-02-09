@@ -387,7 +387,7 @@ article padding 05px {
   border-radius: 3px;
 }
 article pre {
-  background: #eee;
+  background: #2d2d2d;
   border: 1px solid #ddd;
   margin-top: 15px;
   overflow: auto;
@@ -745,13 +745,13 @@ article footer .addthis iframe {
   color: #258fb8;
 }
 figure.highlight {
-  background: #eee;
+  background: #2d2d2d;
   border: 1px solid #ddd;
   margin-top: 15px;
   padding: 7px 15px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  text-shadow: 0 0 1px #fff;
+  text-shadow: 0 0 0px #fff;
   line-height: 1.6;
   overflow: auto;
   position: relative;
