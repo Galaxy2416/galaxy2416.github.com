@@ -4,7 +4,7 @@
   <subtitle><![CDATA[o(∩∩)o活在一次元～语不惊人死不休]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="galaxy2416.github.io/"/>
-  <updated>2014-02-10T12:54:22.491Z</updated>
+  <updated>2014-02-10T12:59:25.793Z</updated>
   <id>galaxy2416.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="galaxy2416.github.io/2014/02/10/hexo_codecolor/"/>
     <id>galaxy2416.github.io/2014/02/10/hexo_codecolor/</id>
     <published>2014-02-10T12:16:46.000Z</published>
-    <updated>2014-02-10T12:52:15.000Z</updated>
+    <updated>2014-02-10T12:58:58.000Z</updated>
     <content type="html"><![CDATA[<p>hexo的代码块的浅色背景并不是受到很多人的喜欢，这个更改也很简单。</p>
 <p>首先要更改<code>/theme/light/css/_partial/article.styl</code>中</p>
 <p><a id="more"></a>
@@ -45,6 +45,7 @@
 <p><strong>建议这两个采用统一的颜色，前者是代码下面的背景，后者是区域剩下的背景。</strong></p>
 <p>同文件下的.gutter下面的参数是调整左边的代码行数条，如果不喜欢行数和代码中间的白色分割线，那么把.gutter下的<code>border-right</code>和其下面.code的<code>border-left</code>宽度设为0或者颜色调成你所选用的背景色。那么就会有如下效果。当然也可以设成你喜欢的颜色。</p>
 <p><img src="/img/hexo/codecolor1.png" alt=""></p>
+<p>之后呢为了代码在这个背景下不会有模糊感，要删除掉shadow。注释掉或者删除掉 <strong>figure.highlight</strong> 下的 <code>text-shadow ...</code> 就可以了。</p>
 <p><em>GOOD LUCK</em></p>
 ]]></content>
     <summary type="html"><![CDATA[<p>hexo的代码块的浅色背景并不是受到很多人的喜欢，这个更改也很简单。</p>
