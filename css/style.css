@@ -776,7 +776,8 @@ figure.highlight table {
   border-spacing: 0;
 }
 figure.highlight .gutter {
-  color: #777;
+  color: #ff0;
+/* color-meta */
   padding-right: 15px;
   border-right: 1px solid #ddd;
   text-align: right;
