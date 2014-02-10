@@ -751,7 +751,7 @@ figure.highlight {
   padding: 7px 15px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  text-shadow: 0 0 0 #fff;
+/*text-shadow 0 0 0 #fff */
   line-height: 1.6;
   overflow: auto;
   position: relative;
@@ -784,7 +784,7 @@ figure.highlight .gutter {
 figure.highlight .code {
   padding-left: 15px;
   border-left: 1px solid #fff;
-  color: #ddd;
+  color: #eee;
 }
 pre .comment,
 pre .template_comment,
