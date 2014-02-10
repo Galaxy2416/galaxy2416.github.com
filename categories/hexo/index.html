@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Galaxy2416&#39;s blog</title>
+  <title>hexo | Galaxy2416&#39;s blog</title>
   <meta name="author" content="galaxy2416">
   
     <!-- mathjax config similar to math.stackexchange -->
@@ -234,180 +234,25 @@
 <div class="clearfix"></div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="page">
-  
-  <div class="post-content">
-    <header>
-      
-      
-  
-    <h1 class="title"></h1>
-  
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title category">hexo</h2>
 
-    </header>
-    <div class="entry">
-      
-        <h1 id="about-me">About me</h1>
-<p><img src="/img/pikalogo2.jpg" alt=""></p>
-<embed src="http://www.xiami.com/widget/0_377039/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
 
-<p>天性懒惰，乐天知命，好逸勿劳，现踩点于中国大连。喜好动漫，篮球，历史文学，wireless，极度讨厌照相（人艰不拆）。三秒钟热度无敌，贪吃从无底线～梦想是<strong>长生不老</strong>。</p>
-<p><em>Connect me</em></p>
-<ul>
-<li>email : gin@mail.dlut.edu.cn</li>
-<li>QQ    : 346940792</li>
-</ul>
-<style>
-canvas{position:absolute;top:140px;left:75px;}
-</style>
-
-<canvas id="canvas" width="200" height="200"></canvas>
-<canvas id="p_canvas" width="200" height="200"></canvas>
-
-<script type="text/javascript">
-//获取绘图对象
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d'); 
-
-var p_canvas = document.getElementById('p_canvas');
-var p_context = p_canvas.getContext('2d');
-
-var height=200,width=200;
-//画大圆 
-context.beginPath();
-context.strokeStyle="#009999";
-context.arc(width/2,height/2,width/2-1,0,Math.PI*2,true);
-context.stroke();
-context.closePath();
-//画中间点
-context.beginPath();
-context.fillStyle="#000";
-context.arc(width/2,height/2,3,0,Math.PI*2,true);
-context.fill();
-context.closePath();
-
-//画小刻度
-var angle = 0,radius = width/2 - 4; 
-for(var i=0;i<60;i++){
-context.beginPath();
-context.strokeStyle="#000";
-//确认刻度的起始点
-var x = width/2 + radius*Math.cos(angle),y = height/2 + radius*Math.sin(angle); 
-context.moveTo(x,y);
-//这里是用来将刻度的另一点指向中心点，并给予正确的角度
-//PI是180度，正确的角度就是 angle+180度，正好相反方向
-var temp_angle = Math.PI +angle; 
-context.lineTo(x +3*Math.cos(temp_angle),y+3*Math.sin(temp_angle));
-context.stroke();
-context.closePath();
-angle+=6/180*Math.PI;
-}
-//大刻度
-angle = 0,radius = width/2 - 4; 
-context.textBaseline = 'middle';
-context.textAlign = 'center';
-context.lineWidth = 2;
-for(var i=0;i<12;i++){
-var num = i+3>12? i+3-12:i+3 ; 
-context.beginPath();
-context.strokeStyle="#FFD700";
-var x = width/2 + radius*Math.cos(angle),y = height/2 + radius*Math.sin(angle); 
-context.moveTo(x,y);
-var temp_angle = Math.PI +angle; 
-context.lineTo(x +8*Math.cos(temp_angle),y+8*Math.sin(temp_angle));
-context.stroke();
-context.closePath();
-//大刻度 文字
-context.fillText(num,x+16*Math.cos(temp_angle),y+16*Math.sin(temp_angle));
-angle+=30/180*Math.PI;
-}
-
-function Pointer(){
-var p_type = [['#000',70,1],['#ccc',60,2],['red',50,3]];
-function drwePointer(type,angle){
-type = p_type[type];
-angle = angle*Math.PI*2 - 90/180*Math.PI; 
-var length= type[1];
-p_context.beginPath();
-p_context.lineWidth = type[2];
-p_context.strokeStyle = type[0];
-p_context.moveTo(width/2,height/2); 
-p_context.lineTo(width/2 + length*Math.cos(angle),height/2 + length*Math.sin(angle)); 
-p_context.stroke();
-p_context.closePath();
-
-}
-setInterval(function (){
-p_context.clearRect(0,0,height,width);
-var time = new Date();
-var h = time.getHours();
-var m = time.getMinutes();
-var s = time.getSeconds(); 
-h = h>12?h-12:h;
-h = h+m/60; 
-h=h/12;
-m=m/60;
-s=s/60;
-drwePointer(0,s);
-drwePointer(1,m);
-drwePointer(2,h); 
-},500);
-}
-var p = new Pointer();
-</script>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-        <!-- 
-  <div class="addthis addthis_toolbox addthis_default_style">
+  <div class="archive">
     
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2014-02-10T12:16:46.000Z"><a href="/2014/02/10/hexo_codecolor/">2月 10 2014</a></time>
+            
+              <h1 class="title"><a href="/2014/02/10/hexo_codecolor/">hexo优化之代码块的颜色与背景</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
   </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
- -->
-       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"galaxy2416"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
-</section>
-
-
-
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
