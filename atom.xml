@@ -4,7 +4,7 @@
   <subtitle><![CDATA[o(∩∩)o活在一次元～语不惊人死不休]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="galaxy2416.github.io/"/>
-  <updated>2015-07-14T16:58:54.460Z</updated>
+  <updated>2015-07-14T17:09:17.583Z</updated>
   <id>galaxy2416.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="galaxy2416.github.io/2015/07/15/vimrc/"/>
     <id>galaxy2416.github.io/2015/07/15/vimrc/</id>
     <published>2015-07-14T16:47:03.000Z</published>
-    <updated>2015-07-14T16:58:48.000Z</updated>
+    <updated>2015-07-14T17:04:23.000Z</updated>
     <content type="html"><![CDATA[<h2 id="vim-">vim配置文件</h2>
 <h4 id="-">搜索路径</h4>
 <p>vim的配置文件搜索路径从Local到Global的搜索顺序为：</p>
@@ -33,12 +33,10 @@
 <ul>
 <li><code>~/.vim/gvimrc</code> -&gt; Local     </li>
 <li><code>~/.gvimrc</code> -&gt; Local</li>
-<li><code>/etc/vim/gvimrc</code> -&gt; Global</li>
-</ul>
-<h4 id="-">配置内容</h4>
-<p>以下为个人文件的内容， 作为记录</p>
-<p><center><strong>vimrc</strong></center></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<li><code>/etc/vim/gvimrc</code> -&gt; Global
+<a id="more"></a><h4 id="-">配置内容</h4>
+以下为个人文件的内容， 作为记录
+<center><strong>vimrc</strong></center><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -1666,6 +1664,8 @@ nnoremap &lt;silent&gt; &lt;Leader&gt;fuz :call fuf#givencmd#launch('', 0, 'comm
 <span class="string">" }</span></span>
 </pre></td></tr></table></figure>
 
+</li>
+</ul>
 <p><center><em>gvimrc</em></center></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
@@ -1728,7 +1728,21 @@ map &lt;silent&gt; &lt;F2&gt; :<span class="flow">if</span> &guioptions =~# 'T' 
 </pre></td></tr></table></figure>
 
 ]]></content>
-    
+    <summary type="html"><![CDATA[<h2 id="vim-">vim配置文件</h2>
+<h4 id="-">搜索路径</h4>
+<p>vim的配置文件搜索路径从Local到Global的搜索顺序为：</p>
+<ul>
+<li><code>~/.vim/vimrc</code> -&gt; Local     </li>
+<li><code>~/.vimrc</code> -&gt; Local</li>
+<li><code>/etc/vim/vimrc</code> -&gt; Global</li>
+</ul>
+<h4 id="gvim-vim">GVIM于VIM</h4>
+<p>Gvim会继承vim的配置文件，同时有.gvimrc的单独配置文件</p>
+<ul>
+<li><code>~/.vim/gvimrc</code> -&gt; Local     </li>
+<li><code>~/.gvimrc</code> -&gt; Local</li>
+<li><code>/etc/vim/gvimrc</code> -&gt; Global
+]]></summary>
     
       <category term="vim" scheme="galaxy2416.github.io/categories/vim/"/>
     
