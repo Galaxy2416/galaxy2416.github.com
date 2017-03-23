@@ -1,3 +1,6 @@
 [submodule "themes/light"]
 	path = themes/light
 	url = https://github.com/hexojs/hexo-theme-light.git
+[submodule "themes/landscape"]
+	path = themes/landscape
+	url = https://github.com/hexojs/hexo-theme-landscape.git
