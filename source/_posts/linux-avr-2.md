@@ -3,11 +3,11 @@ date: 2014-02-07 11:27:57
 tags:
 categories: avr系列
 ---
-###此篇以Ubuntu下的atmeg16，avr-gcc + usbasp (dragon_jtag)来进行说明。
+### 此篇以Ubuntu下的atmeg16，avr-gcc + usbasp (dragon_jtag)来进行说明。
 
 **由于文章迁移手头没有avr一部分图片用的以前的，看颜色也能看出来，会在后期改掉的，但效果是ok的**
 
-####简述了下avrdude的使用和熔丝位的基本情况。
+#### 简述了下avrdude的使用和熔丝位的基本情况。
 
 <!--more-->
 环境如下：

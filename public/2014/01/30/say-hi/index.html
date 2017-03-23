@@ -1,447 +1,482 @@
-<!DOCTYPE HTML>
-<html>
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   
-  <title>Say Hi | Galaxy2416&#39;s blog</title>
-  <meta name="author" content="galaxy2416">
-  
-    <!-- mathjax config similar to math.stackexchange -->
+    <title>Say Hi | IcePie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="galaxy2416">
+    
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
+    
+    <meta name="description" content="##Maxwell’s Equations in differential form">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Say Hi">
+<meta property="og:url" content="galaxy2416.github.io/2014/01/30/say-hi/index.html">
+<meta property="og:site_name" content="IcePie's blog">
+<meta property="og:description" content="##Maxwell’s Equations in differential form">
+<meta property="og:image" content="galaxy2416.github.io/img/pikadrink.jpg">
+<meta property="og:updated_time" content="2017-03-23T15:25:50.505Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Say Hi">
+<meta name="twitter:description" content="##Maxwell’s Equations in differential form">
+<meta name="twitter:image" content="galaxy2416.github.io/img/pikadrink.jpg">
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-  
-  
-  <meta name="description" content="galaxy2416 blog">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="Say Hi"/>
-  <meta property="og:site_name" content="Galaxy2416&#39;s blog"/>
-
-  
-    <meta property="og:image" content="undefined"/>
-  
-
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Galaxy2416&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
+    
+    <link rel="alternative" href="/atom.xml" title="IcePie&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1>
-  <a href="https://github.com/galaxy2416" target="_blank">
-	<img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub">
-	</a><a href="/">Galaxy2416&#39;s blog</a>
-  	  <a href="/"><img src="/img/pikadrink.jpg" style = "top:0;width:100px;height:65px"></h1>
-  <h2><a href="/">o(∩∩)o活在一次元～语不惊人死不休</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-      <li><a href="/about">About</a></li>
-    
-	<li> <a href="/atom.xml">RSS</a> </li>
-	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>摇啊摇</a> </li>
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div>
-</header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
+  <body>
     <header>
       
-        <div class="icon"></div>
-        <time datetime="2014-01-29T16:56:34.000Z"><a href="/2014/01/30/say-hi/">1月 30 2014</a></time>
-      
-      
-  
-    <h1 class="title">Say Hi</h1>
-  
-
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/planets/planet_univearse_telestial_space_pluto.png" alt="IcePie&#39;s blog" title="IcePie&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="IcePie&#39;s blog">IcePie&#39;s blog</a></h1>
+				<h2 class="blog-motto">语不惊人死不休</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:galaxy2416.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
     </header>
-    <div class="entry">
-      
-        <h2 id="maxwell-s-equations-in-differential-form">Maxwell&#39;s Equations in differential form</h2>
-<p> <a id="more"></a>
-$$ \nabla\cdot{\bf D} = \rho $$
-$$ \nabla\cdot{\bf B} = 0 $$
-$$ \nabla\times{\bf E} = -\frac{\partial{\bf B}}{\partial{\bf t}}$$
-$$ \nabla\times{\bf H} = {\bf J} + \frac{\partial{\bf D}}{\partial{\bf t}} $$
-<code>code:-&gt;</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-</pre></td><td class="code"><pre>$$ \nabla\cdot{\bf D} = \rho $$
-$$ \nabla\cdot{\bf B} = <span class="number">0</span> $$
-$$ \nabla\times{\bf E} = -\frac{\partial{\bf B}}{\partial{\bf t}}$$
-$$ \nabla\times{\bf H} = {\bf J} + \frac{\partial{\bf D}}{\partial{\bf t}} $$
-</pre></td></tr></table></figure>
-
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/01/30/say-hi/" title="Say Hi" itemprop="url">Say Hi</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="galaxy2416" target="_blank" itemprop="author">galaxy2416</a>
+		
+  <p class="article-time">
+    <time datetime="2014-01-29T16:56:34.000Z" itemprop="datePublished"> 发表于 2014-01-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>##Maxwell’s Equations in differential form<br> <a id="more"></a><br>$$ \nabla\cdot{\bf D} = \rho $$<br>$$ \nabla\cdot{\bf B} = 0 $$<br>$$ \nabla\times{\bf E} = -\frac{\partial{\bf B}}{\partial{\bf t}}$$<br>$$ \nabla\times{\bf H} = {\bf J} + \frac{\partial{\bf D}}{\partial{\bf t}} $$<br><code>code:-&gt;</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$$ \nabla\cdot&#123;\bf D&#125; = \rho $$</div><div class="line">$$ \nabla\cdot&#123;\bf B&#125; = <span class="number">0</span> $$</div><div class="line">$$ \nabla\times&#123;\bf E&#125; = -\frac&#123;\partial&#123;\bf B&#125;&#125;&#123;\partial&#123;\bf t&#125;&#125;$$</div><div class="line">$$ \nabla\times&#123;\bf H&#125; = &#123;\bf J&#125; + \frac&#123;\partial&#123;\bf D&#125;&#125;&#123;\partial&#123;\bf t&#125;&#125; $$</div></pre></td></tr></table></figure></p>
 <p><img src="/img/pikadrink.jpg" alt="pika~"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-      
-    </div>
-    <footer>
-      
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/math/">math</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/第一篇文章/">第一篇文章</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="galaxy2416.github.io/2014/01/30/say-hi/" data-title="Say Hi | IcePie&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/02/05/linux-51-1/" title="51之linux :(一) 在linux环境下搭建51开发环境">
+  <strong>上一篇：</strong><br/>
+  <span>
+  51之linux :(一) 在linux环境下搭建51开发环境</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="galaxy2416" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/51单片机/" title="51单片机">51单片机<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/avr系列/" title="avr系列">avr系列<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="math">math<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/vim/" title="vim">vim<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/第一篇文章/" title="第一篇文章">第一篇文章<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
         
-  
-  <div class="categories">
-    <a href="/categories/math/">math</a>
-  </div>
-
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
         
-  
-  <div class="tags">
-    <a href="/tags/第一篇文章/">第一篇文章</a>
-  </div>
-
-        <!-- 
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
- -->
-       <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"galaxy2416"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
-</section>
-
-
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:galaxy2416.github.io">
-  </form>
+    </ul>
 </div>
 
   
-<div class="widget tag">
-  <h3 class="title">分类</h3> 
-  <ul class="entry">
-  
-    <li><a href="/categories/51单片机/">51单片机</a><small>1</small></li>
-  
-    <li><a href="/categories/avr系列/">avr系列</a><small>2</small></li>
-  
-    <li><a href="/categories/hexo/">hexo</a><small>1</small></li>
-  
-    <li><a href="/categories/math/">math</a><small>1</small></li>
-  
-    <li><a href="/categories/vim/">vim</a><small>2</small></li>
-  
-  </ul>
-</div>
-<div id="btn1">显示</div>
 
 
-
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/第一篇文章/">第一篇文章</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  <div class="widget tag">
-<h3 class="title">友情链接</h3>
-<ul class="entry">
-<li><a href="http://zipperary.com/" title="Zippera's Blog">Zippera</a></li>
-<li><a href="http://Sherlockyu.github.io/" title="Zippera's Blog">Sherlockyu</a></li>
-</ul>
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-   I am Galaxy2416 ~ I am a lazzy man who is favourite of <br> comic , history , hardware and math. Be happy~~(*^__^*)……<br> 
-  &copy; 2015 galaxy2416
-  
 </div>
-<div class="clearfix"></div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m IcePie. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/galaxy2416" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:gin@mail.elut.edu.cn" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="galaxy2416">galaxy2416</a>
+		
+		
+		</p>
+</div>
 </footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
     }
   });
+});
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+
+
+
+
+
 
 
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
 </script>
 
-<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
-<a title="返回顶部"><img src="/imgs/scrollup.png"/></a>
-</div>
 
-<script src="/js/totop.js"></script>
 
-</body>
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

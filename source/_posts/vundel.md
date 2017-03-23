@@ -3,7 +3,7 @@ date: 2015-07-14 23:00:53
 tags:
 categories: vim
 ---
-###vim系列之插件vundel
+### vim系列之插件vundel
 
 系列说明：如果vim帮助你很多，请帮助乌干达的儿童。[ICCF](http://iccf-holland.org/)
 
@@ -16,11 +16,11 @@ Vundle(Vim bundle) 是一个基于git的vim的插件管理器。它会把vim的�
 
 vundel项目在github中[https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
 <!--more-->
-####vundel的安装
+#### vundel的安装
 1. github的官网(或其它地方)下载下来，与一般插件无异，放置于`/.vim/bundle/vundle`
 2. `git clone https://github.com/gmarik/vundle.git  ~/.vim/bundle/vundle`
 
-####vundel的配置
+#### vundel的配置
 ```
 " ---------- The Specification of The Plugs 主要插件详细用法说明 ---------------------
 " :Budlexxxx		 -- [vundle]

@@ -4,21 +4,21 @@ tags:
 categories: vim
 ---
 
-##vim配置文件
+## vim配置文件
 
-####搜索路径
+#### 搜索路径
 vim的配置文件搜索路径从Local到Global的搜索顺序为：
 * `~/.vim/vimrc` -> Local 	
 * `~/.vimrc` -> Local
 * `/etc/vim/vimrc` -> Global
 
-####GVIM于VIM
+#### GVIM于VIM
 Gvim会继承vim的配置文件，同时有.gvimrc的单独配置文件
 * `~/.vim/gvimrc` -> Local 	
 * `~/.gvimrc` -> Local
 * `/etc/vim/gvimrc` -> Global
 <!--more-->
-####配置内容
+#### 配置内容
 以下为个人文件的内容， 作为记录
 <center>**vimrc**</center>
 ```

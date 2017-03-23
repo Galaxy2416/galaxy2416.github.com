@@ -3,7 +3,7 @@ date: 2014-02-06 20:59:49
 tags:
 categories: avr系列
 ---
-###此篇以Ubuntu下的atmeg16，avr-gcc + usbasp的开发环境搭建来进行说明。
+### 此篇以Ubuntu下的atmeg16，avr-gcc + usbasp的开发环境搭建来进行说明。
 
 **由于文章迁移手头没有avr一部分图片用的以前的，看颜色也能看出来，会在后期改掉的，但效果是ok的**
 
@@ -51,7 +51,7 @@ sudo apt-get install avrdude-doc
 
 开始之前需要先写一个main.c的程序
 
-```
+```C
 // avr-gcc application builder : 2011-11-1 
 // Target : M16
 // Crystal: 12.000Mhz

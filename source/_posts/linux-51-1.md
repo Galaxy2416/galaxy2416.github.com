@@ -1,9 +1,9 @@
-title: 51之linux : (一) 在linux环境下搭建51开发环境
+title: 51之linux :(一) 在linux环境下搭建51开发环境
 date: 2014-02-05 21:56:31
 tags:
 categories: 51单片机
 ---
-###此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。
+### 此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。
 
 系列说明：LINUX下程序开发具有一定的成熟性，但是对于跨平台的包括部分的MCU，FPGA还并未被广泛使用,本系列将针对51系列的MCU.跟大家分享下。
 
