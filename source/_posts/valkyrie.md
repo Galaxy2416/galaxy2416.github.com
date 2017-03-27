@@ -1,5 +1,5 @@
 ---
-title: smallCar
+title: Valkyrie
 categories: 仿人机器人
 tags: Valkyrie
 date: 2017-03-26 13:44:35
