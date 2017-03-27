@@ -81,6 +81,129 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/03/26/valkyrie/" title="smallCar" itemprop="url">smallCar</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-26T05:44:35.000Z" itemprop="datePublished"> 发表于 2017-03-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="仿人机器人-之-Valkyrie"><a href="#仿人机器人-之-Valkyrie" class="headerlink" title="仿人机器人 之 Valkyrie"></a>仿人机器人 之 Valkyrie</h1><ul>
+<li>设计公司：美国国家航天局 NASA</li>
+<li>设计组织：<a href="https://www.nasa.gov/centers/johnson/home/index.html" title="JSC" target="_blank" rel="external">Johnson Space Center</a></li>
+<li>官方网站：<a href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/home" target="_blank" rel="external">Valkyrie Wiki Home</a></li>
+<li>原型: Robonaut（Valkyrie 是 R5）<a href="https://youtu.be/grieVTdxsNI" target="_blank" rel="external">R2空间站视频</a></li>
+</ul>
+<h2 id="公司简介"><a href="#公司简介" class="headerlink" title="公司简介"></a>公司简介</h2><p><strong>NASA</strong></p>
+<p><a href="https://en.wikipedia.org/wiki/NASA" title="NASA Wiki" target="_blank" rel="external">https://en.wikipedia.org/wiki/NASA</a></p>
+<p>1958年7月29日，美国总统艾森豪威尔签署了《美国公共法案85-568》，创立了国家航空和太空管理局。</p>
+<h2 id="组织简介"><a href="#组织简介" class="headerlink" title="组织简介"></a>组织简介</h2><p>Johnson Space Center 约翰逊航天中心<br>约翰逊航天中心建于1962年，是训练美宇航员、开发、设计太空梭和太空站的基地。</p>
+<h2 id="机器人简介"><a href="#机器人简介" class="headerlink" title="机器人简介"></a><a href="http://nasa-jsc-robotics.github.io/valkyrie/" target="_blank" rel="external">机器人简介</a></h2><p>The Valkyrie robotic platform was originally designed and built in 2013 to carry out <strong>search and rescue missions</strong> inline with the DARPA Robotics Challenge. After a series of electro-mechanical upgrades and a software partnership with IHMC, the Valkyrie platform is now a core robotic platform in the NASA Space Robotics Challenge.</p>
+<p>The Valkyrie robot measures about 6 feet in height and weighs 290 pounds. Valkyrie is a 32 degree (实际44，算上小臂和手) of freedom (DOF) walking robot featuring <strong>two 6 DOF legs, two 7 DOF arms, a 3 DOF neck, and a 3 DOF waist.</strong> Valkyrie utilizes the <a href="http://carnegierobotics.com/multisense-sl/" target="_blank" rel="external">MultiSense SL</a> in its head, anterior hazard cameras, multiple LORD MicroStrain IMU sensors, and ATI Multi-Axis Force/Torque sensors.</p>
+<p><a href="https://www.nasa.gov/sites/default/files/atoms/files/r5_fact_sheet.pdf" target="_blank" rel="external">简介</a><br><a href="http://sites.utexas.edu/hcrl/files/2016/01/jfr-valkyrie-actuator-control-final.pdf" target="_blank" rel="external">详细</a></p>
+<h3 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h3><ul>
+<li>Weight: 300 pounds </li>
+<li>Computers: 2 x Intel Core i7</li>
+<li>Height: 6 feet 2 inches </li>
+<li>Degrees of Freedom: 44</li>
+<li>Battery Energy: 1.8kWh</li>
+</ul>
+<h3 id="功能以及其他信息"><a href="#功能以及其他信息" class="headerlink" title="功能以及其他信息"></a>功能以及其他信息</h3><ul>
+<li>开发周期 ： 15个月（基于R2）</li>
+</ul>
+<p>从视频，图片和新闻所得到的信息，Valkyrie可以进行较为缓慢的行走，跨越简单的障碍，上下台阶，手部可以抓握并且开关阀门。</p>
+<p><a href="https://youtu.be/IE-YBaYjbqY" target="_blank" rel="external">Video1</a></p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><ol>
+<li><a href="http://spectrum.ieee.org/automaton/robotics/humanoids/new-r5-valkyrie-robots" target="_blank" rel="external">NASA 赠送了3台分别送给爱丁堡大学，MIT和东北大学（美）</a>。</li>
+</ol>
+<h3 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h3><h4 id="板载CPU"><a href="#板载CPU" class="headerlink" title="板载CPU"></a><a href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Onboard-Computers" target="_blank" rel="external">板载CPU</a></h4><ul>
+<li>i7-3615QE @2.3GHz</li>
+<li>16GB DDR3 1600</li>
+<li>240GB SSD</li>
+<li>Congatec BS77 Type2 COM Express Module</li>
+<li>EFK XV1 Carrier Board</li>
+<li>Ubuntu 14.04 Server</li>
+</ul>
+<h4 id="通信总线"><a href="#通信总线" class="headerlink" title="通信总线"></a><a href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Robonet" target="_blank" rel="external">通信总线</a></h4><p>由 NASA自研发的Robonet通信总线。其Master是一块<a href="https://en.wikipedia.org/wiki/PC_Card" target="_blank" rel="external">PCMCIA</a>设计，猜测其采用了FPGA板卡的设计方案，直接接入主机电脑，由其上可以分出8路Robonet总线，应该是并行设计。 JSC并没有公布总线的带宽，吞吐量和实时性。其中猜测比较双线路，一路带宽应在50Mbps以下（比如CAN是1Mbps。<br>而PCMCIA总线分为两类，一类为16位的PCMCIA，另一类为32位的CardBus。<br>PCMCIA的频率为33MHz，位宽16bit，带宽为66MB/S<br>CardBus的频率为33MHz，位宽32bit，带宽133MB/S<br>可见总线带宽理应在 8Mbps - 133Mbps范围，既然采用了PCMCIA应在100Mbps左右。</p>
+<h4 id="头部"><a href="#头部" class="headerlink" title="头部"></a>头部</h4><p>集成了<a href="http://carnegierobotics.com/multisense-sl/" target="_blank" rel="external">MultiSense SL</a> 。波士顿动力的Altlas也采用了同款设备。此设备包含仿人机器人的基本需求，且完美支持ROS。</p>
+<h4 id="传感器"><a href="#传感器" class="headerlink" title="传感器"></a><a href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Sensors" target="_blank" rel="external">传感器</a></h4><ul>
+<li>ATI 传感器 * 2 放置在脚底板</li>
+<li>IMU 传感器 两个于腰部 3DM-GX4-15 by LORD MicroStrain </li>
+<li>MultiSense SL</li>
+</ul>
+<h4 id="电机，减速器以及驱动（关节）"><a href="#电机，减速器以及驱动（关节）" class="headerlink" title="电机，减速器以及驱动（关节）"></a>电机，减速器以及驱动（关节）</h4><p>JSC并没有透露过于详细的信息。<br><a href="https://www.nasa.gov/sites/default/files/atoms/files/r5_fact_sheet.pdf" target="_blank" rel="external">简介</a><br><a href="http://sites.utexas.edu/hcrl/files/2016/01/jfr-valkyrie-actuator-control-final.pdf" target="_blank" rel="external">详细</a></p>
+<ul>
+<li><p>根据参考文档，与常规机器人不同的是，在踝关节和小臂上采用了线性驱动 + 弹性结构的特点。</p>
+</li>
+<li><p>采用了弹簧变位作为力矩传感器，噪声依旧很大（The loadcells are placed closer to the joint output giving them better dynamic sensing performance but suffer from a higher noise floor than the spring deflection sensor due to their analog signal properties.）<br><img src="/img/valkyrie/figure5.jpg" alt=""></p>
+</li>
+</ul>
+<p>因此对关节运动进行了建模，并且引入了Disturbance Observer (DOB)等方法。(The goal of our torque control approach is to make each SEA appear to the multi-joint controller as an<br>ideal torque source, or at least a low-pass filtered torque source. That is, we want to avoid modeling internal<br>actuator dynamics at the multi-joint level, and instead only model the effects of the rigid body system. Prior<br>work in this area has demonstrated that effective decoupling of the fast actuator-level dynamics from the<br>slower multi-body dynamics is indeed possible (Ott et al., 2003). However, in this work torque errors remain<br>large (around 50Nm) and thus do not adequately abstract an actuator as an ideal torque source.)</p>
+<ul>
+<li>将关节力矩控制分离到各个关节，多关节控制可以直接控制其力矩，算法层面应采用的是力矩相关控制。<br><img src="/img/valkyrie/figure2.jpg" alt="力矩分散控制"><br><img src="/img/valkyrie/figure2.jpg" alt="力控制模型"></li>
+</ul>
+<h4 id="电池"><a href="#电池" class="headerlink" title="电池"></a>电池</h4><p>电池可以从背板直接抽取放置。非常方便。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p><a href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Ring-LED-Legend" target="_blank" rel="external">自制的灯板</a>很帅</p>
+<h4 id="亮点的功能"><a href="#亮点的功能" class="headerlink" title="亮点的功能　"></a>亮点的功能　</h4><ol>
+<li><p>A removable battery in its backpack is good for about an hour of activity, and a human can swap in a fresh battery for a spent one in a matter of minutes. Also removable are Valkyrie’s limbs: in just a few more minutes, a damaged arm can be swapped out for a new one, and the left arm can even be swapped with the right arm, since they’re identical in construction.<br>Valkyrie的电池和四肢可以非常容易的拆卸和安装。这种设计意味着快速的维修和方便的调试（需要设计），从产品进化来讲，将会是机器人在前中期的趋势（比如移动电话的前中期也是依赖于各组件的组合）。</p>
+</li>
+<li><p>Our robot is soft. If you brush against it while you’re working, you don’t want to feel this cold, hard metal. You want it to feel natural, like you’re working next to another human being.<br>Valkyrie采用了柔性的保护措施，并且专门成了相关的实验室。这将是机器人与人接触必然要解决的问题。</p>
+</li>
+</ol>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>Valkyrie由于定位于空间站，且计划应用于2030年，所以并未进入市场。 所研究的方向并没有全力集中在行走等腿部行为，抓取，操作设备更具有两点。 其设计成本极其高昂， 机械选材很高端和设计非常精细，电子电器设计大量采购集成商品，软件应用层面现在（3/23/2017）所见并非其主要工作投入，控制层面主要集中在硬件建模上，当然行为方面也有不俗的成果，预计以后会与大学深入合作来扩展这方面。</p>
+<p><img src="/img/valkyrie/val_twisted.png" alt="Valkyrie"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/仿人机器人/">仿人机器人</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Valkyrie/">Valkyrie</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/03/26/smallCar/" title="smallCar" itemprop="url">smallCar</a>
   </h1>
   <p class="article-author">By
@@ -107,7 +230,7 @@
 <li>电池采用了狮子牌7.4V, 1300mah锂电池组，这个只要是5V+的电池(要看稳压)都是可以的只不过我手头刚好有一个这个电池组。</li>
 <li><p>充电可以采用TP405X系列的小充电板，1-2元钱。<br><img src="/img/simpleCar/charge.png" alt="charge"></p>
 </li>
-<li><p><strong>对于想使用WiFi的同学来说，推荐一款[NodeMcu]</strong>(<a href="http://www.nodemcu.com/index_cn.html" target="_blank" rel="external">http://www.nodemcu.com/index_cn.html</a>) ，非常廉价，并且支持lua脚本。</p>
+<li><p><strong>对于想使用WiFi的同学来说，推荐一款</strong><a href="http://www.nodemcu.com/index_cn.html" target="_blank" rel="external">NodeMcu</a> ，非常廉价，并且支持lua脚本。</p>
 </li>
 <li><p>摄像头，自选即可，我采用懒人模式，直接贴了IPHONE的硅胶壳上去，权当把手机当做摄像头来用。至于视频软件，推荐QQ或者Spyke。</p>
 </li>
@@ -666,67 +789,10 @@ hexo math install
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/01/30/say-hi/" title="Say Hi" itemprop="url">Say Hi</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
-		
-  <p class="article-time">
-    <time datetime="2014-01-29T16:56:34.000Z" itemprop="datePublished"> 发表于 2014-01-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Maxwell’s-Equations-in-differential-form"><a href="#Maxwell’s-Equations-in-differential-form" class="headerlink" title="Maxwell’s Equations in differential form"></a>Maxwell’s Equations in differential form</h2>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/01/30/say-hi/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/math/">math</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/第一篇文章/">第一篇文章</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
 
 </div>
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
@@ -774,6 +840,10 @@ hexo math install
 			<li><a href="/categories/vim/" title="vim">vim<sup>2</sup></a></li>
 		  
 		
+		  
+			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>1</sup></a></li>
+		  
+		
 		</ul>
 </div>
 
@@ -789,6 +859,10 @@ hexo math install
 		
 			
 				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Valkyrie/" title="Valkyrie">Valkyrie<sup>1</sup></a></li>
 			
 		
 		</ul>

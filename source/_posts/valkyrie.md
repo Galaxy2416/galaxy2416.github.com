@@ -1,3 +1,11 @@
+---
+title: smallCar
+categories: 仿人机器人
+tags: Valkyrie
+date: 2017-03-26 13:44:35
+---
+
+
 # 仿人机器人 之 Valkyrie #
 
 - 设计公司：美国国家航天局 NASA
@@ -28,7 +36,7 @@ The Valkyrie robot measures about 6 feet in height and weighs 290 pounds. Valkyr
 [简介](https://www.nasa.gov/sites/default/files/atoms/files/r5_fact_sheet.pdf)
 [详细](http://sites.utexas.edu/hcrl/files/2016/01/jfr-valkyrie-actuator-control-final.pdf)
 
-###　基本参数　###
+### 基本参数 ###
 
 - Weight: 300 pounds 
 - Computers: 2 x Intel Core i7

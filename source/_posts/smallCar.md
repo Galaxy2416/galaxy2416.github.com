@@ -30,7 +30,7 @@ categories: simple robots 系列
 - 充电可以采用TP405X系列的小充电板，1-2元钱。
 ![charge][charge]
 
-- **对于想使用WiFi的同学来说，推荐一款[NodeMcu]**(http://www.nodemcu.com/index_cn.html) ，非常廉价，并且支持lua脚本。
+- **对于想使用WiFi的同学来说，推荐一款**[NodeMcu](http://www.nodemcu.com/index_cn.html) ，非常廉价，并且支持lua脚本。
 
 - 摄像头，自选即可，我采用懒人模式，直接贴了IPHONE的硅胶壳上去，权当把手机当做摄像头来用。至于视频软件，推荐QQ或者Spyke。
 
