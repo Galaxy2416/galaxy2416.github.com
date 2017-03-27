@@ -3,7 +3,7 @@ date: 2014-01-30 00:56:34
 tags: [第一篇文章]
 categories: math
 ---
-##Maxwell's Equations in differential form
+## Maxwell's Equations in differential form
  <!-- more -->
 $$ \nabla\cdot{\bf D} = \rho $$
 $$ \nabla\cdot{\bf B} = 0 $$
