@@ -32,7 +32,7 @@ imglogo:
   src: img/planets/planet_univearse_telestial_space_pluto.png        ## `.svg` and `.png` are recommended,please put image into the theme folder `/jacman/source/img`.
 favicon: img/planets/planet_earth_venues_univearse_jupiter.png   ## size:32px*32px,`.ico` is recommended,please put image into the theme folder `/jacman/source/img`.     
 apple_icon: img/planets/planet_earth_venues_univearse_jupiter.png ## size:114px*114px,please put image into the theme folder `/jacman/source/img`.
-author_img: img/pikalog.jpg ## size:220px*220px.display author avatar picture.if don't want to display,please don't set this.
+author_img: img/tangyuan2.png ## size:220px*220px.display author avatar picture.if don't want to display,please don't set this.
 banner_img: #img/banner.jpg ## size:1920px*200px+. Banner Picture
 ### Theme Color 
 theme_color:

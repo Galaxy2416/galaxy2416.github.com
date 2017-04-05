@@ -69,11 +69,11 @@ The Valkyrie robot measures about 6 feet in height and weighs 290 pounds. Valkyr
 
 #### [通信总线](https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Robonet) ####
 
-由 NASA自研发的Robonet通信总线。其Master是一块[PCMCIA](https://en.wikipedia.org/wiki/PC_Card)设计，猜测其采用了FPGA板卡的设计方案，直接接入主机电脑，由其上可以分出8路Robonet总线，应该是并行设计。 JSC并没有公布总线的带宽，吞吐量和实时性。其中猜测比较双线路，一路带宽应在50Mbps以下（比如CAN是1Mbps。
+由 NASA自研发的Robonet通信总线。其Master是一块[PCMCIA](https://en.wikipedia.org/wiki/PC_Card)设计，猜测其采用了FPGA板卡的设计方案，直接接入主机电脑，由其上可以分出8路Robonet总线，为并行-串行设计。 JSC并没有公布总线的带宽，吞吐量和实时性。其中一路带宽应在50Mbps以下（比如CAN是1Mbps。
 而PCMCIA总线分为两类，一类为16位的PCMCIA，另一类为32位的CardBus。
 PCMCIA的频率为33MHz，位宽16bit，带宽为66MB/S
 CardBus的频率为33MHz，位宽32bit，带宽133MB/S
-可见总线带宽理应在 8Mbps - 133Mbps范围，既然采用了PCMCIA应在100Mbps左右。
+可见总线带宽理应在 8Mbps（如果单路是CAN，位1*8） - 133Mbps（PC总线速率）范围，既然采用了PCMCIA应在100Mbps左右。
 
 
 #### 头部 ####
@@ -121,15 +121,15 @@ large (around 50Nm) and thus do not adequately abstract an actuator as an ideal 
 
 [自制的灯板](https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Ring-LED-Legend)很帅
 
-#### 亮点的功能　####
+### 亮点的功能　###
 1.  A removable battery in its backpack is good for about an hour of activity, and a human can swap in a fresh battery for a spent one in a matter of minutes. Also removable are Valkyrie's limbs: in just a few more minutes, a damaged arm can be swapped out for a new one, and the left arm can even be swapped with the right arm, since they're identical in construction.
 Valkyrie的电池和四肢可以非常容易的拆卸和安装。这种设计意味着快速的维修和方便的调试（需要设计），从产品进化来讲，将会是机器人在前中期的趋势（比如移动电话的前中期也是依赖于各组件的组合）。
 
 2. Our robot is soft. If you brush against it while you're working, you don't want to feel this cold, hard metal. You want it to feel natural, like you're working next to another human being. 
 Valkyrie采用了柔性的保护措施，并且专门成了相关的实验室。这将是机器人与人接触必然要解决的问题。
 
-#### 小结 ####
+## 小结 ##
 
-Valkyrie由于定位于空间站，且计划应用于2030年，所以并未进入市场。 所研究的方向并没有全力集中在行走等腿部行为，抓取，操作设备更具有两点。 其设计成本极其高昂， 机械选材很高端和设计非常精细，电子电器设计大量采购集成商品，软件应用层面现在（3/23/2017）所见并非其主要工作投入，控制层面主要集中在硬件建模上，当然行为方面也有不俗的成果，预计以后会与大学深入合作来扩展这方面。
+Valkyrie由于定位于空间站，且计划应用于2030年，所以并未进入市场。 所研究的方向并没有全力集中在行走等腿部行为，抓取，操作设备方面更具有特点。 其设计成本极其高昂， 机械选材很高端和设计非常精细，电子电器设计大量采购集成商品，软件应用层面现在（3/23/2017）所见并非其主要工作投入，控制层面主要集中在硬件建模上，当然行为方面也有不俗的成果，预计以后会与大学深入合作来扩展这方面。
 
 ![Valkyrie](/img/valkyrie/val_twisted.png)
