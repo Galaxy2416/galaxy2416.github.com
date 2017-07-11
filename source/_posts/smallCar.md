@@ -16,7 +16,7 @@ categories: simple robots 系列
 **以下硬件都是可以在淘宝上可以买到的：**
 
 - [Arduino nano](https://www.arduino.cc/en/Main/ArduinoBoardNano) 
-- 小车底板一份。
+- 小车底板一份。(*这个图只是从买底板的淘宝店截取的*)
 ![carboard][carboard]
 - 双自由度舵机云台（注：小车底板和舵机要确定能否安装到一起）。
 ![steer][steer]
@@ -149,7 +149,7 @@ void serialEvent() {
 ```
 **PC机主程序**
 
-PC程序使用Python + [pyhook](https://sourceforge.net/projects/pyhook/) s实现。
+PC程序使用Python + [pyhooks](https://sourceforge.net/projects/pyhook/) 实现。
 
 pyhook是一个基于Python的“钩子”库，主要用于监听当前电脑上鼠标和键盘的事件。这个库依赖于另一个Python库PyWin32，如同名字所显示的，PyWin32只能运行在Windows平台，所以PyHook也只能运行在Windows平台。因此如果要在其他系统平台需要使用其他的键盘监听功能。
 
