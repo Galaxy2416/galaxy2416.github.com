@@ -1,8 +1,8 @@
 ---
-title: Romeo 1
+title: romeo-1
+date: 2017-04-05 23:35:12
 categories: 仿人机器人
 tags: Romeo
-date: 2017-04-05 22:53:22
 ---
 
 # 仿人机器人 之 Romeo - 1 #

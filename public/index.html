@@ -81,14 +81,483 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/04/05/romeo-1/" title="Romeo 1" itemprop="url">Romeo 1</a>
+      <a href="/2017/07/11/arobot2/" title="2016-2017总结，ART-1,2 - 我与我们所做的事情" itemprop="url">2016-2017总结，ART-1,2 - 我与我们所做的事情</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
 		
   <p class="article-time">
-    <time datetime="2017-04-05T14:53:22.000Z" itemprop="datePublished"> 发表于 2017-04-05</time>
+    <time datetime="2017-07-11T02:30:22.000Z" itemprop="datePublished"> 发表于 2017-07-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>不论是好友交流还是求职，常常会有人问我 “少年，你在做什么呢”“请描述你的工作内容”。此时总感觉一两句话总是说的不够透彻，于是就打算对在北京钢铁侠科技这一年的工作做了个总结。</p>
+</blockquote>
+<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>北京钢铁侠科技，鉴于我对这个中二的名字抱有深深的怨念，所以以下简称为公司。从我作为软件工程师加入的时候，原型机ART-0处于刚刚完工的状态，其是仅有下半身的双腿机器人。低速的总线，外置的驱动和控制板，无法独立供电。似乎这个原型机不能满足人们对于仿人机器人的美好构想，但是对于公司而言，它成功的行走似乎给了当时仅仅10人的团队一缕光明（没错，也给了投资者以希望），让一群从来没有在与人类相似大小的仿人机器人上有过经验的工程师对他们的目标有了更多的信心。</p>
+<p>也许正是这份自信，在仅进行腿部稳定性的持续研发和直接实现从双腿发展为全仿人的策略上，公司选择了后者。且不去评论这份选择的正确与否。全仿人的机器人ART-1开始进入设计，其预定的开发时间定为2016年的6月到2017年的3月。而这篇总结文的正文“我与我们所做何物”也正是从此刻开始的。</p>
+<h2 id="1-1-我（们）的目标"><a href="#1-1-我（们）的目标" class="headerlink" title="1.1 我（们）的目标"></a>1.1 我（们）的目标</h2><p>我采用了我的称谓，也就是说此处不代表公司意见。就不说缥缈的愿景和使命，只简单阐述下对于产品和工作的目标。我自诩我们是一个严肃的机器人公司，制作着定义上最狭义的机器人的产品，也就是说我希望我们希望复刻来自远古偃师<sup>[1]</sup>的技艺，去描述一个真正意义上的机器人。让它在为人而设计人生存环境下，可以帮助人实现各种的事物，逐步代替人去完成他们的工作。当然，这是一个长久的目标，对于最初的目标，就是做出一款可以商业销售的仿人机器人，广泛的与学校和科研机构合作，打破互相提防的圈内壁垒，加快这个领域技术的进展。然后就有希望赚大钱，就可以买的起房子，养得起老婆，走上人生巅峰了（此处大误ರ_ರ …）。</p>
+<h2 id="1-2-产品演化和我的工作变化"><a href="#1-2-产品演化和我的工作变化" class="headerlink" title="1.2 产品演化和我的工作变化"></a>1.2 产品演化和我的工作变化</h2><p>如图1.1所示公司的开发进展大概是半年原型 (2016.3月完成)-&gt;第一代全仿人ART-1(2017.01月)-&gt;第二代全仿人ART-2(2017.08月)。</p>
+<center><br><img src="/img/arobot2/f1_1.png" alt="F1.1"><br><br>图1.1 公司发展历程<br></center>
+
+<p>它们的参数简表见表1.1</p>
+<center><br><img src="/img/arobot2/t1_1.png" alt="T1.1"><br><br>表1.1 ART0 vs ART1<br></center>
+
+<p>从这三代的进展来看，我们在机器人的本体上，不断地尝试提高它的活动能力以及基本指标，一些设计的简介会在后续的内容中阐述。在设计目标上也更加向着产品化的方向去发展。我个人的工作也在此过程中产生一些变化。从最初独立的功能算法实现，到平台架构设计和项目设立跟踪以及承担一些产品的工作（实际上我还是要每天码代码的可怜孩子）。对仿人机器人的整个技术体系和行业都有有了不少新的认识（不过还远远不够）。这其中一些一闪而过的想法也最终在各位大神的努力下，成为了现实，比如如图1.2的Robot Block的最初想法的一部分演变成了ART-2中极其重要的ART-COMMUNICATION。</p>
+<center><br><img src="/img/arobot2/f1_2.png" alt="F1.2"><br><br>图1.2 头脑风暴草稿 - 机器人积木<br></center>
+
+<h1 id="2-硬件系统描述"><a href="#2-硬件系统描述" class="headerlink" title="2. 硬件系统描述"></a>2. 硬件系统描述</h1><p>硬件系统的描述将以ART-2为主，会解释一些从0代到1代到2代技术变化的缘由，不过不会有过于详细的技术表达（要保密哦）。<br>先说一下对于ART-2产品上的几个重要的方向：</p>
+<ol>
+<li>模块化</li>
+<li>系统化</li>
+<li>产品化</li>
+</ol>
+<p>硬件结构的方案和设计都是基于这些重点而设计。</p>
+<p>我们将整机分解为以下几个系统来设计。</p>
+<center><br><img src="/img/arobot2/f2_1.png" alt="F2.1"><br><br>图2.1<br>ART-2系统简图<br></center>
+
+<h2 id="2-1-机体机械"><a href="#2-1-机体机械" class="headerlink" title="2.1 机体机械"></a>2.1 机体机械</h2><p>作为一个软件工程师，机械方面我除了把机械图纸做处理后进行仿真，机械设计是赤裸裸的小白，因此就粗略的说下我的理解。仿人机器人的设计，有很多问题需要解决，比如：</p>
+<ol>
+<li>拆卸维护的简易型（模块化）</li>
+<li>整体的轻量化和强度设计（产品化）</li>
+<li>长期在各种不同应用场景下的耐用性。（产品化）</li>
+<li>跟人接触时的柔性。（产品化）<br>……</li>
+</ol>
+<p>我们的结构机械工程师们在初代机型中很快的设计了腿部的可行结构<sup>[2]</sup><sup>[3]</sup>以及初代的关节<sup>[4]</sup>。在几代的进展中，我们有几个重大的变化。首先在模块化上，最新的ART-2设计了五体+躯干+动力源可以简易拆卸的结构，各个关节结构以机电一体化的理念设计，可以自我独立。</p>
+<ul>
+<li>在轻量化上：双腿50kg-&gt;全身50kg-&gt;更高并且&lt;50kg</li>
+<li>自由度上：12DOF -&gt; 26DOF -&gt; 36DOF</li>
+<li>主要执行器上：从有刷-&gt;无刷（矢量控制）-&gt;下一次可能采用的无框式的电机。</li>
+</ul>
+<center><br><img src="/img/arobot2/f2_2.png" alt="F2.2"><br><br>图2.2 ART-2关节分布图<br></center>
+
+<p>单独从技术看，无框式,无刷永磁同步电机必然是仿人机器人产品上的主线（如果没有类似超声波，回声电机等新技术走上主流）。至少在知名的机器人上都采用了这种设计方法，比如NASA的Valkyrie<sup>[5]</sup>，本田的Asimo<sup>[6]</sup>等。（专业的仿生机器人公司Festo的BionicANT则用了超声波电机）。</p>
+<p>要强调一点的是结构方面依旧有非常多需要攻克和创新的地方，比如说Valkyrie在踝关节上采用了线性驱动+弹簧的结构而非主动关节的结构<sup>[7]</sup>。</p>
+<h2 id="2-2-通信系统"><a href="#2-2-通信系统" class="headerlink" title="2.2 通信系统"></a>2.2 通信系统</h2><p>通信系统的定义为通信服务器和通信子网络的集合，对于多关节的机器人来说，要对机器人进行反馈控制，因此这个控制环路要从各种传感器（包括电机上的）上收集信息，进行处理，再反馈给各个关节和传感器进行控制。因此，即使从直觉上也易想到，这个控制的频率自然越高越好。而系统的延迟和实时性也直接决定了控制频率的上限和稳定性。<br>因此在通信系统中，除了必须要保证的抗干扰和稳定。其带宽，实时性，信息交互的频率是非常重要的因素。<br>在初代机器中，采用了CAN总线进行控制，然而CAN总线的带宽被限制在了 1Mbit/s下<sup>[8]</sup>。可以做一个简单的计算，假设：</p>
+<ol>
+<li>每个关节的信息有位置,力矩,速度，每个数据用一个4Byte的32bits数据保存。</li>
+<li>全身共有30个关节。</li>
+<li>一个CAN总线数据帧如图2.3所示，我们假设每个数据帧有32bits的有效数据和30bits的其他数据。</li>
+</ol>
+<center><br><img src="/img/arobot2/f2_3.png" alt="F2.3"><br><br>图2.3 CAN总线帧结构<br></center>
+
+<p>那么1Mbit/s下最大的通信速率为（一个往返）：</p>
+<pre><code>1Mbit/(30*(32+30)bits*3*2) ≈ 90
+</code></pre><p>也就是说，在不计算传感器数据以及冗余需求的情况下，一次通信的极限在100Hz，而在实际系统运行时，达到100Hz的控制环路，基本上是不可行的。</p>
+<p>这种控制频率在仿人机器上是没有未来的。比如知名的DRC比赛中设定控制频率在200Hz的限制，名震天下的Altas的控制频率可以达到至少333Hz，数据每6ms更新一次（新的设计中可能更快）<sup>[9]</sup>。</p>
+<p>正是如此，我们在第二代的通信中，参考了ROS官方的机器人PR2<sup>[10]</sup>，采用了成熟的工业以太网 EtherCAT。EtherCAT的实现就是对常规的以太网协议进行改进，网络性能上达到了一个新的高度。具有：</p>
+<ol>
+<li>卓越的性能</li>
+<li>灵活的拓扑</li>
+<li>简单且耐用</li>
+<li>集成安全</li>
+<li>低成本易实现</li>
+</ol>
+<p>的优点。<sup>[10]</sup></p>
+<p>在采用EtherCAT后，ART-1的整机控制达到稳定的200Hz的控制频率（实测以及实际使用，<em>200Hz的限制不仅在于EtherCAT，多在于系统实时性和计算耗时</em>） 。虽然EtherCAT具有非常多的好处，不过在这里依旧要对各位看官提醒一下，如果采用开源的EtherCAT主站比如IGH等，其长期缺乏维护很难适应新的网卡和系统，因此需要进行大量的改进和适配工作。而为了解决EtherCAT驱动非标准的问题，另一个新的标准化技术IEEE TSN (Time-Sensitive Networking)<sup>[11]</sup>很有可能会让实时以太网的使用有如以太网一般便利（因为是标准）。</p>
+<center><br><img src="/img/arobot2/f2_4.png" alt="F2.4"><br><br>图2.4 ART-1 EtherCAT子节点（左ART-1， 右ART-2）<br></center><br>图2.4中 ART-1上使用的一个控制节点，这个节点包括一个EtherCAT从站以及最多承载16路电机并行控制的FPGA芯片（一个节点控制多个电机）。 由于ART-2采用了矢量控制进行无刷电机控制，以及增加了很多驱动算法，因此不擅长浮点数运算的FPGA便力不从心。 在这种情况下，ART-2的驱动放弃了ART-1的方法，改为一个节点一个驱动的方案，不过在手部上由于空间的限制，手指的五个自由度仍然是1个驱动控制5个电机（但是并非是FPGA）。<br><br>我们参考了一些如图2.5所示类似的方案<sup>[13]</sup>决定使用FPGA（一主多从）加上PCI-E通信的通信方案。这样在FPGA通信和主控系统接口的地方就可以轻松达到吉级别的通信速率（n * Gbps）。而对Valkyrie的Robonet<sup>[14]</sup>和iCub采用的CFW（CAN并行转PCI）<sup>[15]</sup>的自制总线系统方案的学习也给我们定制自己通信系统提供了不少帮助。<br><br><center><br><img src="/img/arobot2/f2_5.png" alt="F2.5"><br><br>图2.5 文献<sup>[13]</sup>中通信系统的设计方案<br></center>
+
+<h2 id="2-3-主控系统框架"><a href="#2-3-主控系统框架" class="headerlink" title="2.3 主控系统框架"></a>2.3 主控系统框架</h2><p>主控制系统上，我们采用了两款Intel i7的CPU（都是四核八线程）分别用作实时性（表现为）系统操作和通用操作系统。系统的连接通过ROS提供的网络集群来实现。</p>
+<p>此处在ART-2上，我们采用COM-Express的标准的核心板模块与自研的底板的结合，便于把通信系统的Server的FPGA与CPU高速总线直接相连（PCI-E）。提供更好的性能。</p>
+<center><br><img src="/img/arobot2/f2_6.png" alt="F2.6"><br><br>图2.6 主控核心板和载板<br></center>
+
+<h2 id="2-4-执行机构和传感器"><a href="#2-4-执行机构和传感器" class="headerlink" title="2.4 执行机构和传感器"></a>2.4 执行机构和传感器</h2><h3 id="2-4-1执行机构-关节"><a href="#2-4-1执行机构-关节" class="headerlink" title="2.4.1执行机构 - 关节"></a>2.4.1执行机构 - 关节</h3><p>我们将关节抽象为任何一个关节点上可以进行位置和力矩控制以及获取相关反馈的黑盒执行器。</p>
+<p>对于关节，整个行业都在模块化和产品化。比如科尔摩根不久前发布的RGM机器人关节模组 ，适用于10Kg以内的负重机器人（臂），可以极大加快机器人成品的研发。而对于我们，独立制作关节组件，最重要的目的，是考虑到仿人机器人大量的关节数目以降低成本，以及在仿人机器人不同关节上采用不同的定制。</p>
+<p>关节是由电机+驱动+减速器+传感器而组成。<br>我们在关节设计上一般关心：</p>
+<ol>
+<li>转速</li>
+<li>输出力矩（瞬间和额定）</li>
+<li>控制功能</li>
+</ol>
+<p>从这些需求综合来看，指向了电机的功率，驱动器，结构设计和控制算法。因此在设计关节的时候我们一般采用三种方法的结合。</p>
+<ol>
+<li>理论计算加上一些冗余</li>
+<li>参考其他的机器人参数</li>
+<li>实测</li>
+</ol>
+<p>对于理论计算，一般由机械结构的同事进行力矩的估算，采用一些经验公式而算得，比如：</p>
+<pre><code>（T堵转 - T额定）* 20% + T额定 = T输出 
+</code></pre><p>而非直接采用电机的堵转力矩。</p>
+<p>除此之外，有许多仿人机器人的制作者已经提供了丰富的实机数据可供参考，比如知名的Asimo<sup>[16]</sup>（关节信息见图示2.7）,ROBOTIS的THOR<sup>[17]</sup>（引用为系列最新版本）改进而来的ESCHER<sup>[18]</sup>。German Aerospace Center (DLR) 设计的TORO<sup>[19]</sup>。 也有更为可爱的公司如Aldebaran Robotics的Romeo项目会开放他们的电机参数<sup>[20]</sup>。</p>
+<center><br><img src="/img/arobot2/f2_7.png" alt="F2.7"><br><br>图2.7 阿西莫机器人的关节信息<br></center>
+
+<p>最后，我们的每一代设计都会基于实测的上一代数据进行分析，比如监控系统会生成2.7类似的记录图示。</p>
+<center><br><img src="/img/arobot2/f2_8.png" alt="F2.8"><br><br>图2.8 来自ART-1的某动作时膝关节电流分析。<br></center>
+
+<p>除常用方法外公司也与生物力学方向的研究者有关接触，也希望能从其中获取灵感和设计数据，不过这方面现在刚刚在推进也非公司的主线，所以还未有什么明显的成果。</p>
+<p>由于电驱动无法提供很强的功率，很多机器人采用了液压驱动或者液压电驱混合的形式。比如波士顿动力的Altlas采用了液压驱动<sup>[21]</sup>，虽然控制更加艰难，但是动力明显更为强劲（Bigdog也是一般）。为了达到如此强劲的性能，Atlas需要480V，15KW的动力源<sup>[22]</sup>。除了Altas也有不少机器人采用液压驱动，比如日本的Tae-Mu<sup>[23]</sup>。</p>
+<h3 id="2-4-2-感知单元-–-传感器"><a href="#2-4-2-感知单元-–-传感器" class="headerlink" title="2.4.2 感知单元 – 传感器"></a>2.4.2 感知单元 – 传感器</h3><p>公司内部对于机器上产品传感器的理念在于提供基础与善于扩展。这是由于现阶段市场定位以及人力限制所决定的，偏向二次开发的应用场景很难确定一款固定的机型，公司内部的有限资源也无力对各种传感器进行全部接入。因此根据基本现有的算法需求，ART-2上包含了（除了关节组件）：关节反馈（位置，速度，力，电流），IMU, 六维力，单目景深摄像头，扬声器，麦克风，激光雷达的预留。为了实现产品化的需求，ART-2上实现了在线固件更新的系统，可以通过最顶层的客户软件直接刷新底层嵌入式相关的固件程序，这也是在经历了ART-1艰辛的调试后所提出的重要功能。</p>
+<p><em>注：ART系列现仍然使用电流做力矩估算，使用电流来算关节力矩会存在很多问题，传动也会影响力的反馈，减速器的静摩擦也很难对微小的力有反馈[ ]。因此要做精确的力控制的话，主流的设计上依旧需要力矩传感器，比如图2.9所示就是其中的一种。</em></p>
+<center><br><img src="/img/arobot2/f2_9.png" alt="F2.8"><br><br>图2.9 Atlas上采用的力矩传感器。<br></center> 
+
+<p>2.5 动力系统</p>
+<p>公司现阶段并没有对电源进行特别优化（如果你看到有连续工作3小时以上的宣传，请认为是PR文）。ART-1以及ART-2都是采用48V的锂电池组进行内部供电（调试的时候大多是外部供电模式）。在电源的策略上，我们在ART-1和ART-2都单独制作了电源管理模块，将控制系统，通信系统，执行单元进行电力分组。这些工作，帮助ART-1,2在开关机过程中可以逐步进行自检，保障了系统的安全。同时，可以方便的进行调试，检测，以及紧急制动等操作。</p>
+<center><br><img src="/img/arobot2/f2_10.jpg" alt="F2.10"><br><br>图2.10 ART-1电源控制模块<br></center>  
+
+<h1 id="3-软件架构和算法-运动脑的伟大理想"><a href="#3-软件架构和算法-运动脑的伟大理想" class="headerlink" title="3. 软件架构和算法 - 运动脑的伟大理想"></a>3. 软件架构和算法 - 运动脑的伟大理想</h1><p>这一部分主要阐述软件整体的架构设计以及双足步态的相关算法。</p>
+<h2 id="3-1-架构与平台"><a href="#3-1-架构与平台" class="headerlink" title="3.1 架构与平台"></a>3.1 架构与平台</h2><h3 id="3-1-1-设计思考-脑洞大开"><a href="#3-1-1-设计思考-脑洞大开" class="headerlink" title="3.1.1 设计思考 - 脑洞大开"></a>3.1.1 设计思考 - 脑洞大开</h3><p>遗憾而庆幸的是现今尚没有一个被认可的成熟架构或者模型来描述仿人机器人的脑架构。因此在进行这一部分的设计之初我们虽然毫无头绪，但是确进行了很多有趣的思考。所以请容许我先进行一段无用而有趣的头脑风暴。</p>
+<p>首先为了让机器人跟人一样，在机器人中要实现各种不同的脑功能，正如人的大脑一样。分为不同的功能区，不同的功能区承担着不同的功能。他们之间也充满着交流。那么在进行架构设计之前有一些亟待解决的问题：在现在的工程和技术前提下，如何解耦不同的系统，如何清晰的描述各个系统的输入和输出，这些系统哪些可以用现在的技术实现，哪些需要等待技术的革新和理论的创新。</p>
+<p>21世纪，将脑科学，神经科学工程化的工作始终在不断地进行。对于这方面我们完全没有任何经验和基础，因此仅限于了解而已。鉴于专业知识的匮乏，我们将系统的思考转移到另一个更高层，概括性更强的范围，认知心理学，或者说是认知科学领域。有趣的是在对认知科学的了解后，我们发现在设计之初提出的几个问题与其中的一些理念似有相合之处。认知科学中，提出了层级分析的理念：只在单一的层级上进行研究，不可能彻底地理解精神和脑。 对一个特定现象作多层次的研究，会更好地理解脑中的过程如何上升为特定的行为<sup>[25]</sup>。 其中最令我感到振奋的正是大卫·马尔著名的三层次分析<sup>[26]</sup>：</p>
+<ol>
+<li>“计算理论”，说明计算的目标。  – 如何解耦不同的系统</li>
+<li>“描述与算法”，给出输入和输出的描述，以及算法是如何由输入得到输出。 – 如何清晰的描述各个系统的输入和输出</li>
+<li>“硬件实现”，算法和描述如何在物理上实现。 – 这些系统哪些可以用现在的技术实现，哪些需要等待技术的革新和理论的创新</li>
+</ol>
+<p>这时，似乎前面的问题找到了一些理论基础进行分析。</p>
+<p>认知科学对心智方面功能主义的观点，意味着对心智方面的工程化具有长期可探索的意义，系统的定义也会更为清晰。那么依照功能的路线，运动脑的概念应该描述什么功能？</p>
+<p>如图3.1所示，从生物学上来看，人脑大体分为大脑，小脑和脑干。众所周知，大脑负责类似感知和思考，脑干多负责维持个体生命，小脑用来协调运动，维持平衡。</p>
+<center><br><img src="/img/arobot2/f3_1.png" alt="F3.1"><br><br>图3.1 脑组织结构简图<br></center> 
+
+
+
+<p>在脑组织中，小脑的功能解释如下:</p>
+<blockquote>
+<p>脑的一部分。位于大脑的后下方，颅后窝内，延髓和脑桥的背面。可分为中间的蚓部和两侧膨大的小脑半球。小脑表面有许多大致平行的浅沟，沟间为一个叶片。表面的灰质为小脑皮层、深部为白质，也称髓质。白质内有数对核团，称中央核。小脑是运动的重要调节中枢，有大量的传入和传出联系。大脑皮质发向肌肉的运动信息和执行运动时来自肌肉和关节等的信息，都可传入小脑。小脑经常对这两种传来的神经冲动进行整合，并通过传出纤维调整和纠正各有关肌肉的运动，使随意运动保持协调。此外，小脑在维持身体平衡上也起着重要作用。它接受来自前庭器官的信息，通过传出联系，改变躯体不同部分肌肉的张力，使肌体在重力作用下，作加速或旋转运动时保持姿势平衡”<sup>[27]</sup></p>
+</blockquote>
+<p>看起来运动脑似乎跟小脑的功能是吻合的，但是，我们想到运动脑的概念似乎又超过了小脑的范畴。因为在机器人设计中，与其运动相关的内容已经涉及到行为本身，比如走，跳，跑。而这种行为的发生，又不局限于小脑的贡献。于是，我们将运动脑和其他功能通过以下的一条界限来区分：<br>运动脑负责运动的演化，记忆，经验和技巧的积累，它包括了程序性记忆[ ]。而知识，推理，计算全部由其他的功能区域负责，它们包括了陈述性记忆。举一个篮球投射的例子，投射的判断和触发应该由逻辑的思考而决定。而这之后，肌肉记忆，身体协调，条件反射，平衡的处理，都由运动脑来控制。因此我们在这种思量下，设计了图3.2所示的简单的初级框图（从ART-1开始）</p>
+<center><br><img src="/img/arobot2/f3_2.png" alt="F3.2"><br><br>图3.2 脑架构功能简图<br></center> 
+
+<p>而这个框图也演化成了ART-1双处理器的架构，ART-2在双处理器的基础上采用的异构架构（CPU+FPGA）。对于大脑方面，我们集成了类似科大讯飞提供的语音云端功能等。现在，我们把目光集中到运动脑本身上来，为了再细化运动脑的功能为了描述其工程意义，我们将运动脑的两个功能抽象出来作为最初的研究切入点：</p>
+<ol>
+<li>程序性行为（比如骑车）的生成，演化，执行。目前为止，我们依旧在以行走为最基础和唯一深入的研究。（对于舞蹈，上下台阶等，仅仅描述了其实现而非对其进行深入的思考和研究）</li>
+<li>全身的平衡性，分别是静态平衡（静止状态下的平衡）和动态平衡（运动中的平衡）。我把这种概念称为，kinematic balance以及dynamic balance.</li>
+</ol>
+<p>在此之上，一个类似图3.3头脑风暴简图中所提出的行为综合器，也被逐渐的细化实现。</p>
+<center><br><img src="/img/arobot2/f3_3.png" alt="F3.3"><br><br>图3.3 头脑风暴草稿 – 行为综合器<br></center> 
+
+<h3 id="3-1-2-平台架构简介"><a href="#3-1-2-平台架构简介" class="headerlink" title="3.1.2 平台架构简介"></a>3.1.2 平台架构简介</h3><p>让我们脱离运动脑的伟大脑洞，回归现实世界。来看一下我们实际的工作。图3.4是ART-1依照设计思考图3.2细化的的框架图。这个图纸实际上也是ART-1最后实现的功能简图。</p>
+<center><br><img src="/img/arobot2/f3_4.png" alt="F3.4"><br><br>图3.4 ART-1功能分布图<br></center> 
+
+<p>图3.5是我们在开发维度上做的一个简单的架构框图。而我在公司所做的工作，基本都在这个图的涵盖范围之内。如果熟悉ROS的同学，就会发觉这套老生常谈的架构跟ROS的设计基本一样，实际上我们的整个架构也是依托于ROS而做的改进。</p>
+<center><br><img src="/img/arobot2/f3_5.png" alt="F3.5"><br><br>图3.5 ART-X 架构简图<br></center> 
+
+
+<p>在实现的过程中里面，有很多工程上的工作：</p>
+<ol>
+<li>分离实时性系统和通用系统</li>
+</ol>
+<p>由于自动化控制理论上要求的强实时性，机器人系统上需要一部分实时性处理的单元和系统。而这方面ROS系统本身毫无办法，而像Microsoft Robotics Developer Studio (MicrosoftRDS, MRDS)的系统具有更好的实时性。不过，在ROS的开源特性和丰富的社区支持的吸引下，对于实时性的优化也有很多方法。比如直接使用实时性的系统（不过移植ROS会很痛苦），采用Linux实时补丁架构的结构<sup>[29]</sup>（ART-1的方案）亦或自己对手动多核CPU进行任务绑定和驱动优化（ART-2的方案）， 比如北京航空航天大学就提出了基于RGMP<sup>[30]</sup>的RGMP-ROS<sup>[31]</sup>（浙江大学仿人机器人 ZJUkong-I 采用此架构）。</p>
+<ol>
+<li>异构的开放和封装</li>
+</ol>
+<p>不论是CPU+FPGA，还是引入GPU，SOC，又或者ASIC（弄不起）。一个可以将底层暴露给算法设计者，又对上层开发者隐藏细节的设计对我们还是客户都是很重要的环节。在现在的ART的平台上，我们现在采用类似“付费开源”的方法，虽然对各个层级进行了封装，但是对客户而言所操作的是我们直接裸露的（大部分）代码。这也是由于我们在前期的多数科研高校的客户所希望的。这种方法，帮助我们的”原型平台”可以更快的获得收益，同时有更多的反馈可以帮助平台的产品化。（第一次把半成品说的如此清新脱俗）</p>
+<ol>
+<li>重新造“轮子”</li>
+</ol>
+<p>对于仿人机器人来说，如图3.6所示ROS提供了丰富的工具和平台，但是由于其设计和功能更适配于轮式和臂状机器人。因此，不断的重新锻造一些功能也是必经之路。比如，对ros-control中controller组件的重制，对运动学的锻造而让其更适合于仿人机器人等。</p>
+<center><br><img src="/img/arobot2/f3_6.png" alt="F3.6"><br><br>图3.6 ROS平台下的仿真可视化工具示例<br></center>
+
+<h2 id="3-2-步态简介"><a href="#3-2-步态简介" class="headerlink" title="3.2 步态简介"></a>3.2 步态简介</h2><p>当我们把程序性行为的生成执行固定在行走上时，就成为了步态算法的概念。也就是说步态算法指的是如何生成并且执行机器人的行走行为。对于行走我们提出了两个不同的阶段:</p>
+<ol>
+<li>盲走，不依赖于视觉和雷达等感知设备（只依赖感知自身状态的传感器） ，机器人在不知道路况的情况下，去尽量保持稳定的行走。</li>
+<li>感知环境性行走，在1的基础上，实现路径规划，精确定位，自动进行特殊步态（比如台阶等）等的行走。</li>
+</ol>
+<p><em>虽然现阶段ART-2上依旧有摄像头以及雷达的接口。我们依旧在第一个阶段徘徊和努力。</em></p>
+<p>步态生成方面有众多的研究成果和方案:</p>
+<ul>
+<li>基于轨迹规划的方法</li>
+</ul>
+<p>轨迹规划的方法，主要应用运动学和动力学原理简历模型，进行规划，采用控制理论的方法进行控制。中较为经典的是如图3.7所示的线性倒立摆模型(小车桌子)和由Vukobratovic等人提出的ZMP稳定性判据组成的控制方案。<sup>[32]</sup></p>
+<center><br><img src="/img/arobot2/f3_7.png" alt="F3.7"><br><br>图3.7 ZMP和线性倒立摆模型。摘自<sup>[33]</sup><br></center>
+
+<p>在大多主流的设计会在控制上会增加类似图3.8所示的稳定器来保障机器人的实际运动<sup>[34]</sup>。</p>
+<center><br><img src="/img/arobot2/f3_8.png" alt="F3.8"><br><br>图3.8 稳定器的一种实现<br></center>
+
+<p>倒立摆模型也会延伸出一些其他的模型，比如弹簧负载倒立摆 (Spring loaded inverted pendulum, SLIP) 模型，其广泛应用于分析动物和机器人跑步运动<sup>[35]</sup>。相对ZMP也演化出了很多不同的方法，比如foot-rotation indicator (FRI) point<sup>[36]</sup>等。由于经典ZMP相关方法适合于长期的动作规划，不利于动态的切换和控制，也有一些实用的技术用来实现在线步态规划和切换<sup>[37]</sup><sup>[38]</sup>。相对于单纯的ZMP规划，在线步态更适合于复杂的路面和远程控制<sup>[39]</sup>。</p>
+<p>这类方法由于是基于力学模型和控制理论的建模，因此大多可以当做白盒控制器，其表现形式非常的稳定，具有很强的可预测性。</p>
+<p>对我们而言，采用了基于预观控制的ZMP方法作为我们的主要案例<sup>[40]</sup>，图3.9为生成的ZMP点和落脚点。=</p>
+<center><br><img src="/img/arobot2/f3_9.png" alt="F3.9"><br><br>图3.9 ZMP点和落脚点。<br></center>
+
+<ul>
+<li>力控制</li>
+</ul>
+<p>在控制上面，采用ZMP方法的描述的机器人更多的采用了控制位置的力学模型（ZMP点，质心点，时间）。而如Altas之类的机器人采用的Center of Pressure (CoP)<sup>[41]</sup>和力矩控制的方法来直接控制机器人关节的力矩<sup>[42]</sup>。这种方法从我的理解上看，更本质的描述了机器人的运动本源（力），因此有更好的效果。</p>
+<ul>
+<li>仿生方面<br>由于步行模式的复杂性，很多人认为，步行运动不应该进行简洁的解析规划，而应该是一种通过线性系统和环境之间的反馈和动态交互作用融合而成的一种非线性震荡<sup>[33]</sup>。于是源自于神经生物学，通过工程去模拟生物系统给仿人机器人的步态研究提供了一种条诱人的路线（这也属于认知科学的一部分）。在仿人领域在这方面较为知名的是中央模式生成 - CPG（Central pattern generator）方法，这类方法，由来自生物学中，位于脊髓或者胸腹神经节中的中枢模式发生器。这种发生器是由神经元构成的振荡网络，由众多CPG单元再构成CPG网络<sup>[43]</sup>。</li>
+</ul>
+<center><br><img src="/img/arobot2/f3_10.png" alt="F3.10"><br><br>图3.10 中枢神经发生器 (CPG) 控制框图<sup>[35]</sup><br></center>
+
+
+<p>想来，大家在人工智能概念爆炸的时节上，对于机器学习，深度学习，神经网络这些概念和方法即使没有接触也必有耳闻。在仿人机器人的步态生成上，学习和进化算法也占有了很大的戏份。比如Geng 等提出了类似神经-肌肉系统的控制器, 生成可在线调节速度的运动步态,通过数值模拟实现了图3.12机器人的动态稳定行走<sup>[44]</sup>. 2014 年, Geng利用如图3.12所示的基于神经网络的模型预测控制方法实现了在线速度校正<sup>[35]</sup>。MIT的Tedrake等在图3.13的被动机器人（被动机器人可以认为将机器人放在斜面上，不需要动力源，机器人会依靠重力行走，这方面的研究期望机器人仅仅受到简单的驱动力看就可以实现行走）上，通过强化学习来获取运动模式，据说可以在20分钟左右学习到各种地面条件下的合适的步行模式<sup>[33]</sup>。</p>
+<center><br><img src="/img/arobot2/f3_11.png" alt="F3.11"><br><br>图3.11 RunRobot机器人<br></center>
+
+<center><br><img src="/img/arobot2/f3_12.png" alt="F3.12"><br><br>图3.12 神经网络的模型预测控制框图<sup>[45]</sup><br></center>
+
+<p><em>MPC全称可指Model Predictive Control模型预测控制（又称RHC, Receding Horizon Control）预观控制则属于一种预测模型。MPC应用在很多领域，不光是传统控制，也有自动驾驶等新兴技术等。</em></p>
+<center><br><img src="/img/arobot2/f3_13.png" alt="F3.13"><br><br>3.13 Tedrake实现的被动机器人模型<sup>[46]</sup><br></center>
+
+<p>对神经网络有过接触的同学，自然也能想到到无论是CPG还是神经网络会成为一个黑盒控制器，然而对于与物理世界直接接触的及机器人来说，这种不确定性是否会限制其投入市场和产品化，不得而知。并且，对于学习网络的应用（尤其是适用在不同机器人上），调参将会是一个冗长而无保障的工作。</p>
+<h1 id="4-总结-碎碎念"><a href="#4-总结-碎碎念" class="headerlink" title="4. 总结 - 碎碎念"></a>4. 总结 - 碎碎念</h1><p>这一年经历了ART-1的设计和调试以及ART-2的设计。在理论上，深刻体会到了在仿人机器人中宽广如大海的知识范畴以及深入到力学，自控方面复杂的数学模型（后悔，上学没好好学数学）。在工程上，对复杂系统的集成的探索以及架构的思考成为了日常的生活，而不成熟的行业状态和相对较为封闭的研发环境（各公司，各机构）让团队经常无从下手。对仿人机器人产品的测试也着实让我们大费头脑（大多的机器人标准都是针对于工业机器人的）。</p>
+<center><br><img src="/img/arobot2/f4_1.png" alt="F4.1"><br><br>图4.1 测试内容思维导图<br></center>
+
+<p>如何评估一款类人机器人的优劣只能从最终的表现行为来看，造成各个子系统很难对性能做出清晰的描述和规划，而机电软互相制约互相依存的产品特性又需要明确的接口方案。幸言之，我们现在并不需要提供一款具有产品级别稳定性的机器人，在磕磕碰碰，修修补补下，我们也达到了现在的地方 —— 一个高耸入云山峰的出发点。对我来说，此过程收获颇丰，不论是从企业运作，团队管理还是产品设计，原型研发。唯一郁闷的是，作为一个程序员，coding的技巧增幅曲线显著下降，这大概是在创业公司无力专精某一技术的悲凉（对，说的就是不好找工作）。</p>
+<p>最后，感谢想感谢下公司各位对我的帮助，跟各种领域人才接触让我受益匪浅。</p>
+<p>少年们，这场攀登刚刚开始，前路漫漫，祝武运昌隆。</p>
+<p><strong>icePie</strong> </p>
+<p><strong>记于2017.7月</strong></p>
+<hr>
+<p>[1] 《列子汤问》十三篇</p>
+<p>[2] 骆鹏, 李冰川, 苑全旺.一种仿人机器人髋关节机构及连接有该机构的机器人:, CN205652233U[P]. 2016.</p>
+<p>[3] 骆鹏, 李冰川, 苑全旺. 一种仿人机器人腿部机构及连接有该机构的机器人:, CN205652233U[P]. 2016.</p>
+<p>[4] 骆鹏, 李冰川, 苑全旺. 具有零点位置检测功能的仿人机器人关节机构:, CN205872233U[P]. 2016.</p>
+<p>[5] Radford N A, Strawser P, Hambuchen K, et al. Valkyrie: NASA’s First Bipedal Humanoid Robot[J]. Journal of Field Robotics, 2015, 32(3):397-419.</p>
+<p>[6] Asimo-technical-information.</p>
+<p>[7] N. Paine, J. Mehling, J. Holley, N. Radford, G. Johnson, C. Fok, and L. Sentis.  J. Actuator Control for the NASA-JSC Valkyrie Humanoid Robot: A Decoupled Dynamics Approach for Torque Control of Series Elastic Robots. Field Robotics 32 (3): 378-396 (2015)</p>
+<p>[8] ISO 11898-2:2003-12 ; ISO 11898-2:2016-12</p>
+<p>[9] Johnson M, Shrewsbury B, Bertrand S, et al. Team IHMC’s Lessons Learned from the DARPA Robotics Challenge Trials[J]. Journal of Field Robotics, 2015, 32(2):192-208.</p>
+<p>[10] <a href="http://wiki.ros.org/Robots/PR2" target="_blank" rel="external">http://wiki.ros.org/Robots/PR2</a></p>
+<p>[11] <a href="http://www.ethercat.org.cn/cn/why_use_ethercat.htm" target="_blank" rel="external">http://www.ethercat.org.cn/cn/why_use_ethercat.htm</a></p>
+<p>[12] <a href="https://en.wikipedia.org/wiki/Time-Sensitive_Networking" target="_blank" rel="external">https://en.wikipedia.org/wiki/Time-Sensitive_Networking</a></p>
+<p>[13] Pierce B, Cheng G. Versatile modular electronics for rapid design and development of humanoid robotic subsystems[C]// Ieee/asme International Conference on Advanced Intelligent Mechatronics. IEEE, 2014:735-741.</p>
+<p>[14] <a href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Robonet" target="_blank" rel="external">https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Robonet</a></p>
+<p>[15] <a href="http://wiki.icub.org/wiki/CFW_card" target="_blank" rel="external">http://wiki.icub.org/wiki/CFW_card</a></p>
+<p>[16] Semester project II: Mobile Robot modeling, Simulating and Programming. New ASIMO</p>
+<p>[17] <a href="http://en.robotis.com/index/product.php?cate_code=111410" target="_blank" rel="external">http://en.robotis.com/index/product.php?cate_code=111410</a></p>
+<p>[18] Knabe C, Seminatore J, Webb J, et al. Design of a series elastic humanoid for the DARPA Robotics Challenge[C]// Ieee-Ras, International Conference on Humanoid Robots. IEEE, 2015:738-743.</p>
+<p>[19] Ogawa Y, Venture G, Ott C. Dynamic parameters identification of a humanoid robot using joint torque sensors and/or contact forces[C]// Ieee-Ras International Conference on Humanoid Robots. IEEE, 2015:457-462.</p>
+<p>[20] <a href="http://doc.aldebaran.com/2-1/family/romeo/motors_romeo.html" target="_blank" rel="external">http://doc.aldebaran.com/2-1/family/romeo/motors_romeo.html</a></p>
+<p>[21] <a href="https://www.bostondynamics.com/atlas" target="_blank" rel="external">https://www.bostondynamics.com/atlas</a></p>
+<p>[22] <a href="http://archive.darpa.mil/roboticschallengetrialsarchive/files/ATLAS-Datasheet_v15_DARPA.PDF" target="_blank" rel="external">http://archive.darpa.mil/roboticschallengetrialsarchive/files/ATLAS-Datasheet_v15_DARPA.PDF</a></p>
+<p>[23] Hyon S H, Suewaka D, Torii Y, et al. Development of a fast torque-controlled hydraulic humanoid robot that can balance<br>compliantly[C]// Ieee-Ras, International Conference on Humanoid Robots. IEEE, 2015:576-581.</p>
+<p>[24] <a href="https://zhuanlan.zhihu.com/p/26722384" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/26722384</a></p>
+<p>[25] <a href="https://zh.wikipedia.org/wiki/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6" target="_blank" rel="external">https://zh.wikipedia.org/wiki/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6</a></p>
+<p>[26] Barlow H B. Vision: A computational investigation into the human representation and processing of visual information : David Marr. San Francisco: W. H. Freeman, 1982. pp. xvi + 397[J]. Journal of Mathematical Psychology, 1983, 27(1):107-110.</p>
+<p>[27] 许嘉璐, 彭奕欣. 中国中学教学百科全书,生物卷[M]. 沈阳出版社, 1990. </p>
+<p>[28] M·W·艾森克, M·T·基恩, 艾森克,等. 认知心理学[M]. 华东师范大学出版社, 2009.</p>
+<p>[29] <a href="https://xenomai.org/" target="_blank" rel="external">https://xenomai.org/</a></p>
+<p>[30] <a href="http://rgmp.sourceforge.net/" target="_blank" rel="external">http://rgmp.sourceforge.net/</a></p>
+<p>[31] Wei H, Huang Z, Yu Q, et al. RGMP-ROS: A real-time ROS architecture of hybrid RTOS and GPOS on multi-core processor[C]// IEEE International Conference on Robotics and Automation. IEEE, 2014:2482-2487.</p>
+<p>[32] Vukobratovic M, Sepaneko Y. On the stability of anthropomorphic systems[J]. Mathematical Biosciences, 2004, 15(1):1-37.</p>
+<p>[33] 梶田秀司. 仿人机器人[M]. 清华大学出版社, 2007.</p>
+<p>[34] （H）D. Kaynov, P. Souères, C. Balaguer, “A practical decoupled stabilizer for joint position controlled humanoid robots”, IEEE/RSJ Int. Conference on intelligent Robots and Systems, St Louis MO, USA, Oct. 2009.</p>
+<p>[35]田彦涛, 孙中波, 李宏扬,等. 动态双足机器人的控制与优化研究进展[J]. 自动化学报, 2016, 42(8):1142-1157.</p>
+<p>[36] Goswami A. Postural Stability of Biped Robots and the Foot-Rotation Indicator (FRI) Point[J]. International Journal of Robotics Research, 1999, 18(18):523-533.</p>
+<p>[37] McGill, Stephen G., et al. ”Team THOR’s Entry in the DARPA Robotics Challenge Finals 2015.” Journal of Field Robotics (2016).</p>
+<p>[38] Yi, Seung-Joon, Dennis Hong, and Daniel D. Lee. ”A hybrid walk controller for resource-constrained humanoid robots.” Humanoid Robots (Humanoids), 2013 13th IEEE-RAS International Conference on. IEEE, 2013.</p>
+<p>[39] Yi, Seung-Joon, et al. ”Online learning of a full body push recovery controller for omnidirectional walking.” Humanoid Robots (Humanoids), 2011 11th IEEE-RAS International Conference on. IEEE, 2011.</p>
+<p>[40] Park J, Youm Y. General ZMP Preview Control for Bipedal Walking[C]// IEEE International Conference on Robotics and Automation. IEEE, 2007:2682-2687.</p>
+<p>[41] Wiedebach G, Bertrand S, Wu T, et al. Walking on Partial Footholds Including Line Contacts with the Humanoid Robot Atlas[J]. 2016.</p>
+<p>[42] Koolen T, Bertrand S, Thomas G, et al. Design of a Momentum-Based Control Framework and Application to the Humanoid Robot Atlas[J]. International Journal of Humanoid Robotics, 2016, 13(01):1650007-1650001.</p>
+<p>[43]陈启军, 刘成菊. 双足机器人行走控制与优化[M]. 清华大学出版社, 2016.</p>
+<p>[44] Geng T, Porr B, Wörgötter F. Fast Biped Walking with a Sensor-driven Neuronal Controller and Real-time Online Learning[J]. International Journal of Robotics Research, 2006, 25(25):243-259.</p>
+<p>[45] Tao G. Online Regulation of the Walking Speed of a Planar Limit Cycle Walker via Model Predictive Control[J]. IEEE Transactions on Industrial Electronics, 2013, 61(5):2326-2333.</p>
+<p>[46] Tedrake R, Zhang T W, Seung H S. Stochastic policy gradient reinforcement learning on a simple 3D biped[C]// Ieee/rsj International Conference on Intelligent Robots and Systems. IEEE, 2004:2849-2854 vol.3.</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/仿人机器人/">仿人机器人</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/artrobot/">artrobot</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/07/07/atlas/" title="Atlas" itemprop="url">Atlas</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-07T08:53:22.000Z" itemprop="datePublished"> 发表于 2017-07-07</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="仿人机器人-之-Atlas"><a href="#仿人机器人-之-Atlas" class="headerlink" title="仿人机器人 之 Atlas"></a>仿人机器人 之 Atlas</h1><p><em>感谢徐浩益同学的整理和资料</em></p>
+<ul>
+<li>设计公司：美国波士顿动力（Boston Dynamics）（现被软银收购……）</li>
+<li>官方网站：<a href="http://www.bostondynamics.com/robot_Atlas.html" target="_blank" rel="external">Atlas Project</a></li>
+<li>原型：<a href="https://www.youtube.com/watch?v=tFrjrgBV8K0" target="_blank" rel="external">Petman</a></li>
+</ul>
+<h2 id="公司简介"><a href="#公司简介" class="headerlink" title="公司简介"></a>公司简介</h2><p>波士顿动力公司（英语：）是一家美国的工程与机器人设计公司，美国军方通过 DARPA （美国国防部先进研究项目局）资金支持了波士顿动力的许多项目。<br>Marc Raibert是该公司的总裁兼专案经理，他在1992年令此公司从麻省理工学院底下独立出来。<br>在2013年12月13日，波士顿动力公司被Google收购。有消息称2016年3月被Google出售给丰田研究所，实际上在2017年的6月，软银截胡丰田，收购了波士顿动力。</p>
+<p>其开发的机器人包括LittleDog，RiSe，RHex，SandFlea ，LS3（Legged Squad Support Systems），Cheetah，BigDg，Petman，Atlas。其中Petman和Atlas为人型的机器人。</p>
+<p><img src="/img/atlas/bd_robots.png" alt="大家庭"> </p>
+<h2 id="机器人简介"><a href="#机器人简介" class="headerlink" title="机器人简介"></a><a href="http://projetromeo.com/en/background" target="_blank" rel="external">机器人简介</a></h2><p>Atlas机器人是基于波士顿动力公司早期的Petman人型机器人。Atlas机器人由航空级铝和钛建造，它共有28个自由度，全部由液压驱动，可以实现位置闭环和力矩控制。自它发布至今有三个版本，第一版，身高约1.88m，质量150kg，肩宽0.76m。</p>
+<p><img src="/img/atlas/atlas.png" alt="altas"></p>
+<h3 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h3><ul>
+<li>Degrees of Freedom: 28</li>
+<li>Weight: 150 kg </li>
+<li>Height: 1.88 m </li>
+<li>Shoulder Width: 0.76 m</li>
+</ul>
+<p><img src="/img/atlas/dof.png" alt="dof"></p>
+<h3 id="头部"><a href="#头部" class="headerlink" title="头部"></a>头部</h3><p>在头部集成了<a href="http://carnegierobotics.com/multisense-sl/" target="_blank" rel="external">MultiSense SL</a> ，此设备包含一个双目摄像头，一个北阳的激光雷达，可以满足仿人机器人的基本需求，且完美支持ROS，并且由于头部没有偏航的自由度，还在头部增加了2个广角的摄像头。</p>
+<h3 id="腰部"><a href="#腰部" class="headerlink" title="腰部"></a>腰部</h3><p>在腰部安装了一个IMU。</p>
+<h3 id="手部"><a href="#手部" class="headerlink" title="手部"></a>手部</h3><p>在手臂有一个可换的末端执行器，官方提供3种末端执行器，并且支持第三方的手部安装。</p>
+<p><img src="/img/atlas/hand.png" alt="hand"></p>
+<p>它的手具有精细动作技能的能力。</p>
+<p>在这一版的机器人还需要外部供电，Atlas机器人可以在崎岖的地形行走，它能在传送带上大步前进，而且在平地的行走速度可以达到5.1km/h以上，而且可以躲开传送带上突然出现的木板，从高处跳下稳稳落地，两腿分开从陷阱两边走过，然后跑上楼梯；单腿站立，被从侧面而来的球重撞而不倒，等等。</p>
+<h3 id="其他改进"><a href="#其他改进" class="headerlink" title="其他改进"></a>其他改进</h3><p>为了参加DARPA机器人挑战赛，在2015年1月12日，Atlas的机器人团队发布了新的改进版本。在这次改进中Atlas全身的百分之七十五都被重新设计了，只有小腿和脚沿用了上一版的设计。这次改进使用了新的更轻的材料和新的液压系统并加入了电池，总体的重量只增加到156.5kg。机器人最重要的变化是电源和液压系统，Atlas 携带一个3.7kwh的锂粒子电池组，可以保证一个小时的各种任务操作，包括步行，站立使用工具和其他动作。Atlas的这次升级在于提高了灵活性和效率，并包括：</p>
+<ul>
+<li>在手腕增加了额外的自由度，可以使机器人旋转手腕来转动门把手。</li>
+<li>增加了三个机载计算机用于感知和任务规划，而且在头部新加了无线路由器可以实现无阻塞通信。</li>
+<li>在臀部，膝部和背部增加了强度。</li>
+<li>无线紧急停止的安全操作。</li>
+<li>使用了新的液压系统，噪声更少。</li>
+</ul>
+<p>在2016年波士顿动力推出了新的Atlas机器人，和第二版的动力一样，Atlas采用电源供电和液压驱动。这版的Atlas高1.75米，重82kg，于上一代相比重量有了很大的减轻<br>在搬箱子、出门推门等过程中还需要标记点完成物体识别任务，对物体的识别等机器视觉能力有所提升。在这版中机器人摔倒以后可以快速地自主起身。在官方视频中，Atlas还演示了野外行走的效果。在自行打开门之后，可以在雪地中行走，虽然遇到了脚滑的现象，但自主的平衡控制力让机器人可以在雪地中爬起，继续保持行走的状态。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Atlas可以说是液压控制人型机器人的巅峰，而且对比电机控制的机器人来说，各有优势。Atlas使用了液压控制可以输出更大的力矩，而且会有更优的效率。不过对于液压系统，每一个关节的执行反馈机构都需要专门设计，控制方面有了更大的难度。但是Atlas的团队克服了种种困难用液压实现了人型机器人的液压控制，并且做到了顶尖水平。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/仿人机器人/">仿人机器人</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Atlas/">Atlas</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/13/add-ssh-error/" title="git下使用ssh的errors" itemprop="url">git下使用ssh的errors</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-13T04:36:17.000Z" itemprop="datePublished"> 发表于 2017-04-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="git-ssh-Errors"><a href="#git-ssh-Errors" class="headerlink" title="git ssh Errors"></a>git ssh Errors</h1><h2 id="error-RPC-failed-HTTP-500-curl-22-The-requested-URL-returned-error-500-Internal-Server-Error"><a href="#error-RPC-failed-HTTP-500-curl-22-The-requested-URL-returned-error-500-Internal-Server-Error" class="headerlink" title="error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500 Internal Server Error"></a>error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500 Internal Server Error</h2><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">error: </span>RPC failed; HTTP 500 curl 22 The requested URL returned error: 500 Internal Server Error</div><div class="line">fatal: The remote end hung up unexpectedly</div><div class="line">fatal: The remote end hung up unexpectedly</div></pre></td></tr></table></figure>
+<p>原因： 在用git上传大文件时会出现的问题。<br>解决：编辑<em>.git/gitclone</em>将其中的http改写成git的路径。</p>
+<h2 id="ssh出错-sign-and-send-pubkey-signing-failed-agent-refused-operation"><a href="#ssh出错-sign-and-send-pubkey-signing-failed-agent-refused-operation" class="headerlink" title="ssh出错 sign_and_send_pubkey: signing failed: agent refused operation"></a>ssh出错 sign_and_send_pubkey: signing failed: agent refused operation</h2><p>在服务器添加完公钥之后，ssh服务器然后报了这个错误</p>
+<pre><code>sign_and_send_pubkey: signing failed: agent refused operation
+</code></pre><p>原因：ssh在ubuntu下使用ssh-agent来管理，需要将新key加入到其中。<br>解决：</p>
+<pre><code>eval &quot;$(ssh-agent -s)&quot;
+ssh-add
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/git/">git</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/git-ssh/">git ssh</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/05/romeo-1/" title="romeo-1" itemprop="url">romeo-1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-05T15:35:12.000Z" itemprop="datePublished"> 发表于 2017-04-05</time>
     
   </p>
 </header>
@@ -159,97 +628,6 @@
   <div class="article-tags">
   
   <span></span> <a href="/tags/Romeo/">Romeo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/03/26/smallCar/" title="smallCar" itemprop="url">smallCar</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
-		
-  <p class="article-time">
-    <time datetime="2017-03-26T05:44:35.000Z" itemprop="datePublished"> 发表于 2017-03-26</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="simple-robots-系列之小笨车"><a href="#simple-robots-系列之小笨车" class="headerlink" title="simple robots 系列之小笨车"></a>simple robots 系列之小笨车</h1><p>心血来潮，双休时制作了小笨车一部，就权当 simple robots 系列的开端吧。这个系列主要是做一些简单（也许）有趣的小机器人，自娱自乐。也希望能帮到有兴趣的人。</p>
-<p><img src="/img/simpleCar/car.png" alt="car"></p>
-<h2 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h2><p><strong>以下硬件都是可以在淘宝上可以买到的：</strong></p>
-<ul>
-<li><a href="https://www.arduino.cc/en/Main/ArduinoBoardNano" target="_blank" rel="external">Arduino nano</a> </li>
-<li>小车底板一份。<br><img src="/img/simpleCar/carboard.jpg" alt="carboard"></li>
-<li>双自由度舵机云台（注：小车底板和舵机要确定能否安装到一起）。<br><img src="/img/simpleCar/steering.jpg" alt="steer"></li>
-<li>直流电机驱动。<br><img src="/img/simpleCar/HG7881.jpg" alt="driver"></li>
-<li>稳压器，ASM1117系列即可。<br><img src="/img/simpleCar/ams1117.png" alt="ams"></li>
-<li><a href="https://item.taobao.com/item.htm?spm=a230r.1.14.20.re5GVx&amp;id=520282027806&amp;ns=1&amp;abbucket=5#detail" target="_blank" rel="external">无线通信模块</a> :　使用了成都亿佰特的串口模块，E30-TTL-100。<br><img src="/img/simpleCar/wrieless.png" alt="e30"></li>
-<li>电池采用了狮子牌7.4V, 1300mah锂电池组，这个只要是5V+的电池(要看稳压)都是可以的只不过我手头刚好有一个这个电池组。</li>
-<li><p>充电可以采用TP405X系列的小充电板，1-2元钱。<br><img src="/img/simpleCar/charge.png" alt="charge"></p>
-</li>
-<li><p><strong>对于想使用WiFi的同学来说，推荐一款</strong><a href="http://www.nodemcu.com/index_cn.html" target="_blank" rel="external">NodeMcu</a> ，非常廉价，并且支持lua脚本。</p>
-</li>
-<li><p>摄像头，自选即可，我采用懒人模式，直接贴了IPHONE的硅胶壳上去，权当把手机当做摄像头来用。至于视频软件，推荐QQ或者Spyke。</p>
-</li>
-</ul>
-<h2 id="软件以及使用方式"><a href="#软件以及使用方式" class="headerlink" title="软件以及使用方式"></a>软件以及使用方式</h2><p>软件已上传到github上，链接为<a href="https://github.com/Galaxy2416/SimpleWirelessCar" target="_blank" rel="external">https://github.com/Galaxy2416/SimpleWirelessCar</a> </p>
-<p>代码非常简单，操作也很简单。</p>
-<p><strong>Arduino 主程序</strong></p>
-<p>如代码所示，会根据从串口收到的指令来做动作。指令的前四个位用来决定舵机云台的移动，后四个位来决定小车前进后退转弯的操作。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"car.h"</span></span></div><div class="line"></div><div class="line">Car theCar;</div><div class="line"><span class="keyword">bool</span> pitch_p;</div><div class="line"><span class="keyword">bool</span> pitch_n;</div><div class="line"><span class="keyword">bool</span> roll_p;</div><div class="line"><span class="keyword">bool</span> roll_n;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  theCar.setupDefault();</div><div class="line">  theCar.setRollPosition(<span class="number">90</span>);</div><div class="line">  theCar.setPitchPosition(<span class="number">90</span>);</div><div class="line">  pitch_p = <span class="literal">false</span>;</div><div class="line">  pitch_n = <span class="literal">false</span>;</div><div class="line">  roll_p = <span class="literal">false</span>;</div><div class="line">  roll_n = <span class="literal">false</span>;</div><div class="line">  <span class="comment">// initialize serial communication at 9600 bits per second:</span></div><div class="line">  Serial.begin(<span class="number">9600</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span> (pitch_p)</div><div class="line">    theCar.setPitchPosition((theCar.readPitchPosition() + <span class="number">1</span>));</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (pitch_n)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(!((theCar.readRollPosition()&lt;<span class="number">50</span> || theCar.readRollPosition()&gt;<span class="number">122</span>) &amp;&amp; theCar.readPitchPosition()&lt; <span class="number">105</span>) &amp;&amp; theCar.readPitchPosition()&gt; <span class="number">90</span>)</div><div class="line">      theCar.setPitchPosition((theCar.readPitchPosition() - <span class="number">1</span>));</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (roll_p)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(!(theCar.readPitchPosition() &lt; <span class="number">105</span> &amp;&amp; theCar.readRollPosition() &gt;= <span class="number">122</span>))</div><div class="line">      theCar.setRollPosition(theCar.readRollPosition() + <span class="number">1</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (roll_n)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(!(theCar.readPitchPosition() &lt; <span class="number">105</span> &amp;&amp; theCar.readRollPosition() &lt;= <span class="number">50</span> ))</div><div class="line">      theCar.setRollPosition(theCar.readRollPosition() - <span class="number">1</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  delay(<span class="number">15</span>);                       <span class="comment">// waits 15ms for the servo to reach the position</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">serialEvent</span><span class="params">()</span> </span>&#123;</div><div class="line">  byte cmd = Serial.read();</div><div class="line">  <span class="keyword">switch</span> (cmd &amp; <span class="number">0x0f</span>)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x00</span>:</div><div class="line">      theCar.stop();</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x01</span>:</div><div class="line">      theCar.forward();</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x02</span>:</div><div class="line">      theCar.backward();</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x04</span>:</div><div class="line">      theCar.leftTurn(<span class="number">0</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x08</span>:</div><div class="line">      theCar.rightTurn(<span class="number">0</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x04</span> | <span class="number">0x01</span>):</div><div class="line">      theCar.leftTurn(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x04</span> | <span class="number">0x02</span>):</div><div class="line">      theCar.leftTurn(<span class="number">-1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x08</span> | <span class="number">0x01</span>):</div><div class="line">      theCar.rightTurn(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x08</span> | <span class="number">0x02</span>):</div><div class="line">      theCar.rightTurn(<span class="number">-1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      theCar.stop();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">switch</span> (cmd &amp; <span class="number">0xf0</span>)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x10</span>:</div><div class="line">      pitch_p = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x20</span>:</div><div class="line">      pitch_n = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x40</span>:</div><div class="line">      roll_p = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x80</span>:</div><div class="line">      roll_n = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:    </div><div class="line">      pitch_p = <span class="literal">false</span>;</div><div class="line">      pitch_n = <span class="literal">false</span>;</div><div class="line">      roll_p = <span class="literal">false</span>;</div><div class="line">      roll_n = <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>PC机主程序</strong></p>
-<p>PC程序使用Python + <a href="https://sourceforge.net/projects/pyhook/" target="_blank" rel="external">pyhook</a> s实现。</p>
-<p>pyhook是一个基于Python的“钩子”库，主要用于监听当前电脑上鼠标和键盘的事件。这个库依赖于另一个Python库PyWin32，如同名字所显示的，PyWin32只能运行在Windows平台，所以PyHook也只能运行在Windows平台。因此如果要在其他系统平台需要使用其他的键盘监听功能。</p>
-<p><em>操作</em>很简单，键盘的上下左右可以控制小车的移动WSAD用来控制云台的转向。就跟电脑的赛车游戏一般操控即可。（但是没那么好玩 =。=）</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="attr">__name__</span> == '__main__':</div><div class="line">    <span class="comment"># sender</span></div><div class="line">    <span class="attr">ss</span> = serialSender()</div><div class="line">    ss.connect_to_serial()</div><div class="line">    <span class="comment"># create a hook manager</span></div><div class="line">    <span class="attr">hm</span> = pyHook.HookManager()</div><div class="line">    <span class="comment"># watch for all mouse events</span></div><div class="line">    <span class="comment"># hm.KeyAll = OnKeyboardEvent</span></div><div class="line">    hm.SubscribeKeyDown(ss.OnKeyboardEventDown)</div><div class="line">    hm.SubscribeKeyUp(ss.OnKeyboardEventUp)</div></pre></td></tr></table></figure>
-<p>其中为了解决连接E30无线模块的问题，也加入一些判断机制</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect_to_serial</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">        vid_pid = <span class="string">'10C4:EA60'</span></div><div class="line">        <span class="comment"># connect to com auto</span></div><div class="line">        port_list = list(serial.tools.list_ports.comports())</div><div class="line">        <span class="keyword">if</span> len(port_list) &lt;= <span class="number">0</span>:</div><div class="line">            print (<span class="string">"The Serial port can't find!"</span>)</div><div class="line">        <span class="symbol">else:</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="symbol">port_list:</span></div><div class="line">                <span class="keyword">if</span> str(list(i)[<span class="number">2</span>]).find(vid_pid) != -<span class="number">1</span> : <span class="comment"># VID:PID = X<span class="doctag">XXX:</span>XXXX</span></div><div class="line">                    port_list_use =list(i)</div><div class="line">                    port_serial = port_list_use[<span class="number">0</span>]</div><div class="line">                    <span class="keyword">self</span>.ser = serial.Serial(port_serial,<span class="number">9600</span>,timeout = <span class="number">60</span>)</div><div class="line">                    print (<span class="string">"Find the port &gt;"</span>,<span class="keyword">self</span>.ser)</div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">self</span>.ser == <span class="number">0</span>:</div><div class="line">                print(<span class="string">"Cannot find the port of wireless serial."</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close_the_serial</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.ser != <span class="number">0</span>:</div><div class="line"><span class="keyword">self</span>.ser.close();</div></pre></td></tr></table></figure>
-<p>使用的时候请把vid_pid改写成自己USB设备的ID，此功能仅能针对串口转USB设备。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>适合跟小朋友一起制作！培养感情～</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/simple-robots-系列/">simple robots 系列</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/robot/">robot</a>
   </div>
 
 </div>
@@ -373,6 +751,97 @@
   <div class="article-tags">
   
   <span></span> <a href="/tags/Valkyrie/">Valkyrie</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/26/smallCar/" title="smallCar" itemprop="url">smallCar</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-26T05:44:35.000Z" itemprop="datePublished"> 发表于 2017-03-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="simple-robots-系列之小笨车"><a href="#simple-robots-系列之小笨车" class="headerlink" title="simple robots 系列之小笨车"></a>simple robots 系列之小笨车</h1><p>心血来潮，双休时制作了小笨车一部，就权当 simple robots 系列的开端吧。这个系列主要是做一些简单（也许）有趣的小机器人，自娱自乐。也希望能帮到有兴趣的人。</p>
+<p><img src="/img/simpleCar/car.png" alt="car"></p>
+<h2 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h2><p><strong>以下硬件都是可以在淘宝上可以买到的：</strong></p>
+<ul>
+<li><a href="https://www.arduino.cc/en/Main/ArduinoBoardNano" target="_blank" rel="external">Arduino nano</a> </li>
+<li>小车底板一份。<br><img src="/img/simpleCar/carboard.jpg" alt="carboard"></li>
+<li>双自由度舵机云台（注：小车底板和舵机要确定能否安装到一起）。<br><img src="/img/simpleCar/steering.jpg" alt="steer"></li>
+<li>直流电机驱动。<br><img src="/img/simpleCar/HG7881.jpg" alt="driver"></li>
+<li>稳压器，ASM1117系列即可。<br><img src="/img/simpleCar/ams1117.png" alt="ams"></li>
+<li><a href="https://item.taobao.com/item.htm?spm=a230r.1.14.20.re5GVx&amp;id=520282027806&amp;ns=1&amp;abbucket=5#detail" target="_blank" rel="external">无线通信模块</a> :　使用了成都亿佰特的串口模块，E30-TTL-100。<br><img src="/img/simpleCar/wrieless.png" alt="e30"></li>
+<li>电池采用了狮子牌7.4V, 1300mah锂电池组，这个只要是5V+的电池(要看稳压)都是可以的只不过我手头刚好有一个这个电池组。</li>
+<li><p>充电可以采用TP405X系列的小充电板，1-2元钱。<br><img src="/img/simpleCar/charge.png" alt="charge"></p>
+</li>
+<li><p><strong>对于想使用WiFi的同学来说，推荐一款</strong><a href="http://www.nodemcu.com/index_cn.html" target="_blank" rel="external">NodeMcu</a> ，非常廉价，并且支持lua脚本。</p>
+</li>
+<li><p>摄像头，自选即可，我采用懒人模式，直接贴了IPHONE的硅胶壳上去，权当把手机当做摄像头来用。至于视频软件，推荐QQ或者Spyke。</p>
+</li>
+</ul>
+<h2 id="软件以及使用方式"><a href="#软件以及使用方式" class="headerlink" title="软件以及使用方式"></a>软件以及使用方式</h2><p>软件已上传到github上，链接为<a href="https://github.com/Galaxy2416/SimpleWirelessCar" target="_blank" rel="external">https://github.com/Galaxy2416/SimpleWirelessCar</a> </p>
+<p>代码非常简单，操作也很简单。</p>
+<p><strong>Arduino 主程序</strong></p>
+<p>如代码所示，会根据从串口收到的指令来做动作。指令的前四个位用来决定舵机云台的移动，后四个位来决定小车前进后退转弯的操作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"car.h"</span></span></div><div class="line"></div><div class="line">Car theCar;</div><div class="line"><span class="keyword">bool</span> pitch_p;</div><div class="line"><span class="keyword">bool</span> pitch_n;</div><div class="line"><span class="keyword">bool</span> roll_p;</div><div class="line"><span class="keyword">bool</span> roll_n;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  theCar.setupDefault();</div><div class="line">  theCar.setRollPosition(<span class="number">90</span>);</div><div class="line">  theCar.setPitchPosition(<span class="number">90</span>);</div><div class="line">  pitch_p = <span class="literal">false</span>;</div><div class="line">  pitch_n = <span class="literal">false</span>;</div><div class="line">  roll_p = <span class="literal">false</span>;</div><div class="line">  roll_n = <span class="literal">false</span>;</div><div class="line">  <span class="comment">// initialize serial communication at 9600 bits per second:</span></div><div class="line">  Serial.begin(<span class="number">9600</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span> (pitch_p)</div><div class="line">    theCar.setPitchPosition((theCar.readPitchPosition() + <span class="number">1</span>));</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (pitch_n)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(!((theCar.readRollPosition()&lt;<span class="number">50</span> || theCar.readRollPosition()&gt;<span class="number">122</span>) &amp;&amp; theCar.readPitchPosition()&lt; <span class="number">105</span>) &amp;&amp; theCar.readPitchPosition()&gt; <span class="number">90</span>)</div><div class="line">      theCar.setPitchPosition((theCar.readPitchPosition() - <span class="number">1</span>));</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (roll_p)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(!(theCar.readPitchPosition() &lt; <span class="number">105</span> &amp;&amp; theCar.readRollPosition() &gt;= <span class="number">122</span>))</div><div class="line">      theCar.setRollPosition(theCar.readRollPosition() + <span class="number">1</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (roll_n)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(!(theCar.readPitchPosition() &lt; <span class="number">105</span> &amp;&amp; theCar.readRollPosition() &lt;= <span class="number">50</span> ))</div><div class="line">      theCar.setRollPosition(theCar.readRollPosition() - <span class="number">1</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  delay(<span class="number">15</span>);                       <span class="comment">// waits 15ms for the servo to reach the position</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">serialEvent</span><span class="params">()</span> </span>&#123;</div><div class="line">  byte cmd = Serial.read();</div><div class="line">  <span class="keyword">switch</span> (cmd &amp; <span class="number">0x0f</span>)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x00</span>:</div><div class="line">      theCar.stop();</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x01</span>:</div><div class="line">      theCar.forward();</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x02</span>:</div><div class="line">      theCar.backward();</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x04</span>:</div><div class="line">      theCar.leftTurn(<span class="number">0</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x08</span>:</div><div class="line">      theCar.rightTurn(<span class="number">0</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x04</span> | <span class="number">0x01</span>):</div><div class="line">      theCar.leftTurn(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x04</span> | <span class="number">0x02</span>):</div><div class="line">      theCar.leftTurn(<span class="number">-1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x08</span> | <span class="number">0x01</span>):</div><div class="line">      theCar.rightTurn(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> (<span class="number">0x08</span> | <span class="number">0x02</span>):</div><div class="line">      theCar.rightTurn(<span class="number">-1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      theCar.stop();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">switch</span> (cmd &amp; <span class="number">0xf0</span>)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x10</span>:</div><div class="line">      pitch_p = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x20</span>:</div><div class="line">      pitch_n = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x40</span>:</div><div class="line">      roll_p = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">0x80</span>:</div><div class="line">      roll_n = <span class="literal">true</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:    </div><div class="line">      pitch_p = <span class="literal">false</span>;</div><div class="line">      pitch_n = <span class="literal">false</span>;</div><div class="line">      roll_p = <span class="literal">false</span>;</div><div class="line">      roll_n = <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>PC机主程序</strong></p>
+<p>PC程序使用Python + <a href="https://sourceforge.net/projects/pyhook/" target="_blank" rel="external">pyhook</a> s实现。</p>
+<p>pyhook是一个基于Python的“钩子”库，主要用于监听当前电脑上鼠标和键盘的事件。这个库依赖于另一个Python库PyWin32，如同名字所显示的，PyWin32只能运行在Windows平台，所以PyHook也只能运行在Windows平台。因此如果要在其他系统平台需要使用其他的键盘监听功能。</p>
+<p><em>操作</em>很简单，键盘的上下左右可以控制小车的移动WSAD用来控制云台的转向。就跟电脑的赛车游戏一般操控即可。（但是没那么好玩 =。=）</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="attr">__name__</span> == '__main__':</div><div class="line">    <span class="comment"># sender</span></div><div class="line">    <span class="attr">ss</span> = serialSender()</div><div class="line">    ss.connect_to_serial()</div><div class="line">    <span class="comment"># create a hook manager</span></div><div class="line">    <span class="attr">hm</span> = pyHook.HookManager()</div><div class="line">    <span class="comment"># watch for all mouse events</span></div><div class="line">    <span class="comment"># hm.KeyAll = OnKeyboardEvent</span></div><div class="line">    hm.SubscribeKeyDown(ss.OnKeyboardEventDown)</div><div class="line">    hm.SubscribeKeyUp(ss.OnKeyboardEventUp)</div></pre></td></tr></table></figure>
+<p>其中为了解决连接E30无线模块的问题，也加入一些判断机制</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect_to_serial</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">        vid_pid = <span class="string">'10C4:EA60'</span></div><div class="line">        <span class="comment"># connect to com auto</span></div><div class="line">        port_list = list(serial.tools.list_ports.comports())</div><div class="line">        <span class="keyword">if</span> len(port_list) &lt;= <span class="number">0</span>:</div><div class="line">            print (<span class="string">"The Serial port can't find!"</span>)</div><div class="line">        <span class="symbol">else:</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="symbol">port_list:</span></div><div class="line">                <span class="keyword">if</span> str(list(i)[<span class="number">2</span>]).find(vid_pid) != -<span class="number">1</span> : <span class="comment"># VID:PID = X<span class="doctag">XXX:</span>XXXX</span></div><div class="line">                    port_list_use =list(i)</div><div class="line">                    port_serial = port_list_use[<span class="number">0</span>]</div><div class="line">                    <span class="keyword">self</span>.ser = serial.Serial(port_serial,<span class="number">9600</span>,timeout = <span class="number">60</span>)</div><div class="line">                    print (<span class="string">"Find the port &gt;"</span>,<span class="keyword">self</span>.ser)</div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">self</span>.ser == <span class="number">0</span>:</div><div class="line">                print(<span class="string">"Cannot find the port of wireless serial."</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close_the_serial</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.ser != <span class="number">0</span>:</div><div class="line"><span class="keyword">self</span>.ser.close();</div></pre></td></tr></table></figure>
+<p>使用的时候请把vid_pid改写成自己USB设备的ID，此功能仅能针对串口转USB设备。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>适合跟小朋友一起制作！培养感情～</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/simple-robots-系列/">simple robots 系列</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/robot/">robot</a>
   </div>
 
 </div>
@@ -592,63 +1061,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/02/10/hexo_codecolor/" title="hexo优化之代码块的颜色与背景" itemprop="url">hexo优化之代码块的颜色与背景</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
-		
-  <p class="article-time">
-    <time datetime="2014-02-10T12:16:46.000Z" itemprop="datePublished"> 发表于 2014-02-10</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>hexo的代码块的浅色背景并不是受到很多人的喜欢，这个更改也很简单。</p>
-<p>首先要更改<code>/theme/light/css/_partial/article.styl</code>中</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/02/10/hexo_codecolor/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/hexo/">hexo</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2014/02/10/hexo_math/" title="hexo优化之支持LaTex语法" itemprop="url">hexo优化之支持LaTex语法</a>
   </h1>
   <p class="article-author">By
@@ -680,136 +1092,6 @@ hexo math install
 <div class="article-categories">
   <span></span>
   <a class="article-category-link" href="/categories/hexo/">hexo</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/02/07/linux-avr-2/" title="avr系列:(二)avrdude的使用简介和AVR熔丝位" itemprop="url">avr系列:(二)avrdude的使用简介和AVR熔丝位</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
-		
-  <p class="article-time">
-    <time datetime="2014-02-07T03:27:57.000Z" itemprop="datePublished"> 发表于 2014-02-07</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="此篇以Ubuntu下的atmeg16，avr-gcc-usbasp-dragon-jtag-来进行说明。"><a href="#此篇以Ubuntu下的atmeg16，avr-gcc-usbasp-dragon-jtag-来进行说明。" class="headerlink" title="此篇以Ubuntu下的atmeg16，avr-gcc + usbasp (dragon_jtag)来进行说明。"></a>此篇以Ubuntu下的atmeg16，avr-gcc + usbasp (dragon_jtag)来进行说明。</h3><p><strong>由于文章迁移手头没有avr一部分图片用的以前的，看颜色也能看出来，会在后期改掉的，但效果是ok的</strong></p>
-<h4 id="简述了下avrdude的使用和熔丝位的基本情况。"><a href="#简述了下avrdude的使用和熔丝位的基本情况。" class="headerlink" title="简述了下avrdude的使用和熔丝位的基本情况。"></a>简述了下avrdude的使用和熔丝位的基本情况。</h4>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/02/07/linux-avr-2/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/avr系列/">avr系列</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2014/02/06/linux-avr-1/" title="avr系列:(一)在linux下搭建avr开发平台" itemprop="url">avr系列:(一)在linux下搭建avr开发平台</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
-		
-  <p class="article-time">
-    <time datetime="2014-02-06T12:59:49.000Z" itemprop="datePublished"> 发表于 2014-02-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="此篇以Ubuntu下的atmeg16，avr-gcc-usbasp的开发环境搭建来进行说明。"><a href="#此篇以Ubuntu下的atmeg16，avr-gcc-usbasp的开发环境搭建来进行说明。" class="headerlink" title="此篇以Ubuntu下的atmeg16，avr-gcc + usbasp的开发环境搭建来进行说明。"></a>此篇以Ubuntu下的atmeg16，avr-gcc + usbasp的开发环境搭建来进行说明。</h3><p><strong>由于文章迁移手头没有avr一部分图片用的以前的，看颜色也能看出来，会在后期改掉的，但效果是ok的</strong></p>
-<p>系列说明：avr作为很成功的一系列芯片，在开源上受到了极大的关注，因为使其在linux环境下的开发充满乐趣和色彩。</p>
-<p>环境如下：</p>
-<ul>
-<li>OS系统：ubuntu 12.04（原为10.04最近升级了）</li>
-<li>编译器 ：avr-gcc</li>
-<li>烧录软件 :avrdude</li>
-<li>调试软件:avarice ，GDB和ddd （可视界面）</li>
-<li>开发板：</li>
-</ul>
-<ol>
-<li><p>xplain(xmega128a1)无法调试，只能烧录，因为官方没有公开其调试的协议。</p>
-</li>
-<li><p>Mega16开发板。</p>
-</li>
-</ol>
-<p>仿真器or烧录器：dragon和usbasp（使用较多）</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2014/02/06/linux-avr-1/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/avr系列/">avr系列</a>
 </div>
 
 
@@ -868,6 +1150,10 @@ hexo math install
 		  
 		
 		  
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/hexo/" title="hexo">hexo<sup>3</sup></a></li>
 		  
 		
@@ -884,7 +1170,7 @@ hexo math install
 		  
 		
 		  
-			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>2</sup></a></li>
+			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>4</sup></a></li>
 		  
 		
 		</ul>
@@ -897,11 +1183,19 @@ hexo math install
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/artrobot/" title="artrobot">artrobot<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Valkyrie/" title="Valkyrie">Valkyrie<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
+				<li><a href="/tags/git-ssh/" title="git ssh">git ssh<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Atlas/" title="Atlas">Atlas<sup>1</sup></a></li>
 			
 		
 			
@@ -909,9 +1203,11 @@ hexo math install
 			
 		
 			
-				<li><a href="/tags/Romeo/" title="Romeo">Romeo<sup>1</sup></a></li>
+				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/Romeo/" title="Romeo">Romeo<sup>1</sup></a></li>
 			
 		
 			
