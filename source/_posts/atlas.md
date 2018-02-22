@@ -12,6 +12,7 @@ date: 2017-07-07 16:53:22
 - 官方网站：[Atlas Project](http://www.bostondynamics.com/robot_Atlas.html)
 - 原型：[Petman](https://www.youtube.com/watch?v=tFrjrgBV8K0)
 
+<!---more--->
 
 ## 公司简介 ##
 波士顿动力公司（英语：）是一家美国的工程与机器人设计公司，美国军方通过 DARPA （美国国防部先进研究项目局）资金支持了波士顿动力的许多项目。

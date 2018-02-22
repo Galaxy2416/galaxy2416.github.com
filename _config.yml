@@ -85,6 +85,12 @@ plugin:
 - hexo-generator-feed
 - hexo-generator-sitemap
 
+
+#disqus
+disqus: true
+disqus_shortname: galaxy2416
+
+
 ## Themes: https://hexo.io/themes/
 theme: jacman
 stylus:
