@@ -1,0 +1,583 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>shadowSocks and manager install and configuration | IcePie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="冰派">
+    
+
+    
+    <meta name="description" content="Install ShadowSocks server123456# Update is ti is necessarysudo apt-get update# Install python-pipsudo apt-get install python-pip# Install ss sudo pip install shadowsocks Set the config file1234567891">
+<meta name="keywords" content="git ssh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shadowSocks and manager install and configuration">
+<meta property="og:url" content="galaxy2416.github.io/2019/07/20/shadowsocks/index.html">
+<meta property="og:site_name" content="IcePie&#39;s blog">
+<meta property="og:description" content="Install ShadowSocks server123456# Update is ti is necessarysudo apt-get update# Install python-pipsudo apt-get install python-pip# Install ss sudo pip install shadowsocks Set the config file1234567891">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-19T17:43:43.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shadowSocks and manager install and configuration">
+<meta name="twitter:description" content="Install ShadowSocks server123456# Update is ti is necessarysudo apt-get update# Install python-pipsudo apt-get install python-pip# Install ss sudo pip install shadowsocks Set the config file1234567891">
+
+    
+    <link rel="alternative" href="/atom.xml" title="IcePie&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/planets/planet_univearse_telestial_space_pluto.png" alt="IcePie&#39;s blog" title="IcePie&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="IcePie&#39;s blog">IcePie&#39;s blog</a></h1>
+				<h2 class="blog-motto">语不惊人死不休</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:galaxy2416.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/07/20/shadowsocks/" title="shadowSocks and manager install and configuration" itemprop="url">shadowSocks and manager install and configuration</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2019-07-20T15:23:47.000Z" itemprop="datePublished"> 发表于 2019-07-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-ShadowSocks-server"><span class="toc-number">1.</span> <span class="toc-text">Install ShadowSocks server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-the-config-file"><span class="toc-number">2.</span> <span class="toc-text">Set the config file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowSocks-server-start-when-power-on"><span class="toc-number">3.</span> <span class="toc-text">ShadowSocks server start when power on</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#init-shadowsocks-cofnig"><span class="toc-number"></span> <span class="toc-text">init shadowsocks cofnig</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowSocks-Manager-Server"><span class="toc-number">1.</span> <span class="toc-text">ShadowSocks Manager Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowSocks-Manager-Web-Server"><span class="toc-number">2.</span> <span class="toc-text">ShadowSocks Manager Web Server</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="Install-ShadowSocks-server"><a href="#Install-ShadowSocks-server" class="headerlink" title="Install ShadowSocks server"></a>Install ShadowSocks server</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Update is ti is necessary</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line"><span class="meta"># Install python-pip</span></span><br><span class="line">sudo apt-<span class="keyword">get</span> install python-pip</span><br><span class="line"><span class="meta"># Install ss </span></span><br><span class="line">sudo pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<h2 id="Set-the-config-file"><a href="#Set-the-config-file" class="headerlink" title="Set the config file"></a>Set the config file</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ss-conf.json</span><br><span class="line"></span><br><span class="line">---&gt;</span><br><span class="line">&#123;</span><br><span class="line"><span class="section">“server”:”0.0.0.0”,</span></span><br><span class="line"><span class="section">“server_port”:8838,</span></span><br><span class="line"><span class="section">“local_address”:”127.0.0.1”,</span></span><br><span class="line"><span class="section">“local_port”:1080,</span></span><br><span class="line"><span class="section">“password”:”123456”,</span></span><br><span class="line"><span class="section">“timeout”:600,</span></span><br><span class="line"><span class="section">“method”:”aes-256-cfb”</span></span><br><span class="line">&#125;</span><br><span class="line">---&gt;</span><br><span class="line">sudo ssserver -c /etc/ss-conf.json -d start</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="ShadowSocks-server-start-when-power-on"><a href="#ShadowSocks-server-start-when-power-on" class="headerlink" title="ShadowSocks server start when power on"></a>ShadowSocks server start when power on</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># init script </span></span><br><span class="line">sudo vim /etc/init.d/shadowsocks</span><br><span class="line">---&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span></span>() &#123;</span><br><span class="line">  sudo ssserver --manager-address 127.0.0.1:6001 -c /etc/ss-conf.json -d start</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="title">stop</span></span>() &#123;</span><br><span class="line">  sudo ssserver --manager-address 127.0.0.1:6001 -c /etc/ss-conf.json -d stop</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line"></span><br><span class="line">start)</span><br><span class="line">  start</span><br><span class="line">  ;;</span><br><span class="line">stop)</span><br><span class="line">  stop</span><br><span class="line">  ;;</span><br><span class="line">reload)</span><br><span class="line">  stop</span><br><span class="line">  start</span><br><span class="line">  ;;</span><br><span class="line">*)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> &#123;start|reload|stop&#125;"</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line">  ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line">---&gt;</span><br><span class="line">sudo chmod +x /etc/init.d/shadowsocks</span><br></pre></td></tr></table></figure>
+<p>The part of <em>–manager-address 127.0.0.1:6001</em> is used for shadowsocks manager.</p>
+<h1 id="init-shadowsocks-cofnig"><a href="#init-shadowsocks-cofnig" class="headerlink" title="init shadowsocks cofnig"></a>init shadowsocks cofnig</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/init/shadowsocks.conf</span><br><span class="line">---&gt;</span><br><span class="line">start on (runlevel [2345])stop on (runlevel [016])</span><br><span class="line">pre-start script</span><br><span class="line">/etc/init.d/shadowsocks start</span><br><span class="line">end script</span><br><span class="line"></span><br><span class="line">post-stop script</span><br><span class="line">/etc/init.d/shadowsocks stop</span><br><span class="line">end script</span><br><span class="line">---&gt;</span><br><span class="line">sudo update-rc.d shadowsocks defaults</span><br></pre></td></tr></table></figure>
+<h2 id="ShadowSocks-Manager-Server"><a href="#ShadowSocks-Manager-Server" class="headerlink" title="ShadowSocks Manager Server"></a>ShadowSocks Manager Server</h2><p>The project is on <a href="https://github.com/shadowsocks/shadowsocks-manager/" target="_blank" rel="noopener">github</a> with the <a href="https://shadowsocks.github.io/shadowsocks-manager/#/install" target="_blank" rel="noopener">doc</a>.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create your own config. Or just modified the defalut one.</span></span><br><span class="line"><span class="string">vim</span> <span class="string">~/.ssmgr/default.yml</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--&gt;</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">s</span></span><br><span class="line"></span><br><span class="line"><span class="attr">shadowsocks:</span></span><br><span class="line"><span class="attr">  address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:6001</span></span><br><span class="line"><span class="comment"># The port sould be the same with --manager-address 127.0.0.1:6001</span></span><br><span class="line"></span><br><span class="line"><span class="attr">manager:</span></span><br><span class="line"><span class="attr">  address:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span><span class="string">:6002</span></span><br><span class="line"><span class="attr">  password:</span> <span class="string">'123456'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">db:</span> <span class="string">'db.sqlite'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># db:</span></span><br><span class="line"><span class="comment">#   host: '1.1.1.1'</span></span><br><span class="line"><span class="comment">#   user: 'root'</span></span><br><span class="line"><span class="comment">#   password: 'abcdefg'</span></span><br><span class="line"><span class="comment">#   database: 'ssmgr'</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--&gt;</span></span><br><span class="line"><span class="string">sudo</span> <span class="string">/etc/init.d/shadowsocks</span> <span class="string">start</span> <span class="comment"># start shadowSocks firstly</span></span><br><span class="line"><span class="string">ssmgr</span> <span class="bullet">-c</span> <span class="string">/your/node/config/file</span> <span class="comment"># or ssmgr for defalut one</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="ShadowSocks-Manager-Web-Server"><a href="#ShadowSocks-Manager-Web-Server" class="headerlink" title="ShadowSocks Manager Web Server"></a>ShadowSocks Manager Web Server</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create web gui config</span></span><br><span class="line"><span class="string">vim</span> <span class="string">~/.ssmgr/webgui.yml</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--&gt;</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">m</span></span><br><span class="line"></span><br><span class="line"><span class="attr">manager:</span></span><br><span class="line"><span class="attr">  address:</span> <span class="number">1.1</span><span class="number">.1</span><span class="number">.1</span><span class="string">:6002</span></span><br><span class="line"><span class="attr">  password:</span> <span class="string">'123456'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line"><span class="attr">  flowSaver:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  user:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  account:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  macAccount:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  group:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  email:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">'xxxx'</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">'xxxx'</span></span><br><span class="line"><span class="attr">    host:</span> <span class="string">'smtp.qq.com'</span></span><br><span class="line"><span class="attr">  webgui:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    host:</span> <span class="string">'0.0.0.0'</span></span><br><span class="line"><span class="attr">    port:</span> <span class="string">'80'</span></span><br><span class="line"><span class="attr">    site:</span> <span class="string">'1.1.1.1'</span></span><br><span class="line">    <span class="comment"># cdn: 'http://xxx.xxx.com'</span></span><br><span class="line">    <span class="comment"># icon: 'icon.png'</span></span><br><span class="line">    <span class="comment"># skin: 'default'</span></span><br><span class="line">    <span class="comment"># googleAnalytics: 'UA-xxxxxxxx-x'</span></span><br><span class="line">    <span class="comment"># gcmSenderId: '456102641793' # gcmSenderId, gcmAPIKey for Chrome publish</span></span><br><span class="line">    <span class="comment"># gcmAPIKey: 'AAAAGzzdqrE:XXXXXXXXXXXXXX'</span></span><br><span class="line"><span class="attr">  alipay:</span></span><br><span class="line"><span class="attr">    use:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    appid:</span> <span class="number">2016101000655129</span></span><br><span class="line"><span class="attr">    notifyUrl:</span> <span class="string">'1.1.1.1/api/user/alipay/callback'</span> <span class="comment"># this one is for the call back</span></span><br><span class="line"><span class="attr">    merchantPrivateKey:</span> <span class="string">'xxxx'</span> <span class="comment"># One generated by tool</span></span><br><span class="line"><span class="attr">    alipayPublicKey:</span> <span class="string">'xxx'</span> <span class="comment"># this one should be the on from Alipay web</span></span><br><span class="line"><span class="attr">    gatewayUrl:</span> <span class="string">'https://openapi.alipaydev.com/gateway.do'</span> <span class="comment"># Alipay's link</span></span><br><span class="line">  <span class="comment"># webgui_telegram:</span></span><br><span class="line">  <span class="comment">#   use: true</span></span><br><span class="line">  <span class="comment">#   token: '191374681:AAw6oaVPR4nnY7T4CtW78QX-Xy2Q5WD3wmZ'</span></span><br><span class="line">  <span class="comment"># paypal:</span></span><br><span class="line">  <span class="comment">#   use: true</span></span><br><span class="line">  <span class="comment">#   mode: 'live' # sandbox or live</span></span><br><span class="line">  <span class="comment">#   client_id: 'At9xcGd1t5L6OrICKNnp2g9'</span></span><br><span class="line">  <span class="comment">#   client_secret: 'EP40s6pQAZmqp_G_nrU9kKY4XaZph'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">db:</span> <span class="string">'webgui.sqlite'</span></span><br><span class="line"><span class="comment"># 从 0.30 开始需要配置 redis</span></span><br><span class="line"><span class="attr">redis:</span></span><br><span class="line"><span class="attr">  host:</span> <span class="string">'127.0.0.1'</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">6379</span></span><br><span class="line"><span class="attr">  password:</span> <span class="string">'b/PdIBSkn3dc7uO7Hy4Nw7jycsT4ogs7xOHhhz+ca5OPpP8HCOo4Js0OlCJLlSEFieOZGtbKY6p+wnnd'</span></span><br><span class="line"><span class="attr">  db:</span> <span class="number">0</span></span><br><span class="line"><span class="bullet">-</span><span class="bullet">--&gt;</span></span><br><span class="line"><span class="comment"># Run the seperately ( I use tmux, you can choose pm2、byobu )</span></span><br><span class="line"><span class="string">ssmgr</span> <span class="bullet">-c</span> <span class="string">~/.ssmgr/webgui.yml</span></span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/git/">git</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/git-ssh/">git ssh</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="galaxy2416.github.io/2019/07/20/shadowsocks/" data-title="shadowSocks and manager install and configuration | IcePie&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/07/17/hexo-from-git/"  title="Hexo From Github">
+ <strong>下一篇：</strong><br/> 
+ <span>Hexo From Github
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-ShadowSocks-server"><span class="toc-number">1.</span> <span class="toc-text">Install ShadowSocks server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-the-config-file"><span class="toc-number">2.</span> <span class="toc-text">Set the config file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowSocks-server-start-when-power-on"><span class="toc-number">3.</span> <span class="toc-text">ShadowSocks server start when power on</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#init-shadowsocks-cofnig"><span class="toc-number"></span> <span class="toc-text">init shadowsocks cofnig</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowSocks-Manager-Server"><span class="toc-number">1.</span> <span class="toc-text">ShadowSocks Manager Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ShadowSocks-Manager-Web-Server"><span class="toc-number">2.</span> <span class="toc-text">ShadowSocks Manager Web Server</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="galaxy2416" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/51单片机/" title="51单片机">51单片机<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/avr系列/" title="avr系列">avr系列<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="math">math<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/program/" title="program">program<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/simple-robots-系列/" title="simple robots 系列">simple robots 系列<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/vim/" title="vim">vim<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/git-ssh/" title="git ssh">git ssh<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Atlas/" title="Atlas">Atlas<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Romeo/" title="Romeo">Romeo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/第一篇文章/" title="第一篇文章">第一篇文章<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Valkyrie/" title="Valkyrie">Valkyrie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/artrobot/" title="artrobot">artrobot<sup>1</sup></a></li>
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://sherlockyu.github.io" target="_blank" title="猫哥的小博客">于小猫</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m IcePie. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/galaxy2416" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:gin@mail.elut.edu.cn" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="冰派">冰派</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'galaxy2416';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+  </body>
+</html>
