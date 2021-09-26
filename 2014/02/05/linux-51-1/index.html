@@ -1,0 +1,627 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>51之linux :(一) 在linux环境下搭建51开发环境 | IcePie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="冰派">
+    
+
+    
+    <meta name="description" content="此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。系列说明：LINUX下程序开发具有一定的成熟性，但是对于跨平台的包括部分的MCU，FPGA还并未被广泛使用,本系列将针对51系列的MCU.跟大家分享下。 环境如下：  OS系统 : ubuntu 12.04 编译器 : sdcc 烧录软件 : avrdude 烧录器件 : usbasp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="51之linux :(一) 在linux环境下搭建51开发环境">
+<meta property="og:url" content="http://galaxy2416.github.io/2014/02/05/linux-51-1/index.html">
+<meta property="og:site_name" content="IcePie&#39;s blog">
+<meta property="og:description" content="此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。系列说明：LINUX下程序开发具有一定的成熟性，但是对于跨平台的包括部分的MCU，FPGA还并未被广泛使用,本系列将针对51系列的MCU.跟大家分享下。 环境如下：  OS系统 : ubuntu 12.04 编译器 : sdcc 烧录软件 : avrdude 烧录器件 : usbasp">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://galaxy2416.github.io/img/ubuntu-51-fir/hardware1.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/ubuntu-51-fir/hardware2.jpg">
+<meta property="article:published_time" content="2014-02-05T13:56:31.000Z">
+<meta property="article:modified_time" content="2021-09-26T02:51:38.965Z">
+<meta property="article:author" content="冰派">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://galaxy2416.github.io/img/ubuntu-51-fir/hardware1.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="IcePie&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/planets/planet_univearse_telestial_space_pluto.png" alt="IcePie&#39;s blog" title="IcePie&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="IcePie&#39;s blog">IcePie&#39;s blog</a></h1>
+				<h2 class="blog-motto">语不惊人死不休</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:galaxy2416.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/02/05/linux-51-1/" title="51之linux :(一) 在linux环境下搭建51开发环境" itemprop="url">51之linux :(一) 在linux环境下搭建51开发环境</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2014-02-05T13:56:31.000Z" itemprop="datePublished"> 发表于 2014-02-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A4%E7%AF%87%E4%BB%A5Ubuntu%E4%B8%8B%E7%9A%84AT89S52%EF%BC%8CS51-SDCC-USBASP%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%9D%A5%E8%BF%9B%E8%A1%8C%E8%AF%B4%E6%98%8E%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="此篇以Ubuntu下的AT89S52，S51-SDCC-USBASP的开发环境搭建来进行说明。"><a href="#此篇以Ubuntu下的AT89S52，S51-SDCC-USBASP的开发环境搭建来进行说明。" class="headerlink" title="此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。"></a>此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。</h3><p>系列说明：LINUX下程序开发具有一定的成熟性，但是对于跨平台的包括部分的MCU，FPGA还并未被广泛使用,本系列将针对51系列的MCU.跟大家分享下。</p>
+<p>环境如下：</p>
+<ul>
+<li>OS系统 : ubuntu 12.04</li>
+<li>编译器 : sdcc</li>
+<li>烧录软件 : avrdude</li>
+<li>烧录器件 : usbasp<span id="more"></span>
+开发板：</li>
+</ul>
+<p>开发板的确是有个小的，不过这意搭接了一个个人的小面包板版本。</p>
+<p>如下图:<img src="/img/ubuntu-51-fir/hardware1.jpg" alt="HARDWARE"><br>最好弄运行的时候只需要电池1.2V*4，用了3个3.6V就可行（我的电池座忘带了，直接连起来）～建议最好有个USB接出来的5V电源或者自己有个变压器做的稳压电源，面包板上有一个电源小板子就是如此功能，不过这里没有使用。</p>
+<p> <em>注:旁边的小板子是USBASP,也有供电功能～此处就放在那里做个合影</em>。</p>
+<hr>
+<p><code>软件准备工作:</code></p>
+<p>软件安装，软件安装建议使用ubuntu的软件中心，比较方便。需要sdcc，avrdude即可了。文本编辑什么都行。也可以集成在codeblocks和eclipse里面，ubuntu下有个51MCU的IDE，可以下来用‘mcu8051ide’。</p>
+<p>对于命令行可以如下安装。对于一些附带库和文档自行选择即可～</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install avrdude</span><br><span class="line">sudo apt-<span class="builtin-name">get</span> install sdcc</span><br></pre></td></tr></table></figure>
+<p><code>测试开始</code><br>开始之前需要先写一个main.c的程序</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;8052.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="keyword">size_t</span>;</span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LED P0_0</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay</span><span class="params">(<span class="keyword">size_t</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(t--);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">                LED = <span class="number">0</span>;</span><br><span class="line">                <span class="built_in">delay</span>(<span class="number">20000</span>);</span><br><span class="line">                LED = <span class="number">1</span>;</span><br><span class="line">                <span class="built_in">delay</span>(<span class="number">20000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个很简单让一个小灯blink的程序。</p>
+<p><code>编译：</code></p>
+<p>之后就要编译程序把程序变成单片机能使用的*.elf *.bin *.hex之类</p>
+<p>这里使用的是SDCC默认编译出现的*.ihx (intel hex)</p>
+<p>在当前目录下执行</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sdcc</span> -mmcs<span class="number">51</span> main.c</span><br></pre></td></tr></table></figure>
+<p><del>-mmcs51</del> <em>也可以-默认</em></p>
+<p><code>配置avrdude:</code></p>
+<p>使用avrdude烧写 </p>
+<p>我们不能直接使用avrdude烧写，这是因为它默认只支持AVR芯片，但是通过一些配置，我们可以使用它来烧写。</p>
+<p>对于8051芯片，有三种配置文件，分别适用于不同的型号。看看你要哪一种，然后复制到/etc/avrdude.conf并保存。</p>
+<p><code>sudo gedit /etc/avrdude.conf</code></p>
+<p><em>For AT89S51</em></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># AT89S51</span></span><br><span class="line"><span class="comment">#------------------------------------------------------------</span></span><br><span class="line">part</span><br><span class="line">    <span class="attr">id</span>               = <span class="string">&quot;8052&quot;</span>;</span><br><span class="line">    <span class="attr">desc</span>             = <span class="string">&quot;AT89S51&quot;</span>;</span><br><span class="line">    <span class="attr">signature</span>        = <span class="number">0</span>x1E <span class="number">0</span>x51 <span class="number">0</span>x06;</span><br><span class="line">    <span class="attr">chip_erase_delay</span> = <span class="number">500000</span>;</span><br><span class="line">    <span class="attr">pgm_enable</span>       = <span class="string">&quot;1 0 1 0  1 1 0 0    0 1 0 1  0 0 1 1&quot;</span>,</span><br><span class="line">                       <span class="string">&quot;x x x x  x x x x    x x x x  x x x x&quot;</span>; </span><br><span class="line"></span><br><span class="line">    <span class="attr">chip_erase</span>       = <span class="string">&quot;1 0 1 0  1 1 0 0    1 0 0 x  x x x x&quot;</span>,</span><br><span class="line">                       <span class="string">&quot;x x x x  x x x x    x x x x  x x x x&quot;</span>; </span><br><span class="line"></span><br><span class="line">    <span class="attr">timeout</span>      = <span class="number">200</span>;</span><br><span class="line">    <span class="attr">stabdelay</span>      = <span class="number">100</span>;</span><br><span class="line">    <span class="attr">cmdexedelay</span>      = <span class="number">25</span>;</span><br><span class="line">    <span class="attr">synchloops</span>      = <span class="number">32</span>;</span><br><span class="line">    <span class="attr">bytedelay</span>      = <span class="number">0</span>;</span><br><span class="line">    <span class="attr">pollindex</span>      = <span class="number">3</span>;</span><br><span class="line">    <span class="attr">pollvalue</span>      = <span class="number">0</span>x53;</span><br><span class="line">    <span class="attr">predelay</span>      = <span class="number">1</span>;</span><br><span class="line">    <span class="attr">postdelay</span>      = <span class="number">1</span>;</span><br><span class="line">    <span class="attr">pollmethod</span>      = <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">    memory <span class="string">&quot;flash&quot;</span></span><br><span class="line">        <span class="attr">size</span>            = <span class="number">4096</span>;</span><br><span class="line">        <span class="attr">paged</span>           = no;</span><br><span class="line">        <span class="attr">min_write_delay</span> = <span class="number">4000</span>;</span><br><span class="line">        <span class="attr">max_write_delay</span> = <span class="number">9000</span>;</span><br><span class="line">        <span class="attr">readback_p1</span>     = <span class="number">0</span>xff;</span><br><span class="line">        <span class="attr">readback_p2</span>     = <span class="number">0</span>xff;</span><br><span class="line">        <span class="attr">read</span>            = <span class="string">&quot;  0   0   1   0    0   0   0   0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  x   x   x a12  a11 a10  a9  a8&quot;</span>,</span><br><span class="line">                          <span class="string">&quot; a7  a6  a5  a4   a3  a2  a1  a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  o   o   o   o    o   o   o   o&quot;</span>; </span><br><span class="line"></span><br><span class="line">        <span class="attr">write</span>           = <span class="string">&quot;  0   1   0   0    0   0   0   0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  x   x   x a12  a11 a10  a9  a8&quot;</span>,</span><br><span class="line">                          <span class="string">&quot; a7  a6  a5  a4   a3  a2  a1  a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  i   i   i   i    i   i   i   i&quot;</span>;</span><br><span class="line">   <span class="attr">mode</span>      = <span class="number">0</span>x21;</span><br><span class="line">   <span class="attr">delay</span>      = <span class="number">12</span>;</span><br><span class="line">      ; </span><br><span class="line"></span><br><span class="line">    memory <span class="string">&quot;signature&quot;</span></span><br><span class="line">        <span class="attr">size</span>            = <span class="number">3</span>;</span><br><span class="line">        <span class="attr">read</span>            = <span class="string">&quot;0  0  1  0   1  0  0  0   x  x  x  0   0  0 a1 a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;0  0  0  0   0  0  0  0   o  o  o  o   o  o  o  o&quot;</span>;</span><br><span class="line">      ;</span><br><span class="line">  ;</span><br></pre></td></tr></table></figure>
+<p><em>For AT89S52</em></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># AT89S52</span></span><br><span class="line"><span class="comment">#------------------------------------------------------------</span></span><br><span class="line">part</span><br><span class="line">    <span class="attr">id</span>               = <span class="string">&quot;8052&quot;</span>;</span><br><span class="line">    <span class="attr">desc</span>             = <span class="string">&quot;AT89S52&quot;</span>;</span><br><span class="line">    <span class="attr">signature</span>        = <span class="number">0</span>x1E <span class="number">0</span>x52 <span class="number">0</span>x06;</span><br><span class="line">    <span class="attr">chip_erase_delay</span> = <span class="number">500000</span>;</span><br><span class="line">    <span class="attr">pgm_enable</span>       = <span class="string">&quot;1 0 1 0  1 1 0 0    0 1 0 1  0 0 1 1&quot;</span>,</span><br><span class="line">                       <span class="string">&quot;x x x x  x x x x    x x x x  x x x x&quot;</span>; </span><br><span class="line"></span><br><span class="line">    <span class="attr">chip_erase</span>       = <span class="string">&quot;1 0 1 0  1 1 0 0    1 0 0 x  x x x x&quot;</span>,</span><br><span class="line">                       <span class="string">&quot;x x x x  x x x x    x x x x  x x x x&quot;</span>; </span><br><span class="line"></span><br><span class="line">    <span class="attr">timeout</span>      = <span class="number">200</span>;</span><br><span class="line">    <span class="attr">stabdelay</span>      = <span class="number">100</span>;</span><br><span class="line">    <span class="attr">cmdexedelay</span>      = <span class="number">25</span>;</span><br><span class="line">    <span class="attr">synchloops</span>      = <span class="number">32</span>;</span><br><span class="line">    <span class="attr">bytedelay</span>      = <span class="number">0</span>;</span><br><span class="line">    <span class="attr">pollindex</span>      = <span class="number">3</span>;</span><br><span class="line">    <span class="attr">pollvalue</span>      = <span class="number">0</span>x53;</span><br><span class="line">    <span class="attr">predelay</span>      = <span class="number">1</span>;</span><br><span class="line">    <span class="attr">postdelay</span>      = <span class="number">1</span>;</span><br><span class="line">    <span class="attr">pollmethod</span>      = <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">    memory <span class="string">&quot;flash&quot;</span></span><br><span class="line">        <span class="attr">size</span>            = <span class="number">8192</span>;</span><br><span class="line">        <span class="attr">paged</span>           = no;</span><br><span class="line">        <span class="attr">min_write_delay</span> = <span class="number">4000</span>;</span><br><span class="line">        <span class="attr">max_write_delay</span> = <span class="number">9000</span>;</span><br><span class="line">        <span class="attr">readback_p1</span>     = <span class="number">0</span>xff;</span><br><span class="line">        <span class="attr">readback_p2</span>     = <span class="number">0</span>xff;</span><br><span class="line">        <span class="attr">read</span>            = <span class="string">&quot;  0   0   1   0    0   0   0   0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  x   x   x a12  a11 a10  a9  a8&quot;</span>,</span><br><span class="line">                          <span class="string">&quot; a7  a6  a5  a4   a3  a2  a1  a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  o   o   o   o    o   o   o   o&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attr">write</span>           = <span class="string">&quot;  0   1   0   0    0   0   0   0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  x   x   x a12  a11 a10  a9  a8&quot;</span>,</span><br><span class="line">                          <span class="string">&quot; a7  a6  a5  a4   a3  a2  a1  a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  i   i   i   i    i   i   i   i&quot;</span>;</span><br><span class="line">   <span class="attr">mode</span>      = <span class="number">0</span>x21;</span><br><span class="line">   <span class="attr">delay</span>      = <span class="number">12</span>;</span><br><span class="line">      ; </span><br><span class="line"></span><br><span class="line">    memory <span class="string">&quot;signature&quot;</span></span><br><span class="line">        <span class="attr">size</span>            = <span class="number">3</span>;</span><br><span class="line">        <span class="attr">read</span>            = <span class="string">&quot;0  0  1  0   1  0  0  0   x  x  x  0   0  0 a1 a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;0  0  0  0   0  0  0  0   o  o  o  o   o  o  o  o&quot;</span>;</span><br><span class="line">      ;</span><br><span class="line">  ;</span><br></pre></td></tr></table></figure>
+<p><em>For AT89S8253</em></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># AT89S8253</span></span><br><span class="line"><span class="comment">#------------------------------------------------------------</span></span><br><span class="line">part</span><br><span class="line">    <span class="attr">id</span>               = <span class="string">&quot;8253&quot;</span>;</span><br><span class="line">    <span class="attr">desc</span>             = <span class="string">&quot;AT89S8253&quot;</span>;</span><br><span class="line">    <span class="attr">chip_erase_delay</span> = <span class="number">20000</span>;</span><br><span class="line">    <span class="attr">pgm_enable</span>       = <span class="string">&quot;1 0 1 0  1 1 0 0    0 1 0 1  0 0 1 1&quot;</span>,</span><br><span class="line">                       <span class="string">&quot;x x x x  x x x x    x x x x  x x x x&quot;</span>; </span><br><span class="line"></span><br><span class="line">    <span class="attr">chip_erase</span>       = <span class="string">&quot;1 0 1 0  1 1 0 0    1 0 0 x  x x x x&quot;</span>,</span><br><span class="line">                       <span class="string">&quot;x x x x  x x x x    x x x x  x x x x&quot;</span>; </span><br><span class="line"></span><br><span class="line">    <span class="attr">timeout</span>      = <span class="number">200</span>;</span><br><span class="line">    <span class="attr">stabdelay</span>      = <span class="number">100</span>;</span><br><span class="line">    <span class="attr">cmdexedelay</span>      = <span class="number">25</span>;</span><br><span class="line">    <span class="attr">synchloops</span>      = <span class="number">32</span>;</span><br><span class="line">    <span class="attr">bytedelay</span>      = <span class="number">0</span>;</span><br><span class="line">    <span class="attr">pollindex</span>      = <span class="number">3</span>;</span><br><span class="line">    <span class="attr">pollvalue</span>      = <span class="number">0</span>x53;</span><br><span class="line">    <span class="attr">predelay</span>      = <span class="number">1</span>;</span><br><span class="line">    <span class="attr">postdelay</span>      = <span class="number">1</span>;</span><br><span class="line">    <span class="attr">pollmethod</span>      = <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">    memory <span class="string">&quot;flash&quot;</span></span><br><span class="line">        <span class="attr">size</span>            = <span class="number">12288</span>;</span><br><span class="line">        <span class="attr">paged</span>           = no;</span><br><span class="line">        <span class="attr">min_write_delay</span> = <span class="number">4000</span>;</span><br><span class="line">        <span class="attr">max_write_delay</span> = <span class="number">9000</span>;</span><br><span class="line">        <span class="attr">readback_p1</span>     = <span class="number">0</span>xff;</span><br><span class="line">        <span class="attr">readback_p2</span>     = <span class="number">0</span>xff;</span><br><span class="line">        <span class="attr">read</span>            = <span class="string">&quot;  0   0   1   0    0   0   0   0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  x   x a13 a12  a11 a10  a9  a8&quot;</span>,</span><br><span class="line">                          <span class="string">&quot; a7  a6  a5  a4   a3  a2  a1  a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  o   o   o   o    o   o   o   o&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attr">write</span>           = <span class="string">&quot;  0   1   0   0    0   0   0   0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  x   x a13 a12  a11 a10  a9  a8&quot;</span>,</span><br><span class="line">                          <span class="string">&quot; a7  a6  a5  a4   a3  a2  a1  a0&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;  i   i   i   i    i   i   i   i&quot;</span>;</span><br><span class="line">   <span class="attr">mode</span>      = <span class="number">0</span>x21;</span><br><span class="line">   <span class="attr">delay</span>      = <span class="number">12</span>;</span><br><span class="line">      ; </span><br><span class="line"></span><br><span class="line">    memory <span class="string">&quot;signature&quot;</span></span><br><span class="line">        <span class="attr">size</span>            = <span class="number">2</span>;</span><br><span class="line">        <span class="attr">readback_p1</span>     = <span class="number">0</span>x1E;</span><br><span class="line">        <span class="attr">readback_p2</span>     = <span class="number">0</span>x73;</span><br><span class="line">        <span class="attr">read</span>            = <span class="string">&quot;0  0  1  0   1  0  0  0   x  x  x  x   x  x  x  x&quot;</span>,</span><br><span class="line">                          <span class="string">&quot;x  x  1  1   0  0  0 a0   o  o  o  o   o  o  o  o&quot;</span>;</span><br><span class="line">      ;</span><br><span class="line">  ;</span><br></pre></td></tr></table></figure>
+
+<p><strong>特意要说明一下的是，网上有些配置在S51和S52的delay的参数上给的20000，这个delay太短了，在验证代码的时候会出错。因此还是建议用如上的配置。</strong></p>
+<p><code>使用avrdude烧写:</code></p>
+<p>配置完成后要用main.ihx进行烧写,在终端执行<br><code>make program</code><br>(makefile见后文)</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">monkey@monkey-ThinkPad-E425:~/McuWork/<span class="number">51</span>_SDCC/workpace/Blink$ make program </span><br><span class="line">sudo avrdude -p <span class="number">8052</span> -c usbasp -e -U flash:w:<span class="string">&#x27;./main.ihx&#x27;</span></span><br><span class="line"></span><br><span class="line">avrdude: warning: cannot set sck period. please check for usbasp firmware update.</span><br><span class="line">avrdude: AVR device initialized and ready to accept instructions</span><br><span class="line"></span><br><span class="line">Reading | ################################################## | <span class="number">100</span>% <span class="number">0.01</span>s</span><br><span class="line"></span><br><span class="line">avrdude: Device signature = <span class="number">0x1e5206</span></span><br><span class="line">avrdude: erasing chip</span><br><span class="line">avrdude: warning: cannot set sck period. please check for usbasp firmware update.</span><br><span class="line">avrdude: reading input file <span class="string">&quot;./main.ihx&quot;</span></span><br><span class="line">avrdude: input file ./main.ihx auto detected <span class="keyword">as</span> Intel Hex</span><br><span class="line">avrdude: writing flash (<span class="number">140</span> bytes):</span><br><span class="line"></span><br><span class="line">Writing | ################################################## | <span class="number">100</span>% <span class="number">1.69</span>s</span><br><span class="line"></span><br><span class="line">avrdude: <span class="number">140</span> bytes <span class="keyword">of</span> flash written</span><br><span class="line">avrdude: verifying flash memory against ./main.ihx:</span><br><span class="line">avrdude: load data flash data <span class="keyword">from</span> input file ./main.ihx:</span><br><span class="line">avrdude: input file ./main.ihx auto detected <span class="keyword">as</span> Intel Hex</span><br><span class="line">avrdude: input file ./main.ihx contains <span class="number">140</span> bytes</span><br><span class="line">avrdude: reading on-chip flash data:</span><br><span class="line"></span><br><span class="line">Reading | ################################################## | <span class="number">100</span>% <span class="number">0.57</span>s</span><br><span class="line"></span><br><span class="line">avrdude: verifying ...</span><br><span class="line">avrdude: <span class="number">140</span> bytes <span class="keyword">of</span> flash verified</span><br><span class="line"></span><br><span class="line">avrdude: safemode: Fuses OK</span><br><span class="line"></span><br><span class="line">avrdude done.  Thank you.</span><br><span class="line"></span><br><span class="line">monkey@monkey-ThinkPad-E425:~/McuWork/<span class="number">51</span>_SDCC/workpace/Blink$</span><br></pre></td></tr></table></figure>
+
+<p><code>选项说明(Options)：</code></p>
+<p><a href="/attachment/avrdude.pdf">avrdude文档</a></p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-p specifies <span class="keyword">the</span> type <span class="keyword">of</span> <span class="keyword">the</span> MCU connected <span class="built_in">to</span> <span class="keyword">the</span> programmer.  </span><br><span class="line">-c specifies <span class="keyword">the</span> default programmer  </span><br><span class="line">-e causes <span class="keyword">a</span> chip erase <span class="built_in">to</span> be executed.  </span><br><span class="line">-U memtype:op:filename  </span><br><span class="line">The op field specifies what operation <span class="built_in">to</span> perform:  </span><br><span class="line"> r <span class="built_in">read</span> device memory <span class="keyword">and</span> <span class="built_in">write</span> <span class="built_in">to</span> <span class="keyword">the</span> specified <span class="built_in">file</span>  </span><br><span class="line"> w <span class="built_in">read</span> data <span class="built_in">from</span> <span class="keyword">the</span> specified <span class="built_in">file</span> <span class="keyword">and</span> <span class="built_in">write</span> <span class="built_in">to</span> <span class="keyword">the</span> device memory  </span><br><span class="line"> v <span class="built_in">read</span> data <span class="built_in">from</span> both <span class="keyword">the</span> device <span class="keyword">and</span> <span class="keyword">the</span> specified <span class="built_in">file</span> <span class="keyword">and</span> perform <span class="keyword">a</span> verify</span><br></pre></td></tr></table></figure>
+
+<p>总图:<img src="/img/ubuntu-51-fir/hardware2.jpg" alt="WHOLE"></p>
+<p>使用USBASP前请用<code>lsusb</code>查看一下是否能检测到。并且注意STC的串口软件没有在linux下版本，USBASP使用的是ISP接口，对于AT89C51,AT89C52是无法使用的切记。</p>
+<p>USBASP是开源的一款硬件,<br><a target="_blank" rel="noopener" href="http://www.fischl.de/usbasp/">USBASP制作</a></p>
+<p><a href="/attachment/usb51.zip">USBASP固件</a> (以防有的固件比较老不支持)</p>
+<hr>
+<p><strong>附录：</strong></p>
+<p>单源文件简易Makefile</p>
+<p>make : 编译</p>
+<p>make hex : 生成*.hex</p>
+<p>make program : 烧录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#=============================================================================</span></span><br><span class="line"><span class="comment">#     FileName: Makefile</span></span><br><span class="line"><span class="comment">#         Desc: sdcc signal file</span></span><br><span class="line"><span class="comment">#       Author: Galaxy2416(Gin)</span></span><br><span class="line"><span class="comment">#        Email: sunxiao.gin@gmail.com</span></span><br><span class="line"><span class="comment">#     Compiler: sdcc</span></span><br><span class="line"><span class="comment">#      Version: 0.0.1</span></span><br><span class="line"><span class="comment">#   LastChange: 2012-05-19 16:30:35</span></span><br><span class="line"><span class="comment">#      History:</span></span><br><span class="line"><span class="comment">#=============================================================================</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CC=sdcc</span><br><span class="line"></span><br><span class="line">SOURCE = <span class="variable">$</span>(wildcard *.c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">all :</span><br><span class="line">	<span class="variable">$</span>(CC) <span class="literal">-mmcs51</span> <span class="variable">$</span>(SOURCE) </span><br><span class="line">hex:</span><br><span class="line">	packihx <span class="string">&#x27;$(wildcard *.ihx)&#x27;</span> &gt; <span class="string">&#x27;$(patsubst %.ihx,%.hex,$(wildcard *.ihx))&#x27;</span></span><br><span class="line"></span><br><span class="line">program : </span><br><span class="line">	sudo avrdude <span class="literal">-p</span> <span class="number">8052</span> <span class="literal">-c</span> usbasp <span class="literal">-e</span> <span class="literal">-U</span> flash:w:<span class="string">&#x27;./$(wildcard *.ihx)&#x27;</span></span><br><span class="line"></span><br><span class="line">.PHONY:	clean</span><br><span class="line">clean:</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.bak</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.rel</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.asm</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.lst</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.sym</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.map</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.lnk</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.mem</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.i</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.d</span><br><span class="line">	<span class="built_in">rm</span> <span class="operator">-f</span> *.rst</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://galaxy2416.github.io/2014/02/05/linux-51-1/" data-title="51之linux :(一) 在linux环境下搭建51开发环境 | IcePie&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/02/06/linux-avr-1/" title="avr系列:(一)在linux下搭建avr开发平台">
+  <strong>上一篇：</strong><br/>
+  <span>
+  avr系列:(一)在linux下搭建avr开发平台</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/01/30/say-hi/"  title="Say Hi">
+ <strong>下一篇：</strong><br/> 
+ <span>Say Hi
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A4%E7%AF%87%E4%BB%A5Ubuntu%E4%B8%8B%E7%9A%84AT89S52%EF%BC%8CS51-SDCC-USBASP%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%9D%A5%E8%BF%9B%E8%A1%8C%E8%AF%B4%E6%98%8E%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">此篇以Ubuntu下的AT89S52，S51+SDCC+USBASP的开发环境搭建来进行说明。</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="galaxy2416" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/51单片机/" title="51单片机">51单片机<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/avr系列/" title="avr系列">avr系列<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="math">math<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/program/" title="program">program<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/simple-robots-系列/" title="simple robots 系列">simple robots 系列<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/vim/" title="vim">vim<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/git-ssh/" title="git ssh">git ssh<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Valkyrie/" title="Valkyrie">Valkyrie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/artrobot/" title="artrobot">artrobot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Atlas/" title="Atlas">Atlas<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/第一篇文章/" title="第一篇文章">第一篇文章<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Romeo/" title="Romeo">Romeo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://sherlockyu.github.io" target="_blank" title="猫哥的小博客">于小猫</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m IcePie. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/galaxy2416" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:gin@mail.elut.edu.cn" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="冰派">冰派</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'galaxy2416';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>

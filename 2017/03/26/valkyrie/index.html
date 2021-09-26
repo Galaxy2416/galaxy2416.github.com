@@ -1,0 +1,641 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>Valkyrie | IcePie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="冰派">
+    
+
+    
+    <meta name="description" content="仿人机器人 之 Valkyrie 设计公司：美国国家航天局 NASA 设计组织：Johnson Space Center 官方网站：Valkyrie Wiki Home 原型: Robonaut（Valkyrie 是 R5）R2空间站视频  公司简介NASA https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;NASA 1958年7月29日，美国总统艾森豪威尔签署了《美国公共法案85-56">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Valkyrie">
+<meta property="og:url" content="http://galaxy2416.github.io/2017/03/26/valkyrie/index.html">
+<meta property="og:site_name" content="IcePie&#39;s blog">
+<meta property="og:description" content="仿人机器人 之 Valkyrie 设计公司：美国国家航天局 NASA 设计组织：Johnson Space Center 官方网站：Valkyrie Wiki Home 原型: Robonaut（Valkyrie 是 R5）R2空间站视频  公司简介NASA https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;NASA 1958年7月29日，美国总统艾森豪威尔签署了《美国公共法案85-56">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://galaxy2416.github.io/img/valkyrie/figure5.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/valkyrie/figure2.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/valkyrie/figure2.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/valkyrie/val_twisted.png">
+<meta property="article:published_time" content="2017-03-26T05:44:35.000Z">
+<meta property="article:modified_time" content="2021-09-26T02:51:38.966Z">
+<meta property="article:author" content="冰派">
+<meta property="article:tag" content="Valkyrie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://galaxy2416.github.io/img/valkyrie/figure5.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="IcePie&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/planets/planet_univearse_telestial_space_pluto.png" alt="IcePie&#39;s blog" title="IcePie&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="IcePie&#39;s blog">IcePie&#39;s blog</a></h1>
+				<h2 class="blog-motto">语不惊人死不休</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:galaxy2416.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/26/valkyrie/" title="Valkyrie" itemprop="url">Valkyrie</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-26T05:44:35.000Z" itemprop="datePublished"> 发表于 2017-03-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF%E4%BA%BA%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%B9%8B-Valkyrie"><span class="toc-number">1.</span> <span class="toc-text">仿人机器人 之 Valkyrie</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%8F%B8%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">公司简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E7%BB%87%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">组织简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">1.3.</span> <span class="toc-text">机器人简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">基本参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">功能以及其他信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.3.3.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.4.</span> <span class="toc-text">硬件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%BF%E8%BD%BDCPU"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">板载CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E6%80%BB%E7%BA%BF"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">通信总线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%B4%E9%83%A8"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">头部</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.3.4.4.</span> <span class="toc-text">传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%9C%BA%EF%BC%8C%E5%87%8F%E9%80%9F%E5%99%A8%E4%BB%A5%E5%8F%8A%E9%A9%B1%E5%8A%A8%EF%BC%88%E5%85%B3%E8%8A%82%EF%BC%89"><span class="toc-number">1.3.4.5.</span> <span class="toc-text">电机，减速器以及驱动（关节）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%B1%A0"><span class="toc-number">1.3.4.6.</span> <span class="toc-text">电池</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.3.4.7.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%AE%E7%82%B9%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.5.</span> <span class="toc-text">亮点的功能　###</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="仿人机器人-之-Valkyrie"><a href="#仿人机器人-之-Valkyrie" class="headerlink" title="仿人机器人 之 Valkyrie"></a>仿人机器人 之 Valkyrie</h1><ul>
+<li>设计公司：美国国家航天局 NASA</li>
+<li>设计组织：<a target="_blank" rel="noopener" href="https://www.nasa.gov/centers/johnson/home/index.html" title="JSC">Johnson Space Center</a></li>
+<li>官方网站：<a target="_blank" rel="noopener" href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/home">Valkyrie Wiki Home</a></li>
+<li>原型: Robonaut（Valkyrie 是 R5）<a target="_blank" rel="noopener" href="https://youtu.be/grieVTdxsNI">R2空间站视频</a></li>
+</ul>
+<h2 id="公司简介"><a href="#公司简介" class="headerlink" title="公司简介"></a>公司简介</h2><p><strong>NASA</strong></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NASA" title="NASA Wiki">https://en.wikipedia.org/wiki/NASA</a></p>
+<p>1958年7月29日，美国总统艾森豪威尔签署了《美国公共法案85-568》，创立了国家航空和太空管理局。</p>
+<h2 id="组织简介"><a href="#组织简介" class="headerlink" title="组织简介"></a>组织简介</h2><p>Johnson Space Center 约翰逊航天中心<br>约翰逊航天中心建于1962年，是训练美宇航员、开发、设计太空梭和太空站的基地。</p>
+<h2 id="机器人简介"><a href="#机器人简介" class="headerlink" title="机器人简介"></a><a target="_blank" rel="noopener" href="http://nasa-jsc-robotics.github.io/valkyrie/">机器人简介</a></h2><p>The Valkyrie robotic platform was originally designed and built in 2013 to carry out <strong>search and rescue missions</strong> inline with the DARPA Robotics Challenge. After a series of electro-mechanical upgrades and a software partnership with IHMC, the Valkyrie platform is now a core robotic platform in the NASA Space Robotics Challenge.</p>
+<p>The Valkyrie robot measures about 6 feet in height and weighs 290 pounds. Valkyrie is a 32 degree (实际44，算上小臂和手) of freedom (DOF) walking robot featuring <strong>two 6 DOF legs, two 7 DOF arms, a 3 DOF neck, and a 3 DOF waist.</strong> Valkyrie utilizes the <a target="_blank" rel="noopener" href="http://carnegierobotics.com/multisense-sl/">MultiSense SL</a> in its head, anterior hazard cameras, multiple LORD MicroStrain IMU sensors, and ATI Multi-Axis Force/Torque sensors.</p>
+<p><a target="_blank" rel="noopener" href="https://www.nasa.gov/sites/default/files/atoms/files/r5_fact_sheet.pdf">简介</a><br><a target="_blank" rel="noopener" href="http://sites.utexas.edu/hcrl/files/2016/01/jfr-valkyrie-actuator-control-final.pdf">详细</a></p>
+<h3 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h3><ul>
+<li>Weight: 300 pounds </li>
+<li>Computers: 2 x Intel Core i7</li>
+<li>Height: 6 feet 2 inches </li>
+<li>Degrees of Freedom: 44</li>
+<li>Battery Energy: 1.8kWh</li>
+</ul>
+<h3 id="功能以及其他信息"><a href="#功能以及其他信息" class="headerlink" title="功能以及其他信息"></a>功能以及其他信息</h3><ul>
+<li>开发周期 ： 15个月（基于R2）</li>
+</ul>
+<p>从视频，图片和新闻所得到的信息，Valkyrie可以进行较为缓慢的行走，跨越简单的障碍，上下台阶，手部可以抓握并且开关阀门。</p>
+<p><a target="_blank" rel="noopener" href="https://youtu.be/IE-YBaYjbqY">Video1</a></p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><ol>
+<li><a target="_blank" rel="noopener" href="http://spectrum.ieee.org/automaton/robotics/humanoids/new-r5-valkyrie-robots">NASA 赠送了3台分别送给爱丁堡大学，MIT和东北大学（美）</a>。</li>
+</ol>
+<h3 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h3><h4 id="板载CPU"><a href="#板载CPU" class="headerlink" title="板载CPU"></a><a target="_blank" rel="noopener" href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Onboard-Computers">板载CPU</a></h4><ul>
+<li>i7-3615QE @2.3GHz</li>
+<li>16GB DDR3 1600</li>
+<li>240GB SSD</li>
+<li>Congatec BS77 Type2 COM Express Module</li>
+<li>EFK XV1 Carrier Board</li>
+<li>Ubuntu 14.04 Server</li>
+</ul>
+<h4 id="通信总线"><a href="#通信总线" class="headerlink" title="通信总线"></a><a target="_blank" rel="noopener" href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Robonet">通信总线</a></h4><p>由 NASA自研发的Robonet通信总线。其Master是一块<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/PC_Card">PCMCIA</a>设计，猜测其采用了FPGA板卡的设计方案，直接接入主机电脑，由其上可以分出8路Robonet总线，为并行-串行设计。 JSC并没有公布总线的带宽，吞吐量和实时性。其中一路带宽应在50Mbps以下（比如CAN是1Mbps。<br>而PCMCIA总线分为两类，一类为16位的PCMCIA，另一类为32位的CardBus。<br>PCMCIA的频率为33MHz，位宽16bit，带宽为66MB/S<br>CardBus的频率为33MHz，位宽32bit，带宽133MB/S<br>可见总线带宽理应在 8Mbps（如果单路是CAN，位1*8） - 133Mbps（PC总线速率）范围，既然采用了PCMCIA应在100Mbps左右。</p>
+<h4 id="头部"><a href="#头部" class="headerlink" title="头部"></a>头部</h4><p>集成了<a target="_blank" rel="noopener" href="http://carnegierobotics.com/multisense-sl/">MultiSense SL</a> 。波士顿动力的Altlas也采用了同款设备。此设备包含仿人机器人的基本需求，且完美支持ROS。</p>
+<h4 id="传感器"><a href="#传感器" class="headerlink" title="传感器"></a><a target="_blank" rel="noopener" href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Sensors">传感器</a></h4><ul>
+<li>ATI 传感器 * 2 放置在脚底板</li>
+<li>IMU 传感器 两个于腰部 3DM-GX4-15 by LORD MicroStrain </li>
+<li>MultiSense SL</li>
+</ul>
+<h4 id="电机，减速器以及驱动（关节）"><a href="#电机，减速器以及驱动（关节）" class="headerlink" title="电机，减速器以及驱动（关节）"></a>电机，减速器以及驱动（关节）</h4><p>JSC并没有透露过于详细的信息。<br><a target="_blank" rel="noopener" href="https://www.nasa.gov/sites/default/files/atoms/files/r5_fact_sheet.pdf">简介</a><br><a target="_blank" rel="noopener" href="http://sites.utexas.edu/hcrl/files/2016/01/jfr-valkyrie-actuator-control-final.pdf">详细</a></p>
+<ul>
+<li><p>根据参考文档，与常规机器人不同的是，在踝关节和小臂上采用了线性驱动 + 弹性结构的特点。</p>
+</li>
+<li><p>采用了弹簧变位作为力矩传感器，噪声依旧很大（The loadcells are placed closer to the joint output giving them better dynamic sensing performance but suffer from a higher noise floor than the spring deflection sensor due to their analog signal properties.）<br><img src="/img/valkyrie/figure5.jpg"></p>
+</li>
+</ul>
+<p>因此对关节运动进行了建模，并且引入了Disturbance Observer (DOB)等方法。(The goal of our torque control approach is to make each SEA appear to the multi-joint controller as an<br>ideal torque source, or at least a low-pass filtered torque source. That is, we want to avoid modeling internal<br>actuator dynamics at the multi-joint level, and instead only model the effects of the rigid body system. Prior<br>work in this area has demonstrated that effective decoupling of the fast actuator-level dynamics from the<br>slower multi-body dynamics is indeed possible (Ott et al., 2003). However, in this work torque errors remain<br>large (around 50Nm) and thus do not adequately abstract an actuator as an ideal torque source.)</p>
+<ul>
+<li>将关节力矩控制分离到各个关节，多关节控制可以直接控制其力矩，算法层面应采用的是力矩相关控制。<br><img src="/img/valkyrie/figure2.jpg" alt="力矩分散控制"><br><img src="/img/valkyrie/figure2.jpg" alt="力控制模型"></li>
+</ul>
+<h4 id="电池"><a href="#电池" class="headerlink" title="电池"></a>电池</h4><p>电池可以从背板直接抽取放置。非常方便。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p><a target="_blank" rel="noopener" href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Ring-LED-Legend">自制的灯板</a>很帅</p>
+<h3 id="亮点的功能"><a href="#亮点的功能" class="headerlink" title="亮点的功能　###"></a>亮点的功能　###</h3><ol>
+<li><p> A removable battery in its backpack is good for about an hour of activity, and a human can swap in a fresh battery for a spent one in a matter of minutes. Also removable are Valkyrie’s limbs: in just a few more minutes, a damaged arm can be swapped out for a new one, and the left arm can even be swapped with the right arm, since they’re identical in construction.<br>Valkyrie的电池和四肢可以非常容易的拆卸和安装。这种设计意味着快速的维修和方便的调试（需要设计），从产品进化来讲，将会是机器人在前中期的趋势（比如移动电话的前中期也是依赖于各组件的组合）。</p>
+</li>
+<li><p>Our robot is soft. If you brush against it while you’re working, you don’t want to feel this cold, hard metal. You want it to feel natural, like you’re working next to another human being.<br>Valkyrie采用了柔性的保护措施，并且专门成了相关的实验室。这将是机器人与人接触必然要解决的问题。</p>
+</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Valkyrie由于定位于空间站，且计划应用于2030年，所以并未进入市场。 所研究的方向并没有全力集中在行走等腿部行为，抓取，操作设备方面更具有特点。 其设计成本极其高昂， 机械选材很高端和设计非常精细，电子电器设计大量采购集成商品，软件应用层面现在（3/23/2017）所见并非其主要工作投入，控制层面主要集中在硬件建模上，当然行为方面也有不俗的成果，预计以后会与大学深入合作来扩展这方面。</p>
+<p><img src="/img/valkyrie/val_twisted.png" alt="Valkyrie"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/%E4%BB%BF%E4%BA%BA%E6%9C%BA%E5%99%A8%E4%BA%BA/">仿人机器人</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Valkyrie/">Valkyrie</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://galaxy2416.github.io/2017/03/26/valkyrie/" data-title="Valkyrie | IcePie&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/03/26/smallCar/" title="smallCar">
+  <strong>上一篇：</strong><br/>
+  <span>
+  smallCar</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/07/15/vimrc/"  title="vim系列之配置文件">
+ <strong>下一篇：</strong><br/> 
+ <span>vim系列之配置文件
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF%E4%BA%BA%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%B9%8B-Valkyrie"><span class="toc-number">1.</span> <span class="toc-text">仿人机器人 之 Valkyrie</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%8F%B8%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">公司简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E7%BB%87%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">组织简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">1.3.</span> <span class="toc-text">机器人简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">基本参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">功能以及其他信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.3.3.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.4.</span> <span class="toc-text">硬件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%BF%E8%BD%BDCPU"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">板载CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E6%80%BB%E7%BA%BF"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">通信总线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%B4%E9%83%A8"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">头部</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.3.4.4.</span> <span class="toc-text">传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%9C%BA%EF%BC%8C%E5%87%8F%E9%80%9F%E5%99%A8%E4%BB%A5%E5%8F%8A%E9%A9%B1%E5%8A%A8%EF%BC%88%E5%85%B3%E8%8A%82%EF%BC%89"><span class="toc-number">1.3.4.5.</span> <span class="toc-text">电机，减速器以及驱动（关节）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%B1%A0"><span class="toc-number">1.3.4.6.</span> <span class="toc-text">电池</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.3.4.7.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%AE%E7%82%B9%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.5.</span> <span class="toc-text">亮点的功能　###</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="galaxy2416" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/51单片机/" title="51单片机">51单片机<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/avr系列/" title="avr系列">avr系列<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="math">math<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/program/" title="program">program<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/simple-robots-系列/" title="simple robots 系列">simple robots 系列<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/vim/" title="vim">vim<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/git-ssh/" title="git ssh">git ssh<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Valkyrie/" title="Valkyrie">Valkyrie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/artrobot/" title="artrobot">artrobot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Atlas/" title="Atlas">Atlas<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/第一篇文章/" title="第一篇文章">第一篇文章<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Romeo/" title="Romeo">Romeo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://sherlockyu.github.io" target="_blank" title="猫哥的小博客">于小猫</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m IcePie. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/galaxy2416" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:gin@mail.elut.edu.cn" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="冰派">冰派</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'galaxy2416';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>

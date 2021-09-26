@@ -1,0 +1,620 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>smallCar | IcePie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="冰派">
+    
+
+    
+    <meta name="description" content="simple robots 系列之小笨车心血来潮，双休时制作了小笨车一部，就权当 simple robots 系列的开端吧。这个系列主要是做一些简单（也许）有趣的小机器人，自娱自乐。也希望能帮到有兴趣的人。  硬件准备以下硬件都是可以在淘宝上可以买到的：  Arduino nano   小车底板一份。(这个图只是从买底板的淘宝店截取的)  双自由度舵机云台（注：小车底板和舵机要确定能否安装到一起）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="smallCar">
+<meta property="og:url" content="http://galaxy2416.github.io/2017/03/26/smallCar/index.html">
+<meta property="og:site_name" content="IcePie&#39;s blog">
+<meta property="og:description" content="simple robots 系列之小笨车心血来潮，双休时制作了小笨车一部，就权当 simple robots 系列的开端吧。这个系列主要是做一些简单（也许）有趣的小机器人，自娱自乐。也希望能帮到有兴趣的人。  硬件准备以下硬件都是可以在淘宝上可以买到的：  Arduino nano   小车底板一份。(这个图只是从买底板的淘宝店截取的)  双自由度舵机云台（注：小车底板和舵机要确定能否安装到一起）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://galaxy2416.github.io/img/simpleCar/car.png">
+<meta property="og:image" content="http://galaxy2416.github.io/img/simpleCar/carboard.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/simpleCar/steering.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/simpleCar/HG7881.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/simpleCar/ams1117.png">
+<meta property="og:image" content="http://galaxy2416.github.io/img/simpleCar/wrieless.png">
+<meta property="og:image" content="http://galaxy2416.github.io/img/simpleCar/charge.png">
+<meta property="article:published_time" content="2017-03-26T05:44:35.000Z">
+<meta property="article:modified_time" content="2021-09-26T02:51:38.966Z">
+<meta property="article:author" content="冰派">
+<meta property="article:tag" content="robot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://galaxy2416.github.io/img/simpleCar/car.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="IcePie&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/planets/planet_univearse_telestial_space_pluto.png" alt="IcePie&#39;s blog" title="IcePie&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="IcePie&#39;s blog">IcePie&#39;s blog</a></h1>
+				<h2 class="blog-motto">语不惊人死不休</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:galaxy2416.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/26/smallCar/" title="smallCar" itemprop="url">smallCar</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-26T05:44:35.000Z" itemprop="datePublished"> 发表于 2017-03-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#simple-robots-%E7%B3%BB%E5%88%97%E4%B9%8B%E5%B0%8F%E7%AC%A8%E8%BD%A6"><span class="toc-number">1.</span> <span class="toc-text">simple robots 系列之小笨车</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">硬件准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">软件以及使用方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="simple-robots-系列之小笨车"><a href="#simple-robots-系列之小笨车" class="headerlink" title="simple robots 系列之小笨车"></a>simple robots 系列之小笨车</h1><p>心血来潮，双休时制作了小笨车一部，就权当 simple robots 系列的开端吧。这个系列主要是做一些简单（也许）有趣的小机器人，自娱自乐。也希望能帮到有兴趣的人。</p>
+<p><img src="/img/simpleCar/car.png" alt="car"></p>
+<h2 id="硬件准备"><a href="#硬件准备" class="headerlink" title="硬件准备"></a>硬件准备</h2><p><strong>以下硬件都是可以在淘宝上可以买到的：</strong></p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.arduino.cc/en/Main/ArduinoBoardNano">Arduino nano</a> </p>
+</li>
+<li><p>小车底板一份。(<em>这个图只是从买底板的淘宝店截取的</em>)<br><img src="/img/simpleCar/carboard.jpg" alt="carboard"></p>
+</li>
+<li><p>双自由度舵机云台（注：小车底板和舵机要确定能否安装到一起）。<br><img src="/img/simpleCar/steering.jpg" alt="steer"></p>
+</li>
+<li><p>直流电机驱动。<br><img src="/img/simpleCar/HG7881.jpg" alt="driver"></p>
+</li>
+<li><p>稳压器，ASM1117系列即可。<br><img src="/img/simpleCar/ams1117.png" alt="ams"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a230r.1.14.20.re5GVx&id=520282027806&ns=1&abbucket=5#detail">无线通信模块</a> :　使用了成都亿佰特的串口模块，E30-TTL-100。<br><img src="/img/simpleCar/wrieless.png" alt="e30"></p>
+</li>
+<li><p>电池采用了狮子牌7.4V, 1300mah锂电池组，这个只要是5V+的电池(要看稳压)都是可以的只不过我手头刚好有一个这个电池组。</p>
+</li>
+<li><p>充电可以采用TP405X系列的小充电板，1-2元钱。<br><img src="/img/simpleCar/charge.png" alt="charge"></p>
+</li>
+<li><p><strong>对于想使用WiFi的同学来说，推荐一款</strong><a target="_blank" rel="noopener" href="http://www.nodemcu.com/index_cn.html">NodeMcu</a> ，非常廉价，并且支持lua脚本。</p>
+</li>
+<li><p>摄像头，自选即可，我采用懒人模式，直接贴了IPHONE的硅胶壳上去，权当把手机当做摄像头来用。至于视频软件，推荐QQ或者Spyke。</p>
+</li>
+</ul>
+<h2 id="软件以及使用方式"><a href="#软件以及使用方式" class="headerlink" title="软件以及使用方式"></a>软件以及使用方式</h2><p>软件已上传到github上，链接为<a target="_blank" rel="noopener" href="https://github.com/Galaxy2416/SimpleWirelessCar">https://github.com/Galaxy2416/SimpleWirelessCar</a> </p>
+<p>代码非常简单，操作也很简单。</p>
+<p><strong>Arduino 主程序</strong></p>
+<p>如代码所示，会根据从串口收到的指令来做动作。指令的前四个位用来决定舵机云台的移动，后四个位来决定小车前进后退转弯的操作。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;car.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">Car theCar;</span><br><span class="line"><span class="keyword">bool</span> pitch_p;</span><br><span class="line"><span class="keyword">bool</span> pitch_n;</span><br><span class="line"><span class="keyword">bool</span> roll_p;</span><br><span class="line"><span class="keyword">bool</span> roll_n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  theCar.<span class="built_in">setupDefault</span>();</span><br><span class="line">  theCar.<span class="built_in">setRollPosition</span>(<span class="number">90</span>);</span><br><span class="line">  theCar.<span class="built_in">setPitchPosition</span>(<span class="number">90</span>);</span><br><span class="line">  pitch_p = <span class="literal">false</span>;</span><br><span class="line">  pitch_n = <span class="literal">false</span>;</span><br><span class="line">  roll_p = <span class="literal">false</span>;</span><br><span class="line">  roll_n = <span class="literal">false</span>;</span><br><span class="line">  <span class="comment">// initialize serial communication at 9600 bits per second:</span></span><br><span class="line">  <span class="built_in">Serial</span>.<span class="built_in">begin</span>(<span class="number">9600</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (pitch_p)</span><br><span class="line">    theCar.<span class="built_in">setPitchPosition</span>((theCar.<span class="built_in">readPitchPosition</span>() + <span class="number">1</span>));</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (pitch_n)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(!((theCar.<span class="built_in">readRollPosition</span>()&lt;<span class="number">50</span> || theCar.<span class="built_in">readRollPosition</span>()&gt;<span class="number">122</span>) &amp;&amp; theCar.<span class="built_in">readPitchPosition</span>()&lt; <span class="number">105</span>) &amp;&amp; theCar.<span class="built_in">readPitchPosition</span>()&gt; <span class="number">90</span>)</span><br><span class="line">      theCar.<span class="built_in">setPitchPosition</span>((theCar.<span class="built_in">readPitchPosition</span>() - <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (roll_p)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(!(theCar.<span class="built_in">readPitchPosition</span>() &lt; <span class="number">105</span> &amp;&amp; theCar.<span class="built_in">readRollPosition</span>() &gt;= <span class="number">122</span>))</span><br><span class="line">      theCar.<span class="built_in">setRollPosition</span>(theCar.<span class="built_in">readRollPosition</span>() + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (roll_n)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(!(theCar.<span class="built_in">readPitchPosition</span>() &lt; <span class="number">105</span> &amp;&amp; theCar.<span class="built_in">readRollPosition</span>() &lt;= <span class="number">50</span> ))</span><br><span class="line">      theCar.<span class="built_in">setRollPosition</span>(theCar.<span class="built_in">readRollPosition</span>() - <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">15</span>);                       <span class="comment">// waits 15ms for the servo to reach the position</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">serialEvent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">byte</span> cmd = <span class="built_in">Serial</span>.<span class="built_in">read</span>();</span><br><span class="line">  <span class="built_in"><span class="keyword">switch</span></span> (cmd &amp; <span class="number">0x0f</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x00</span>:</span><br><span class="line">      theCar.<span class="built_in">stop</span>();</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x01</span>:</span><br><span class="line">      theCar.forward();</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x02</span>:</span><br><span class="line">      theCar.<span class="built_in">backward</span>();</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x04</span>:</span><br><span class="line">      theCar.<span class="built_in">leftTurn</span>(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x08</span>:</span><br><span class="line">      theCar.<span class="built_in">rightTurn</span>(<span class="number">0</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="built_in"><span class="keyword">case</span></span> (<span class="number">0x04</span> | <span class="number">0x01</span>):</span><br><span class="line">      theCar.<span class="built_in">leftTurn</span>(<span class="number">1</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="built_in"><span class="keyword">case</span></span> (<span class="number">0x04</span> | <span class="number">0x02</span>):</span><br><span class="line">      theCar.<span class="built_in">leftTurn</span>(<span class="number">-1</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="built_in"><span class="keyword">case</span></span> (<span class="number">0x08</span> | <span class="number">0x01</span>):</span><br><span class="line">      theCar.<span class="built_in">rightTurn</span>(<span class="number">1</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="built_in"><span class="keyword">case</span></span> (<span class="number">0x08</span> | <span class="number">0x02</span>):</span><br><span class="line">      theCar.<span class="built_in">rightTurn</span>(<span class="number">-1</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      theCar.<span class="built_in">stop</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in"><span class="keyword">switch</span></span> (cmd &amp; <span class="number">0xf0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x10</span>:</span><br><span class="line">      pitch_p = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x20</span>:</span><br><span class="line">      pitch_n = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x40</span>:</span><br><span class="line">      roll_p = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0x80</span>:</span><br><span class="line">      roll_n = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:    </span><br><span class="line">      pitch_p = <span class="literal">false</span>;</span><br><span class="line">      pitch_n = <span class="literal">false</span>;</span><br><span class="line">      roll_p = <span class="literal">false</span>;</span><br><span class="line">      roll_n = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>PC机主程序</strong></p>
+<p>PC程序使用Python + <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/pyhook/">pyhooks</a> 实现。</p>
+<p>pyhook是一个基于Python的“钩子”库，主要用于监听当前电脑上鼠标和键盘的事件。这个库依赖于另一个Python库PyWin32，如同名字所显示的，PyWin32只能运行在Windows平台，所以PyHook也只能运行在Windows平台。因此如果要在其他系统平台需要使用其他的键盘监听功能。</p>
+<p><em>操作</em>很简单，键盘的上下左右可以控制小车的移动WSAD用来控制云台的转向。就跟电脑的赛车游戏一般操控即可。（但是没那么好玩 =。=）</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="attr">__name__</span> == &#x27;__main__&#x27;:</span><br><span class="line">    <span class="comment"># sender</span></span><br><span class="line">    <span class="attr">ss</span> = serialSender()</span><br><span class="line">    ss.connect_to_serial()</span><br><span class="line">    <span class="comment"># create a hook manager</span></span><br><span class="line">    <span class="attr">hm</span> = pyHook.HookManager()</span><br><span class="line">    <span class="comment"># watch for all mouse events</span></span><br><span class="line">    <span class="comment"># hm.KeyAll = OnKeyboardEvent</span></span><br><span class="line">    hm.SubscribeKeyDown(ss.OnKeyboardEventDown)</span><br><span class="line">    hm.SubscribeKeyUp(ss.OnKeyboardEventUp)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其中为了解决连接E30无线模块的问题，也加入一些判断机制</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect_to_serial</span>(<span class="params">self</span>):</span></span><br><span class="line">        vid_pid = <span class="string">&#x27;10C4:EA60&#x27;</span></span><br><span class="line">        <span class="comment"># connect to com auto</span></span><br><span class="line">        port_list = <span class="built_in">list</span>(serial.tools.list_ports.comports())</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(port_list) &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span> (<span class="string">&quot;The Serial port can&#x27;t find!&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> port_list:</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">str</span>(<span class="built_in">list</span>(i)[<span class="number">2</span>]).find(vid_pid) != -<span class="number">1</span> : <span class="comment"># VID:PID = X<span class="doctag">XXX:</span>XXXX</span></span><br><span class="line">                    port_list_use =<span class="built_in">list</span>(i)</span><br><span class="line">                    port_serial = port_list_use[<span class="number">0</span>]</span><br><span class="line">                    self.ser = serial.Serial(port_serial,<span class="number">9600</span>,timeout = <span class="number">60</span>)</span><br><span class="line">                    <span class="built_in">print</span> (<span class="string">&quot;Find the port &gt;&quot;</span>,self.ser)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> self.ser == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Cannot find the port of wireless serial.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close_the_serial</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.ser != <span class="number">0</span>:</span><br><span class="line">self.ser.close();</span><br></pre></td></tr></table></figure>
+<p>使用的时候请把vid_pid改写成自己USB设备的ID，此功能仅能针对串口转USB设备。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>适合跟小朋友一起制作！培养感情～</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/simple-robots-%E7%B3%BB%E5%88%97/">simple robots 系列</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/robot/">robot</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://galaxy2416.github.io/2017/03/26/smallCar/" data-title="smallCar | IcePie&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/05/romeo-1/" title="romeo-1">
+  <strong>上一篇：</strong><br/>
+  <span>
+  romeo-1</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/03/26/valkyrie/"  title="Valkyrie">
+ <strong>下一篇：</strong><br/> 
+ <span>Valkyrie
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#simple-robots-%E7%B3%BB%E5%88%97%E4%B9%8B%E5%B0%8F%E7%AC%A8%E8%BD%A6"><span class="toc-number">1.</span> <span class="toc-text">simple robots 系列之小笨车</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">硬件准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">软件以及使用方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="galaxy2416" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/51单片机/" title="51单片机">51单片机<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/avr系列/" title="avr系列">avr系列<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="math">math<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/program/" title="program">program<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/simple-robots-系列/" title="simple robots 系列">simple robots 系列<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/vim/" title="vim">vim<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/git-ssh/" title="git ssh">git ssh<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Valkyrie/" title="Valkyrie">Valkyrie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/artrobot/" title="artrobot">artrobot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Atlas/" title="Atlas">Atlas<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/第一篇文章/" title="第一篇文章">第一篇文章<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Romeo/" title="Romeo">Romeo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://sherlockyu.github.io" target="_blank" title="猫哥的小博客">于小猫</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m IcePie. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/galaxy2416" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:gin@mail.elut.edu.cn" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="冰派">冰派</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'galaxy2416';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>

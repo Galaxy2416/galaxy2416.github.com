@@ -1,0 +1,628 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>romeo-1 | IcePie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="冰派">
+    
+
+    
+    <meta name="description" content="仿人机器人 之 Romeo - 1软银三剑客之Romeo，分成两个系列，第一篇章用作机器人简介，由于与众多研究机构合作，其中产生了大量论文和成果，第二篇章将针对论文的技术做简介。  设计公司：Aldebaran Robotics (现被SoftBank收购) 官方网站：Romeo Project   Romeo is a humanoid robot from Aldebaran Robotics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="romeo-1">
+<meta property="og:url" content="http://galaxy2416.github.io/2017/04/05/romeo-1/index.html">
+<meta property="og:site_name" content="IcePie&#39;s blog">
+<meta property="og:description" content="仿人机器人 之 Romeo - 1软银三剑客之Romeo，分成两个系列，第一篇章用作机器人简介，由于与众多研究机构合作，其中产生了大量论文和成果，第二篇章将针对论文的技术做简介。  设计公司：Aldebaran Robotics (现被SoftBank收购) 官方网站：Romeo Project   Romeo is a humanoid robot from Aldebaran Robotics">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/acquire.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/head.png">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/vestibular.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/eye.png">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/audio.png">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/all.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/design.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/motor.jpg">
+<meta property="og:image" content="http://galaxy2416.github.io/img/romeo/romeo.jpg">
+<meta property="article:published_time" content="2017-04-05T15:35:12.000Z">
+<meta property="article:modified_time" content="2021-09-26T02:51:38.966Z">
+<meta property="article:author" content="冰派">
+<meta property="article:tag" content="Romeo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://galaxy2416.github.io/img/romeo/acquire.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="IcePie&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/planets/planet_earth_venues_univearse_jupiter.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/planets/planet_univearse_telestial_space_pluto.png" alt="IcePie&#39;s blog" title="IcePie&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="IcePie&#39;s blog">IcePie&#39;s blog</a></h1>
+				<h2 class="blog-motto">语不惊人死不休</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:galaxy2416.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/05/romeo-1/" title="romeo-1" itemprop="url">romeo-1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="冰派" target="_blank" itemprop="author">冰派</a>
+		
+  <p class="article-time">
+    <time datetime="2017-04-05T15:35:12.000Z" itemprop="datePublished"> 发表于 2017-04-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF%E4%BA%BA%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%B9%8B-Romeo-1"><span class="toc-number">1.</span> <span class="toc-text">仿人机器人 之 Romeo - 1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%8F%B8%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">公司简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">机器人简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.2.</span> <span class="toc-text">设计信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.3.</span> <span class="toc-text">功能以及其他信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.2.4.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.5.</span> <span class="toc-text">硬件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%9C%BA"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">电机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%B1%A0"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">电池</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%AE%E7%82%B9"><span class="toc-number">1.2.6.</span> <span class="toc-text">亮点　###</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="仿人机器人-之-Romeo-1"><a href="#仿人机器人-之-Romeo-1" class="headerlink" title="仿人机器人 之 Romeo - 1"></a>仿人机器人 之 Romeo - 1</h1><p><em>软银三剑客之Romeo，分成两个系列，第一篇章用作机器人简介，由于与众多研究机构合作，其中产生了大量论文和成果，第二篇章将针对论文的技术做简介。</em></p>
+<ul>
+<li>设计公司：Aldebaran Robotics (现被SoftBank收购)</li>
+<li>官方网站：<a target="_blank" rel="noopener" href="http://www.projetromeo.com/">Romeo Project</a></li>
+</ul>
+<blockquote>
+<p>Romeo is a humanoid robot from Aldebaran Robotics which is intended to be a genuine personal assistant and companion.</p>
+<p>Romeo主要是帮助缺乏自理能力的人。如依靠视觉帮老人记住杯子或遥控器落在哪里了，甚至帮老人拿过去；可以监护老人，老人生病时机器人会通知老人的家人；帮老人或残疾人下楼梯倒垃圾；帮老人站起来或者行走等。</p>
+<p>罗密欧全身无齿轮，电能产生机械能，机械能还可以产生电能，能量浪费减到最小，开放SDK。行走依靠视觉实时重做路径规划 <a target="_blank" rel="noopener" href="http://mt.sohu.com/20160719/n460024598.shtml">sohu</a></p>
+</blockquote>
+<p>如果说NAO是主打教育和娱乐（医疗大概是创始人布鲁诺-梅索尼Bruno Maisonnier的一个期望），Pepper的江山在商用服务市场。那么Romeo更像是技术积累和预研（虽然Romeo中处处为了用户着想，但是在成本上并未作出更多的努力）。</p>
+<h2 id="公司简介"><a href="#公司简介" class="headerlink" title="公司简介"></a>公司简介</h2><p>Aldebaran Robotics，于2005年成立于法国。 2012年，日本软银集团收购了位于巴黎的 Aldebaran Robotics，其产品有 NAO、Pepper 和 Romeo robots。 2016年初，Aldebaran 更名为软银机器人公司。<br><img src="/img/romeo/acquire.jpg" alt="收购"> </p>
+<p><a target="_blank" rel="noopener" href="https://www.ald.softbankrobotics.com/" title="software bank robotics">https://www.ald.softbankrobotics.com/</a></p>
+<h2 id="机器人简介"><a href="#机器人简介" class="headerlink" title="机器人简介"></a><a target="_blank" rel="noopener" href="http://projetromeo.com/en/background">机器人简介</a></h2><p>Romeo是Aldebaran在NAO的基础上开发出来的一款机器人。旨在制造一款大型的仿人机器人以及测试一些新技术的继承和应用。（做技术积累，较为成功的是本田的Asimo将其发现的技术应用于汽车和其他产品）。最初项目的成立在2009年，由DGCIS赞助，联合众多研究机构。（The research on Romeo was initiated within the scope of an interministerial fund (FUI) project in January 2009. Accredited by the Cap Digital competitiveness cluster, the project was funded by DGCIS, the Ile de France Region and the Municipality of Paris. As a structural project for the French robotics sector, Romeo has brought together a dozen industrial and academic partners.）在花费了4年的研究时间后，成功研制出了第一代140cm的机器人（Romeo-1已经完成并且给了4所欧洲高校）。最后Romeo-2在2012年11月开始立项，由Bpifrance支持。同样是4年的项目，与<a target="_blank" rel="noopener" href="http://projetromeo.com/en/partners">16家机构共同合作</a>。</p>
+<p>Romeo第二代在第一代上做了很多改进，包括改变脊柱，把电子元器件放到头部，并且融入了<em>摸头杀</em>功能（每次看到pepper都想去摸头，是同样的功能和原理）<br><img src="/img/romeo/head.png" alt="head"><br>提升腿部控制，加入电池。</p>
+<p>针对眼睛，LPPA为其实现了可移动的双眼，植入了前庭系统（vestibular system）用来稳定机器人的视觉图像。这样就可以实现更为稳定的<strong>动态</strong>步态算法。在这方面，国内亦有不错的成果，比如张晓林博士为新松做的一款动态眼（如图），不过依旧还未见到把动态视觉和动态步态结合起来并且公开的产品或者原型。<br><img src="/img/romeo/vestibular.jpg" alt="vestibular"><br><img src="/img/romeo/eye.png" alt="张晓林博士团队的动态眼"></p>
+<p>对于语音，Remeo在Telecom Paris Tech的帮助下可谓是“大费周章”（对于大多仿人机器人的研究者来说，在语音上下了这么多功夫，有点夸张），使用16路的语音天线实现。<br><img src="/img/romeo/audio.png" alt="audio"></p>
+<p><em>运动控制方面</em> LAAS致力于实现全身的平衡控制，在基于LPPA所制作的控制图表功能（NAO也使用同样的工具，可以参考它的软件以及视频）上，提出了中心（这是个医学名词，眼中心）控制（oculocentric control framework）这个架构，可以获得高质量的被动步态模式。除此之外，在复杂行为上也有不俗的斩获，比如开门，握手，寻找座椅并成功落座，视觉引导行走等一系列研究。 LPPA同期也在进行神经网络对双足行走的研究。</p>
+<p>最后Romeo在行为，对话，感情研究上也投入了不少的精力。这方面在AI层面，较为独立。</p>
+<h3 id="基本参数"><a href="#基本参数" class="headerlink" title="基本参数"></a>基本参数</h3><ul>
+<li>Weight: 36.66 kg </li>
+<li>Height: 1.467 m </li>
+<li>Degrees of Freedom: 33 + 4（眼睛）</li>
+</ul>
+<h3 id="设计信息"><a href="#设计信息" class="headerlink" title="设计信息"></a><a target="_blank" rel="noopener" href="http://projetromeo.com/sites/default/files/romeo-documentation/index.html">设计信息</a></h3><p>Romeo的设计信息多为机械信息，从官方文档可得。其中包含了电机参数（型号，力矩），机械参数（各肢体细节，质心转动惯量），关节参数（转动范围）。<br><img src="/img/romeo/all.jpg" alt="info"></p>
+<p>这些参数对于使用者和其他设计者来说都是不小的财富，有助于参照其进行自己的初始设计。其电机则全部采用了Maxon的电机。</p>
+<h3 id="功能以及其他信息"><a href="#功能以及其他信息" class="headerlink" title="功能以及其他信息"></a>功能以及其他信息</h3><p>从视频，图片和新闻所得到的信息，Romeo可以进行行走，执行起坐等行为。 丰富的交互功能可以和人进行交互。</p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><ol>
+<li>2012年末， 第一代完成</li>
+<li>2016年， 第二代完成<br><img src="/img/romeo/design.jpg" alt="design"></li>
+</ol>
+<h3 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h3><p>并未找到细节参数，待补。</p>
+<h4 id="传感器"><a href="#传感器" class="headerlink" title="传感器"></a><a target="_blank" rel="noopener" href="https://gitlab.com/nasa-jsc-robotics/valkyrie/wikis/Sensors">传感器</a></h4><ul>
+<li>Camera*2 左右眼各一个</li>
+<li>其他：并未找到细节参数，待补。</li>
+</ul>
+<h4 id="电机"><a href="#电机" class="headerlink" title="电机"></a>电机</h4><p><img src="/img/romeo/motor.jpg" alt="motor"></p>
+<p><a target="_blank" rel="noopener" href="http://projetromeo.com/sites/default/files/romeo-documentation/hardware_romeo_motor.html">参考文档</a></p>
+<h4 id="电池"><a href="#电池" class="headerlink" title="电池"></a>电池</h4><p>并未找到细节参数，待补。</p>
+<h3 id="亮点"><a href="#亮点" class="headerlink" title="亮点　###"></a>亮点　###</h3><ol>
+<li>Romeo由于广泛的合作方式，在机器人上验证了仿人机器人相关非常丰富的功能。又因为是由公司产品，定位于家庭，医疗等场景，因此人机交互，安全性，稳定性，类人方面做了非常多的工作。 在这方面，只有同为日本（收购也算）的Asmio有一拼之力。</li>
+<li>实现<a target="_blank" rel="noopener" href="http://projetromeo.com/en/remote-operation">远程操作</a>的功能，虽然设计距离很远，但是只能在实验室实用。</li>
+<li>从NAO继承了丰富的软件功能，比如NAO-QI，这一点基本可以傲视群雄，唯一遗憾的是不与较为主流的ROS相兼容，自成一派。</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Romeo由定位于民用，每4年为一个项目周期，不光在运动控制（行走，抓起等），也在AI方面，协作互动方面投了不少资源。 与科研机构的广泛合作，为仿人机器人的发展提供了大量的<a target="_blank" rel="noopener" href="http://projetromeo.com/en/publications">科研成果</a>，实为可敬。</p>
+<p><img src="/img/romeo/romeo.jpg"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/%E4%BB%BF%E4%BA%BA%E6%9C%BA%E5%99%A8%E4%BA%BA/">仿人机器人</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Romeo/">Romeo</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://galaxy2416.github.io/2017/04/05/romeo-1/" data-title="romeo-1 | IcePie&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/13/add-ssh-error/" title="git下使用ssh的errors">
+  <strong>上一篇：</strong><br/>
+  <span>
+  git下使用ssh的errors</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/03/26/smallCar/"  title="smallCar">
+ <strong>下一篇：</strong><br/> 
+ <span>smallCar
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF%E4%BA%BA%E6%9C%BA%E5%99%A8%E4%BA%BA-%E4%B9%8B-Romeo-1"><span class="toc-number">1.</span> <span class="toc-text">仿人机器人 之 Romeo - 1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%8F%B8%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">公司简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">机器人简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.2.</span> <span class="toc-text">设计信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.3.</span> <span class="toc-text">功能以及其他信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.2.4.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.5.</span> <span class="toc-text">硬件配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">传感器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%9C%BA"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">电机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E6%B1%A0"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">电池</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%AE%E7%82%B9"><span class="toc-number">1.2.6.</span> <span class="toc-text">亮点　###</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="galaxy2416" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/51单片机/" title="51单片机">51单片机<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/avr系列/" title="avr系列">avr系列<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/git/" title="git">git<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/math/" title="math">math<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/program/" title="program">program<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/simple-robots-系列/" title="simple robots 系列">simple robots 系列<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/vim/" title="vim">vim<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/仿人机器人/" title="仿人机器人">仿人机器人<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/git-ssh/" title="git ssh">git ssh<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Valkyrie/" title="Valkyrie">Valkyrie<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/artrobot/" title="artrobot">artrobot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Atlas/" title="Atlas">Atlas<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/robot/" title="robot">robot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/第一篇文章/" title="第一篇文章">第一篇文章<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Romeo/" title="Romeo">Romeo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://sherlockyu.github.io" target="_blank" title="猫哥的小博客">于小猫</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m IcePie. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/galaxy2416" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:gin@mail.elut.edu.cn" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="冰派">冰派</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'galaxy2416';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>
